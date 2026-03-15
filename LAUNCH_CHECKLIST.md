@@ -18,6 +18,15 @@ Check off each item as it's completed. For items needing a URL or embed code, pa
   - Update `href="#"` on the "Order Merch" button in the `#merch` section
   - _URL:_ _______________
 
+### Dancers List
+- [ ] **Set up the Dancers List for party discounts**
+  - Decide on the mechanism: Google Form, Google Sheet signup, or Ticket Tailor registration
+  - Determine what qualifies someone for the list (e.g. all-access pass holders, specific registration)
+  - Update the "Dancers List" badge descriptions in the schedule event cards — currently says "Discounted entry via Dancers List" with no link or instructions
+  - Add signup link/instructions to the relevant event cards in `index.html` (search for `Dancers List`)
+  - Consider whether to add a dedicated section or FAQ entry explaining how the Dancers List works
+  - _Signup URL/mechanism:_ _______________
+
 ### Housing
 - [ ] **Google Form — Housing Coordination**
   - Reina creates the Google Form (name, email, brief note fields)
