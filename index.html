@@ -1,0 +1,1612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>To The Music | NewStyle Hustle Dance Festival | May 13-17, 2026</title>
+  <meta name="description" content="To The Music - A 5-day NewStyle Hustle dance festival featuring workshops, battles, social dances, and community. May 13-17, 2026." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg-dark: #0a0a0f;
+      --bg-section: #111118;
+      --bg-card: #1a1a25;
+      --accent: #e94560;
+      --accent-glow: rgba(233, 69, 96, 0.3);
+      --teal: #16c79a;
+      --gold: #f5a623;
+      --text: #e8e8ef;
+      --text-muted: #8888a0;
+      --text-dim: #555570;
+      --border: rgba(255,255,255,0.06);
+      --gradient-hero: linear-gradient(135deg, #0a0a0f 0%, #1a1025 40%, #0f1a2e 70%, #0a0a0f 100%);
+    }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: 'Poppins', sans-serif; background: var(--bg-dark); color: var(--text); line-height: 1.7; overflow-x: hidden; }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg-dark); }
+    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 4px; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(10, 10, 15, 0.85); backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border); transition: all 0.3s;
+    }
+    nav.scrolled { background: rgba(10, 10, 15, 0.95); box-shadow: 0 4px 30px rgba(0,0,0,0.4); }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0.8rem 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { height: 44px; border-radius: 50%; transition: transform 0.3s; }
+    .nav-logo:hover { transform: scale(1.1); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--text-muted); text-decoration: none; font-size: 0.85rem;
+      font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase;
+      transition: color 0.3s; position: relative;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -4px; left: 0; width: 0;
+      height: 2px; background: var(--accent); transition: width 0.3s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-cta {
+      background: var(--accent); color: #fff; padding: 0.5rem 1.4rem;
+      border-radius: 50px; font-size: 0.8rem; font-weight: 600;
+      text-decoration: none; letter-spacing: 0.05em; text-transform: uppercase;
+      transition: all 0.3s; border: none; cursor: pointer;
+    }
+    .nav-cta:hover { background: #d63652; transform: translateY(-1px); box-shadow: 0 4px 20px var(--accent-glow); }
+
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--text); transition: 0.3s; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      background: var(--gradient-hero); position: relative; overflow: hidden;
+      text-align: center; padding: 6rem 2rem 4rem;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 30% 50%, rgba(233,69,96,0.08) 0%, transparent 60%),
+                  radial-gradient(ellipse at 70% 30%, rgba(22,199,154,0.06) 0%, transparent 50%);
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 700px; }
+    .hero-logo {
+      width: 220px; height: 220px; border-radius: 50%; margin-bottom: 2rem;
+      box-shadow: 0 0 60px var(--accent-glow), 0 0 120px rgba(233,69,96,0.1);
+      animation: float 6s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif; font-size: 3.6rem; font-weight: 900;
+      line-height: 1.1; margin-bottom: 1rem;
+      background: linear-gradient(135deg, #fff 0%, #e8e8ef 50%, var(--accent) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .hero-subtitle {
+      font-size: 1.15rem; color: var(--text-muted); font-weight: 300;
+      letter-spacing: 0.08em; margin-bottom: 0.5rem;
+    }
+    .hero-date {
+      font-size: 1.3rem; font-weight: 600; color: var(--teal);
+      letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 2.5rem;
+    }
+    .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--accent); color: #fff; padding: 0.9rem 2.4rem;
+      border-radius: 50px; font-size: 0.95rem; font-weight: 600;
+      text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase;
+      transition: all 0.3s; border: none; cursor: pointer;
+    }
+    .btn-primary:hover { background: #d63652; transform: translateY(-2px); box-shadow: 0 8px 30px var(--accent-glow); }
+    .btn-secondary {
+      border: 1px solid rgba(255,255,255,0.2); color: var(--text); padding: 0.9rem 2.4rem;
+      border-radius: 50px; font-size: 0.95rem; font-weight: 500;
+      text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase;
+      transition: all 0.3s; background: transparent; cursor: pointer;
+    }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); background: rgba(233,69,96,0.05); }
+
+    /* COUNTDOWN */
+    .countdown-bar {
+      background: var(--bg-section); border-bottom: 1px solid var(--border);
+      padding: 1.5rem 2rem; text-align: center;
+    }
+    .countdown-inner {
+      max-width: 600px; margin: 0 auto;
+      display: flex; justify-content: center; gap: 2rem;
+    }
+    .countdown-item { text-align: center; }
+    .countdown-num {
+      font-size: 2.2rem; font-weight: 800; color: var(--accent);
+      font-family: 'Playfair Display', serif; line-height: 1;
+    }
+    .countdown-label { font-size: 0.7rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.15em; margin-top: 0.2rem; }
+
+    /* SECTIONS */
+    section { padding: 5rem 2rem; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-title {
+      font-family: 'Playfair Display', serif; font-size: 2.6rem; font-weight: 800;
+      text-align: center; margin-bottom: 0.6rem;
+    }
+    .section-subtitle {
+      text-align: center; color: var(--text-muted); font-size: 1rem;
+      font-weight: 300; margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto;
+    }
+
+    /* ABOUT */
+    #about { background: var(--bg-section); }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem;
+    }
+    .about-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 2rem; text-align: center;
+      transition: all 0.4s; position: relative; overflow: hidden;
+    }
+    .about-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 3px; background: linear-gradient(90deg, var(--accent), var(--teal));
+      opacity: 0; transition: opacity 0.4s;
+    }
+    .about-card:hover { transform: translateY(-4px); border-color: rgba(233,69,96,0.2); }
+    .about-card:hover::before { opacity: 1; }
+    .about-icon { font-size: 2.4rem; margin-bottom: 1rem; }
+    .about-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.6rem; }
+    .about-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.7; }
+    .about-parties {
+      max-width: 700px;
+      margin: 3rem auto 0;
+      text-align: center;
+    }
+    .about-parties h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+    .about-parties p {
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 0.75rem;
+    }
+    .about-parties-note {
+      font-size: 0.9rem;
+      color: var(--text-dim);
+    }
+    .about-parties-note a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .about-parties-note a:hover { text-decoration: underline; }
+
+    /* TEACHERS */
+    #teachers { background: var(--bg-dark); }
+    .teachers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .teacher-card {
+      background: var(--bg-card);
+      border: 1px solid #2a2a3a;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+    .teacher-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+    }
+    .teacher-photo-placeholder {
+      width: 100%;
+      aspect-ratio: 1;
+      background: var(--bg-raised);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--text-dim);
+      border-bottom: 1px solid #2a2a3a;
+    }
+    .teacher-info {
+      padding: 1.25rem;
+    }
+    .teacher-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .teacher-days {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 0.75rem;
+    }
+    .teacher-day {
+      font-size: 0.7rem;
+      background: rgba(233, 69, 96, 0.15);
+      color: var(--accent);
+      border: 1px solid rgba(233, 69, 96, 0.3);
+      border-radius: 4px;
+      padding: 0.2rem 0.5rem;
+    }
+    .teacher-bio-placeholder {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      font-style: italic;
+    }
+
+    /* SCHEDULE */
+    #schedule { background: var(--bg-dark); }
+    .schedule-tabs {
+      display: flex; justify-content: center; gap: 0.4rem; margin-bottom: 1.5rem; flex-wrap: wrap;
+    }
+    .schedule-tab {
+      background: var(--bg-card); border: 1px solid var(--border);
+      color: var(--text-muted); padding: 0.7rem 1.2rem; border-radius: 50px;
+      font-size: 0.78rem; font-weight: 600; cursor: pointer;
+      text-transform: uppercase; letter-spacing: 0.08em; transition: all 0.3s;
+      font-family: 'Poppins', sans-serif; position: relative;
+    }
+    .schedule-tab:hover { border-color: var(--accent); color: var(--text); }
+    .schedule-tab.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .schedule-tab .tab-day { display: block; font-size: 0.65rem; color: var(--text-dim); margin-top: 1px; }
+    .schedule-tab.active .tab-day { color: rgba(255,255,255,0.7); }
+
+    /* Filter pills */
+    .schedule-filters {
+      display: flex; justify-content: center; gap: 0.4rem; margin-bottom: 2.5rem; flex-wrap: wrap;
+    }
+    .filter-pill {
+      background: transparent; border: 1px solid var(--border);
+      color: var(--text-dim); padding: 0.35rem 0.9rem; border-radius: 50px;
+      font-size: 0.7rem; font-weight: 600; cursor: pointer;
+      text-transform: uppercase; letter-spacing: 0.06em; transition: all 0.3s;
+      font-family: 'Poppins', sans-serif;
+    }
+    .filter-pill:hover { border-color: var(--text-muted); color: var(--text-muted); }
+    .filter-pill.active { background: rgba(255,255,255,0.08); border-color: var(--text-muted); color: var(--text); }
+
+    .schedule-day { display: none; animation: fadeSlideIn 0.4s ease; }
+    .schedule-day.active { display: block; }
+    @keyframes fadeSlideIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .schedule-day-header { text-align: center; margin-bottom: 2rem; }
+    .schedule-day-header h3 {
+      font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 800;
+      margin-bottom: 0.2rem;
+    }
+    .schedule-day-header .day-badge {
+      display: inline-block; background: rgba(233,69,96,0.12); color: var(--accent);
+      padding: 0.2rem 0.9rem; border-radius: 50px; font-size: 0.72rem;
+      font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+    }
+
+    /* Timeline */
+    .schedule-timeline { max-width: 700px; margin: 0 auto; position: relative; }
+    .schedule-timeline::before {
+      content: ''; position: absolute; left: 43px; top: 0; bottom: 0;
+      width: 2px; background: linear-gradient(to bottom, var(--accent), var(--teal), var(--accent));
+      opacity: 0.2; border-radius: 1px;
+    }
+
+    /* Time-of-day group */
+    .time-group { margin-bottom: 1.5rem; }
+    .time-group-label {
+      display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.8rem; padding-left: 0;
+    }
+    .time-group-icon {
+      width: 36px; height: 36px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; flex-shrink: 0; position: relative; z-index: 1;
+    }
+    .time-group-icon.midday { background: linear-gradient(135deg, #f5a623, #f7c948); }
+    .time-group-icon.evening { background: linear-gradient(135deg, #e94560, #c73a54); }
+    .time-group-icon.latenight { background: linear-gradient(135deg, #6c5ce7, #4834a8); }
+    .time-group-text {
+      font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.15em; color: var(--text-dim);
+    }
+    .time-group-line {
+      flex: 1; height: 1px; background: var(--border);
+    }
+
+    /* Event card */
+    .evt-card {
+      margin-left: 62px; margin-bottom: 0.7rem; position: relative;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 1.1rem 1.3rem; transition: all 0.35s;
+      cursor: default;
+    }
+    .evt-card::before {
+      content: ''; position: absolute; left: -27px; top: 50%;
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--bg-card); border: 2px solid var(--accent);
+      transform: translateY(-50%); z-index: 1; transition: all 0.3s;
+    }
+    .evt-card:hover { border-color: rgba(233,69,96,0.25); transform: translateX(4px); }
+    .evt-card:hover::before { background: var(--accent); box-shadow: 0 0 8px var(--accent-glow); }
+    .evt-card.filtered-out { display: none; }
+
+    .evt-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-bottom: 0.4rem; }
+    .evt-name { font-weight: 700; font-size: 1rem; line-height: 1.3; flex: 1; }
+    .evt-price {
+      font-weight: 800; font-size: 0.9rem; white-space: nowrap;
+      padding: 0.15rem 0.7rem; border-radius: 50px; flex-shrink: 0;
+    }
+    .evt-price.free { background: rgba(22,199,154,0.1); color: var(--teal); }
+    .evt-price.paid { background: rgba(245,166,35,0.1); color: var(--gold); }
+    .evt-price.special { background: rgba(108,92,231,0.1); color: #a29bfe; }
+
+    .evt-bottom { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
+    .evt-time {
+      font-size: 0.78rem; font-weight: 600; color: var(--teal);
+      display: flex; align-items: center; gap: 0.3rem;
+    }
+    .evt-time svg { width: 13px; height: 13px; }
+    .evt-duration {
+      font-size: 0.72rem; color: var(--text-dim); font-weight: 500;
+      background: rgba(255,255,255,0.04); padding: 0.1rem 0.5rem; border-radius: 50px;
+    }
+    .evt-type {
+      font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.08em; padding: 0.12rem 0.55rem; border-radius: 50px;
+    }
+    .evt-type.workshop { background: rgba(233,69,96,0.12); color: var(--accent); }
+    .evt-type.party { background: rgba(108,92,231,0.15); color: #a29bfe; }
+    .evt-type.social { background: rgba(22,199,154,0.12); color: var(--teal); }
+    .evt-type.battle { background: rgba(245,166,35,0.15); color: var(--gold); }
+    .evt-type.community { background: rgba(255,255,255,0.06); color: var(--text-muted); }
+    .evt-location {
+      font-size: 0.75rem;
+      color: var(--secondary);
+    }
+
+    .evt-desc {
+      font-size: 0.82rem; color: var(--text-muted); margin-top: 0.5rem;
+      line-height: 1.6; display: none;
+    }
+    .evt-card.expanded .evt-desc { display: block; animation: fadeSlideIn 0.3s ease; }
+    .evt-expand-hint {
+      font-size: 0.68rem; color: var(--text-dim); margin-top: 0.35rem;
+      transition: opacity 0.3s; cursor: pointer;
+    }
+    .evt-card.expanded .evt-expand-hint { display: none; }
+
+    /* Battle sub-events */
+    .evt-sub-timeline {
+      display: none; margin-top: 0.7rem; padding-left: 0.8rem;
+      border-left: 2px solid rgba(245,166,35,0.2);
+    }
+    .evt-card.expanded .evt-sub-timeline { display: block; animation: fadeSlideIn 0.3s ease; }
+    .evt-sub-item {
+      display: flex; align-items: center; gap: 0.6rem;
+      padding: 0.3rem 0; font-size: 0.82rem;
+    }
+    .evt-sub-time { color: var(--gold); font-weight: 600; min-width: 65px; font-size: 0.78rem; }
+    .evt-sub-name { color: var(--text-muted); }
+
+    /* Mobile schedule */
+    @media (max-width: 600px) {
+      .schedule-timeline::before { left: 15px; }
+      .time-group-icon { width: 30px; height: 30px; font-size: 0.85rem; }
+      .evt-card { margin-left: 34px; padding: 0.9rem 1rem; }
+      .evt-card::before { left: -19px; width: 8px; height: 8px; }
+    }
+
+    .price-free { color: var(--teal); }
+    .price-paid { color: var(--gold); }
+
+    /* TICKETS */
+    #tickets { background: var(--bg-section); }
+    .ticket-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .ticket-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 2.2rem; text-align: center;
+      transition: all 0.4s; position: relative;
+    }
+    .ticket-card.featured {
+      border-color: var(--accent); box-shadow: 0 0 40px var(--accent-glow);
+      transform: scale(1.04);
+    }
+    .ticket-card.featured::before {
+      content: 'BEST VALUE'; position: absolute; top: -12px; left: 50%;
+      transform: translateX(-50%); background: var(--accent); color: #fff;
+      padding: 0.25rem 1rem; border-radius: 50px; font-size: 0.65rem;
+      font-weight: 700; letter-spacing: 0.12em;
+    }
+    .ticket-card:hover { transform: translateY(-4px); border-color: rgba(233,69,96,0.3); }
+    .ticket-card.featured:hover { transform: scale(1.04) translateY(-4px); }
+    .ticket-type {
+      font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.15em; color: var(--accent); margin-bottom: 0.4rem;
+    }
+    .ticket-name { font-size: 1.4rem; font-weight: 800; margin-bottom: 0.8rem; }
+    .ticket-price {
+      font-family: 'Playfair Display', serif; font-size: 2.8rem;
+      font-weight: 900; color: var(--accent); margin-bottom: 0.3rem; line-height: 1;
+    }
+    .ticket-price-sub { font-size: 0.8rem; color: var(--text-dim); margin-bottom: 1.5rem; }
+    .ticket-features { list-style: none; text-align: left; margin-bottom: 2rem; }
+    .ticket-features li {
+      padding: 0.4rem 0; font-size: 0.88rem; color: var(--text-muted);
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+    }
+    .ticket-features li::before { content: '\2713\00a0\00a0'; color: var(--teal); font-weight: 700; }
+    .ticket-btn {
+      display: block; width: 100%; padding: 0.85rem; border-radius: 50px;
+      font-size: 0.85rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.08em; cursor: pointer; transition: all 0.3s;
+      text-decoration: none; text-align: center;
+      font-family: 'Poppins', sans-serif;
+    }
+    .ticket-btn-primary { background: var(--accent); color: #fff; border: none; }
+    .ticket-btn-primary:hover { background: #d63652; box-shadow: 0 4px 20px var(--accent-glow); }
+    .ticket-btn-outline { background: transparent; color: var(--text); border: 1px solid rgba(255,255,255,0.2); }
+    .ticket-btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+    .tickets-note {
+      text-align: center;
+      margin-top: 2rem;
+      color: var(--text-dim);
+      font-size: 0.85rem;
+    }
+    .tickets-note strong { color: var(--text-muted); }
+
+    /* FAQ */
+    #faq { background: var(--bg-dark); }
+    .faq-list { max-width: 750px; margin: 0 auto; }
+    .faq-item {
+      border-bottom: 1px solid var(--border); overflow: hidden;
+    }
+    .faq-question {
+      width: 100%; padding: 1.3rem 0; background: none; border: none;
+      color: var(--text); font-size: 1rem; font-weight: 600;
+      text-align: left; cursor: pointer; display: flex;
+      justify-content: space-between; align-items: center;
+      font-family: 'Poppins', sans-serif; transition: color 0.3s;
+    }
+    .faq-question:hover { color: var(--accent); }
+    .faq-arrow { font-size: 1.2rem; transition: transform 0.3s; color: var(--accent); }
+    .faq-item.open .faq-arrow { transform: rotate(45deg); }
+    .faq-answer {
+      max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s;
+    }
+    .faq-item.open .faq-answer { max-height: 300px; padding-bottom: 1.3rem; }
+    .faq-answer p { color: var(--text-muted); font-size: 0.92rem; line-height: 1.8; }
+
+    /* CODE OF CONDUCT */
+    #conduct { background: var(--bg-section); }
+    .conduct-content {
+      max-width: 750px; margin: 0 auto;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 2.5rem;
+    }
+    .conduct-content p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem; line-height: 1.8; }
+    .conduct-content p:last-child { margin-bottom: 0; }
+    .conduct-highlight {
+      border-left: 3px solid var(--accent); padding-left: 1.2rem;
+      margin: 1.5rem 0; font-style: italic;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--bg-dark); border-top: 1px solid var(--border);
+      padding: 3rem 2rem 2rem; text-align: center;
+    }
+    .footer-logo { height: 60px; border-radius: 50%; margin-bottom: 1rem; }
+    .footer-tagline { color: var(--text-dim); font-size: 0.85rem; margin-bottom: 1.5rem; }
+    .footer-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+    .footer-links a { color: var(--text-muted); text-decoration: none; font-size: 0.85rem; transition: color 0.3s; }
+    .footer-links a:hover { color: var(--accent); }
+    .social-links { display: flex; justify-content: center; gap: 1.2rem; margin-bottom: 1.5rem; }
+    .social-links a {
+      width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text-muted); text-decoration: none; font-size: 1rem; transition: all 0.3s;
+    }
+    .social-links a:hover { border-color: var(--accent); color: var(--accent); background: rgba(233,69,96,0.05); }
+    .footer-copy { color: var(--text-dim); font-size: 0.75rem; }
+
+    /* MOBILE */
+    @media (max-width: 900px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .ticket-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+      .ticket-card.featured { transform: none; }
+      .ticket-card.featured:hover { transform: translateY(-4px); }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      nav.menu-open .nav-links {
+        display: flex; flex-direction: column; position: absolute;
+        top: 100%; left: 0; right: 0; background: rgba(10,10,15,0.98);
+        padding: 1.5rem 2rem; gap: 1rem; border-bottom: 1px solid var(--border);
+      }
+      .hero h1 { font-size: 2.4rem; }
+      .hero-logo { width: 160px; height: 160px; }
+      .countdown-inner { gap: 1rem; }
+      .countdown-num { font-size: 1.6rem; }
+      .section-title { font-size: 2rem; }
+    }
+
+/* HOUSING */
+#housing { background: var(--bg-dark); }
+.housing-content { display: flex; justify-content: center; margin-top: 2rem; }
+.housing-card {
+  background: var(--bg-card);
+  border: 1px solid #2a2a3a;
+  border-radius: 16px;
+  padding: 3rem;
+  max-width: 580px;
+  text-align: center;
+}
+.housing-icon { font-size: 3rem; margin-bottom: 1rem; }
+.housing-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+.housing-card p { color: var(--text-muted); line-height: 1.8; margin-bottom: 1rem; }
+.housing-sub { font-size: 0.9rem; color: var(--text-dim) !important; }
+.housing-btn { display: inline-block; margin: 1rem 0 0.5rem; }
+.housing-note { font-size: 0.8rem; color: var(--text-dim) !important; margin-bottom: 0 !important; }
+
+/* MAP */
+#map { background: var(--bg-section); }
+.venues-list { display: flex; flex-wrap: wrap; gap: 1rem; margin: 2rem 0; justify-content: center; }
+.venue-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--bg-card);
+  border: 1px solid #2a2a3a;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+}
+.venue-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+.venue-item strong { display: block; color: var(--text); font-size: 0.9rem; }
+.venue-item span { display: block; color: var(--text-dim); font-size: 0.78rem; }
+.map-embed { border-radius: 12px; overflow: hidden; border: 1px solid #2a2a3a; }
+.map-note { text-align: center; margin-top: 1rem; font-size: 0.8rem; color: var(--text-dim); }
+.map-note a { color: var(--secondary); text-decoration: none; }
+.map-note a:hover { text-decoration: underline; }
+
+/* MERCH */
+#merch { background: var(--bg-dark); }
+.merch-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 2rem; }
+.merch-card {
+  background: var(--bg-card);
+  border: 1px solid #2a2a3a;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s, border-color 0.3s;
+}
+.merch-card:hover { transform: translateY(-4px); border-color: var(--accent); }
+.merch-img-wrap { width: 100%; aspect-ratio: 4/5; overflow: hidden; background: #0d0d14; }
+.merch-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+.merch-info { padding: 1.5rem; }
+.merch-info h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+.merch-desc { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem; }
+.merch-price { font-size: 1.4rem; font-weight: 700; color: var(--accent); }
+.merch-price-note { font-size: 0.8rem; color: var(--text-dim); font-weight: 400; }
+.merch-cta { text-align: center; margin-top: 2.5rem; }
+.merch-note { margin-top: 0.75rem; font-size: 0.8rem; color: var(--text-dim); }
+
+/* INSTAGRAM */
+#instagram { background: var(--bg-section); }
+.ig-handle { color: var(--accent); text-decoration: none; font-size: 1.1rem; }
+.ig-handle:hover { text-decoration: underline; }
+.ig-embed-wrap { margin-top: 2rem; }
+.ig-placeholder {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: var(--bg-card);
+  border: 1px dashed #2a2a3a;
+  border-radius: 12px;
+  color: var(--text-dim);
+}
+.ig-placeholder p { margin-bottom: 1.5rem; }
+
+/* CONTACT */
+#contact { background: var(--bg-dark); }
+.contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+.contact-card {
+  background: var(--bg-card);
+  border: 1px solid #2a2a3a;
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  transition: border-color 0.3s;
+}
+.contact-card:hover { border-color: var(--accent); }
+.contact-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+.contact-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+.contact-card p { color: var(--text-muted); font-size: 0.85rem; line-height: 1.6; margin-bottom: 0.75rem; }
+.contact-link { color: var(--accent); text-decoration: none; font-size: 0.9rem; font-weight: 500; }
+.contact-link:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#hero"><img src="assets/to-the-music-logo.jpg" alt="To The Music" class="nav-logo" /></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#teachers">Teachers</a></li>
+      <li><a href="#schedule">Schedule</a></li>
+      <li><a href="#tickets">Tickets</a></li>
+      <li><a href="#housing">Housing</a></li>
+      <li><a href="#map">Venues</a></li>
+      <li><a href="#merch">Merch</a></li>
+      <li><a href="#instagram">Instagram</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#tickets" class="nav-cta">Get Passes</a>
+    <button class="hamburger" onclick="document.getElementById('navbar').classList.toggle('menu-open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-content">
+    <img src="assets/to-the-music-logo.jpg" alt="To The Music Festival Logo" class="hero-logo" />
+    <p class="hero-subtitle">A NewStyle Hustle Experience</p>
+    <h1>To The Music</h1>
+    <p class="hero-date">May 13 &ndash; 17, 2026</p>
+    <div class="hero-buttons">
+      <a href="#tickets" class="btn-primary">Get Your Pass</a>
+      <a href="#schedule" class="btn-secondary">View Schedule</a>
+    </div>
+  </div>
+</section>
+
+<!-- COUNTDOWN -->
+<div class="countdown-bar">
+  <div class="countdown-inner" id="countdown"></div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <h2 class="section-title">Five Days of Dance</h2>
+    <p class="section-subtitle">Workshops, battles, socials, and community &mdash; all under one roof.</p>
+    <div class="about-grid">
+      <div class="about-card">
+        <div class="about-icon">&#127918;</div>
+        <h3>7 Workshops</h3>
+        <p>Two-hour and 90-minute intensives covering NewStyle Hustle technique, follower styling, and more &mdash; taught by world-class instructors.</p>
+      </div>
+      <div class="about-card">
+        <div class="about-icon">&#128293;</div>
+        <h3>HNT Battle</h3>
+        <p>The NewStyle Hustle N' Tussle &mdash; featuring 7-to-Smoke and Jack & Jill formats. Compete or cheer from the crowd on the final night.</p>
+      </div>
+      <div class="about-card">
+        <div class="about-icon">&#127926;</div>
+        <h3>4 Parties</h3>
+        <p>From the opening night party on Wednesday through the afternoon party on Saturday, dance late into the night with incredible DJs and a vibrant community.</p>
+      </div>
+      <div class="about-card">
+        <div class="about-icon">&#127908;</div>
+        <h3>Q&A with Jeff Selby</h3>
+        <p>An intimate evening session with NewStyle Hustle pioneer Jeff Selby. Ask questions, gain insight, and connect with the movement's roots.</p>
+      </div>
+      <div class="about-card">
+        <div class="about-icon">&#129309;</div>
+        <h3>Community First</h3>
+        <p>A dedicated organizers workshop, outdoor potluck, and happy hours built to strengthen the bonds that make the hustle community special.</p>
+      </div>
+      <div class="about-card">
+        <div class="about-icon">&#127751;</div>
+        <h3>Free Time</h3>
+        <p>Saturday night is yours. Explore the city, grab dinner with new friends, or rest up before the Sunday battle.</p>
+      </div>
+    </div>
+    <div class="about-parties">
+      <h3>The Parties</h3>
+      <p>Every night at To The Music ends on the dance floor. We're collaborating with local NYC club organizers, party promoters, and tastemakers to curate nights that feel at home in the city's dance music scene — not just a festival afterthought. Each party is designed to blend the hustle community with the energy of NYC nightlife.</p>
+      <p class="about-parties-note">Party lineups and venues are announced closer to the month of the festival. Follow <a href="https://instagram.com/tothemusicnyc" target="_blank">@tothemusicnyc</a> for updates.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== TEACHERS ========== -->
+<section id="teachers">
+  <div class="container">
+    <div class="section-header">
+      <h2>Meet the Teachers</h2>
+      <p class="section-sub">World-class instructors bringing their expertise to New York City</p>
+    </div>
+    <div class="teachers-grid">
+
+      <div class="teacher-card">
+        <div class="teacher-photo-placeholder">
+          <span>Kenji</span>
+        </div>
+        <div class="teacher-info">
+          <h3 class="teacher-name">Kenji</h3>
+          <div class="teacher-days">
+            <span class="teacher-day">Fri May 15</span>
+            <span class="teacher-day">Sun May 17</span>
+          </div>
+          <p class="teacher-bio-placeholder">Bio coming soon</p>
+        </div>
+      </div>
+
+      <div class="teacher-card">
+        <div class="teacher-photo-placeholder">
+          <span>Jeff Selby</span>
+        </div>
+        <div class="teacher-info">
+          <h3 class="teacher-name">Jeff Selby</h3>
+          <div class="teacher-days">
+            <span class="teacher-day">Thu May 14</span>
+            <span class="teacher-day">Fri May 15</span>
+          </div>
+          <p class="teacher-bio-placeholder">Bio coming soon</p>
+        </div>
+      </div>
+
+      <div class="teacher-card">
+        <div class="teacher-photo-placeholder">
+          <span>Melina</span>
+        </div>
+        <div class="teacher-info">
+          <h3 class="teacher-name">Melina</h3>
+          <div class="teacher-days">
+            <span class="teacher-day">Fri May 15</span>
+            <span class="teacher-day">Sun May 17</span>
+          </div>
+          <p class="teacher-bio-placeholder">Bio coming soon</p>
+        </div>
+      </div>
+
+      <div class="teacher-card">
+        <div class="teacher-photo-placeholder">
+          <span>Miss Bibi</span>
+        </div>
+        <div class="teacher-info">
+          <h3 class="teacher-name">Miss Bibi</h3>
+          <div class="teacher-days">
+            <span class="teacher-day">Fri May 15</span>
+            <span class="teacher-day">Sun May 17</span>
+          </div>
+          <p class="teacher-bio-placeholder">Bio coming soon</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SCHEDULE -->
+<section id="schedule">
+  <div class="section-inner">
+    <h2 class="section-title">Festival Schedule</h2>
+    <p class="section-subtitle">Five packed days &mdash; tap a day to explore, click any event for details.</p>
+
+    <div class="schedule-tabs">
+      <button class="schedule-tab active" data-day="wed">Wed <span class="tab-day">May 13</span></button>
+      <button class="schedule-tab" data-day="thu">Thu <span class="tab-day">May 14</span></button>
+      <button class="schedule-tab" data-day="fri">Fri <span class="tab-day">May 15</span></button>
+      <button class="schedule-tab" data-day="sat">Sat <span class="tab-day">May 16</span></button>
+      <button class="schedule-tab" data-day="sun">Sun <span class="tab-day">May 17</span></button>
+    </div>
+
+    <div class="schedule-filters">
+      <button class="filter-pill active" data-filter="all">All Events</button>
+      <button class="filter-pill" data-filter="workshop">Workshops</button>
+      <button class="filter-pill" data-filter="party">Parties</button>
+      <button class="filter-pill" data-filter="social">Social</button>
+      <button class="filter-pill" data-filter="battle">Battle</button>
+    </div>
+
+    <!-- ========== WEDNESDAY ========== -->
+    <div class="schedule-day active" id="day-wed">
+  <div class="schedule-day-header">
+    <h3>Wednesday, May 13</h3>
+    <span class="day-badge">Welcome Events</span>
+  </div>
+  <div class="schedule-timeline">
+
+    <div class="time-group">
+      <div class="time-group-label">
+        <div class="time-group-icon evening">&#127769;</div>
+        <div class="time-group-text">Evening</div>
+        <div class="time-group-line"></div>
+      </div>
+      <div class="evt-card" data-type="social">
+        <div class="evt-top">
+          <div class="evt-name">Dinner + Festival Check-In</div>
+          <div class="evt-price free">FREE</div>
+        </div>
+        <div class="evt-bottom">
+          <span class="evt-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 5:30 &ndash; 8:30 PM</span>
+          <span class="evt-location">Em Vietnamese Bistro</span>
+          <span class="evt-type social">Social</span>
+        </div>
+        <div class="evt-desc">Pick up your festival badge over dinner. A relaxed welcome to the week — meet your fellow dancers at Em Vietnamese Bistro before the night heats up.</div>
+        <div class="evt-expand-hint">tap for details</div>
+      </div>
+    </div>
+
+    <div class="time-group">
+      <div class="time-group-label">
+        <div class="time-group-icon latenight">&#10024;</div>
+        <div class="time-group-text">Late Night</div>
+        <div class="time-group-line"></div>
+      </div>
+      <div class="evt-card" data-type="party">
+        <div class="evt-top">
+          <div class="evt-name">Soul Records Laboratory</div>
+          <div class="evt-price special">Dancers List</div>
+        </div>
+        <div class="evt-bottom">
+          <span class="evt-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 8:00 PM &ndash; 12:00 AM</span>
+          <span class="evt-location">Time Out Market BK</span>
+          <span class="evt-type party">Party</span>
+        </div>
+        <div class="evt-desc">Kick off the festival with a vinyl-driven night at Time Out Market BK. Discounted entry through the Dancers List.</div>
+        <div class="evt-expand-hint">tap for details</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+    <!-- ========== THURSDAY ========== -->
+    <div class="schedule-day" id="day-thu">
+  <div class="schedule-day-header">
+    <h3>Thursday, May 14</h3>
+    <span class="day-badge">Community Day</span>
+  </div>
+  <div class="schedule-timeline">
+
+    <div class="time-group">
+      <div class="time-group-label">
+        <div class="time-group-icon midday">&#9728;</div>
+        <div class="time-group-text">Afternoon</div>
+        <div class="time-group-line"></div>
+      </div>
+      <div class="evt-card" data-type="social">
+        <div class="evt-top">
+          <div class="evt-name">Picnic + Outdoor Session</div>
+          <div class="evt-price paid">Free / $10</div>
+        </div>
+        <div class="evt-bottom">
+          <span class="evt-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 12:30 &ndash; 4:00 PM</span>
+          <span class="evt-location">Location TBD</span>
+          <span class="evt-type social">Social</span>
+        </div>
+        <div class="evt-desc">Bring your own food and drinks for free entry, or drop in for $10. A relaxed outdoor afternoon to connect with the community over food and casual dancing.</div>
+        <div class="evt-expand-hint">tap for details</div>
+      </div>
+    </div>
+
+    <div class="time-group">
+      <div class="time-group-label">
+        <div class="time-group-icon latenight">&#10024;</div>
+        <div class="time-group-text">Evening</div>
+        <div class="time-group-line"></div>
+      </div>
+      <div class="evt-card" data-type="community">
+        <div class="evt-top">
+          <div class="evt-name">Q&amp;A with Jeff Selby + Afterparty</div>
+          <div class="evt-price paid">$20</div>
+        </div>
+        <div class="evt-bottom">
+          <span class="evt-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 7:00 PM &ndash; Late</span>
+          <span class="evt-location">Location TBD</span>
+          <span class="evt-type community">Community</span>
+        </div>
+        <div class="evt-desc">An intimate evening discussion with NewStyle Hustle pioneer Jeff Selby. Ask questions, gain insight, and connect with the movement's roots — then dance it out at the afterparty. Limited spots available.</div>
+        <div class="evt-expand-hint">tap for details</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+    <!-- ========== FRIDAY ========== -->
+    <div class="schedule-day" id="day-fri">
+  <div class="schedule-day-header">
+    <h3>Friday, May 15</h3>
+    <span class="day-badge">Training Begins</span>
+  </div>
+  <div class="schedule-timeline">
+
+    <div class="time-group">
+      <div class="time-group-label">
+        <div class="time-group-icon midday">&#9728;</div>
+        <div class="time-group-text">Mid-Day</div>
+        <div class="time-group-line"></div>
+      </div>
+      <div class="evt-card" data-type="workshop">
+        <div class="evt-top">
+          <div class="evt-name">Workshop with Kenji</div>
+          <div class="evt-price paid">$40</div>
+        </div>
+        <div class="evt-bottom">
+          <span class="evt-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 12:00 &ndash; 1:30 PM</span>
+          <span class="evt-location">El Santo, Bushwick</span>
+          <span class="evt-type workshop">Workshop</span>
+        </div>
+        <div class="evt-desc">Opening workshop of the festival with Kenji. Details TBA.</div>
+        <div class="evt-expand-hint">tap for details</div>
+      </div>
+    </div>
+
+    <div class="time-group">
+      <div class="time-group-label">
+        <div class="time-group-icon evening">&#127769;</div>
+        <div class="time-group-text">Afternoon</div>
+        <div class="time-group-line"></div>
+      </div>
+      <div class="evt-card" data-type="workshop">
+        <div class="evt-top">
+          <div class="evt-name">Workshop with Jeff Selby</div>
+          <div class="evt-price paid">$40</div>
+        </div>
+        <div class="evt-bottom">
+          <span class="evt-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 3:00 &ndash; 5:00 PM</span>
+          <span class="evt-location">El Santo, Bushwick</span>
+          <span class="evt-type workshop">Workshop</span>
+        </div>
+        <div class="evt-desc">Workshop with NewStyle Hustle pioneer Jeff Selby. Details TBA.</div>
+        <div class="evt-expand-hint">tap for details</div>
+      </div>
+      <div class="evt-card" data-type="workshop">
+        <div class="evt-top">
+          <div class="evt-name">Workshop with Melina</div>
+          <div class="evt-price paid">$35</div>
+        </div>
+        <div class="evt-bottom">
+          <span class="evt-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 5:30 &ndash; 7:00 PM</span>
+          <span class="evt-location">El Santo, Bushwick</span>
+          <span class="evt-type workshop">Workshop</span>
+        </div>
+        <div class="evt-desc">Workshop with Melina. Details TBA.</div>
+        <div class="evt-expand-hint">tap for details</div>
+      </div>
+      <div class="evt-card" data-type="workshop">
+        <div class="evt-top">
+          <div class="evt-name">&ldquo;Flower&rdquo; Styling Workshop with Miss Bibi</div>
+          <div class="evt-price paid">$35</div>
+        </div>
+        <div class="evt-bottom">
+          <span class="evt-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 7:00 &ndash; 9:00 PM</span>
+          <span class="evt-location">El Santo, Bushwick</span>
+          <span class="evt-type workshop">Workshop</span>
+        </div>
+        <div class="evt-desc">Miss Bibi's signature "Flower" styling workshop. Details TBA.</div>
+        <div class="evt-expand-hint">tap for details</div>
+      </div>
+    </div>
+
+    <div class="time-group">
+      <div class="time-group-label">
+        <div class="time-group-icon latenight">&#10024;</div>
+        <div class="time-group-text">Late Night</div>
+        <div class="time-group-line"></div>
+      </div>
+      <div class="evt-card" data-type="party">
+        <div class="evt-top">
+          <div class="evt-name">House of Vibes with Jihad Muhammad</div>
+          <div class="evt-price special">Dancers List</div>
+        </div>
+        <div class="evt-bottom">
+          <span class="evt-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 10:00 PM &ndash; Late</span>
+          <span class="evt-location">Location TBD</span>
+          <span class="evt-type party">Party</span>
+        </div>
+        <div class="evt-desc">Dance the night away after a full day of workshops. Jihad Muhammad on the decks. Discounted entry via Dancers List.</div>
+        <div class="evt-expand-hint">tap for details</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+    <!-- ========== SATURDAY ========== -->
+    <div class="schedule-day" id="day-sat">
+  <div class="schedule-day-header">
+    <h3>Saturday, May 16</h3>
+    <span class="day-badge">12 Hrs to Party</span>
+  </div>
+  <div class="schedule-timeline">
+
+    <div class="time-group">
+      <div class="time-group-label">
+        <div class="time-group-icon midday">&#9728;</div>
+        <div class="time-group-text">Morning</div>
+        <div class="time-group-line"></div>
+      </div>
+      <div class="evt-card" data-type="social">
+        <div class="evt-top">
+          <div class="evt-name">NYC Dance Parade</div>
+          <div class="evt-price free">FREE</div>
+        </div>
+        <div class="evt-bottom">
+          <span class="evt-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> ~10:00 AM Call Time</span>
+          <span class="evt-location"><a href="https://danceparade.org" target="_blank" style="color:var(--secondary);text-decoration:none;">danceparade.org</a></span>
+          <span class="evt-type social">Social</span>
+        </div>
+        <div class="evt-desc">Join the NYC Dance Parade! Our very own Jeff Selby is the 2026 Grand Marshal. Details and parade route at danceparade.org.</div>
+        <div class="evt-expand-hint">tap for details</div>
+      </div>
+    </div>
+
+    <div class="time-group">
+      <div class="time-group-label">
+        <div class="time-group-icon evening">&#127769;</div>
+        <div class="time-group-text">Afternoon</div>
+        <div class="time-group-line"></div>
+      </div>
+      <div class="evt-card" data-type="party">
+        <div class="evt-top">
+          <div class="evt-name">Love City NYC &mdash; Official Afterparty</div>
+          <div class="evt-price special">Dancers List</div>
+        </div>
+        <div class="evt-bottom">
+          <span class="evt-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 2:00 &ndash; 10:00 PM</span>
+          <span class="evt-location">Crossroads Cafe, Bushwick</span>
+          <span class="evt-type party">Party</span>
+        </div>
+        <div class="evt-desc">The official Dance Parade afterparty. Afternoon into evening social dance vibes at Crossroads Cafe in Bushwick. Discounted entry via Dancers List.</div>
+        <div class="evt-expand-hint">tap for details</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+    <!-- ========== SUNDAY ========== -->
+    <div class="schedule-day" id="day-sun">
+  <div class="schedule-day-header">
+    <h3>Sunday, May 17</h3>
+    <span class="day-badge">Train to Battle</span>
+  </div>
+  <div class="schedule-timeline">
+
+    <div class="time-group">
+      <div class="time-group-label">
+        <div class="time-group-icon midday">&#9728;</div>
+        <div class="time-group-text">Mid-Day</div>
+        <div class="time-group-line"></div>
+      </div>
+      <div class="evt-card" data-type="workshop">
+        <div class="evt-top">
+          <div class="evt-name">Workshop with Kenji</div>
+          <div class="evt-price paid">$40</div>
+        </div>
+        <div class="evt-bottom">
+          <span class="evt-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 12:00 &ndash; 2:00 PM</span>
+          <span class="evt-location">Modega, Long Island City</span>
+          <span class="evt-type workshop">Workshop</span>
+        </div>
+        <div class="evt-desc">Final workshop with Kenji before the battle. Details TBA.</div>
+        <div class="evt-expand-hint">tap for details</div>
+      </div>
+      <div class="evt-card" data-type="workshop">
+        <div class="evt-top">
+          <div class="evt-name">Workshop with Melina</div>
+          <div class="evt-price paid">$35</div>
+        </div>
+        <div class="evt-bottom">
+          <span class="evt-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 2:15 &ndash; 4:15 PM</span>
+          <span class="evt-location">Modega, Long Island City</span>
+          <span class="evt-type workshop">Workshop</span>
+        </div>
+        <div class="evt-desc">Afternoon intensive with Melina. Details TBA.</div>
+        <div class="evt-expand-hint">tap for details</div>
+      </div>
+      <div class="evt-card" data-type="workshop">
+        <div class="evt-top">
+          <div class="evt-name">Workshop with Miss Bibi</div>
+          <div class="evt-price paid">$35</div>
+        </div>
+        <div class="evt-bottom">
+          <span class="evt-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 4:30 &ndash; 6:30 PM</span>
+          <span class="evt-location">Modega, Long Island City</span>
+          <span class="evt-type workshop">Workshop</span>
+        </div>
+        <div class="evt-desc">Final workshop of the festival with Miss Bibi before the battle begins. Details TBA.</div>
+        <div class="evt-expand-hint">tap for details</div>
+      </div>
+    </div>
+
+    <div class="time-group">
+      <div class="time-group-label">
+        <div class="time-group-icon latenight">&#10024;</div>
+        <div class="time-group-text">Evening</div>
+        <div class="time-group-line"></div>
+      </div>
+      <div class="evt-card" data-type="battle">
+        <div class="evt-top">
+          <div class="evt-name">NewStyle Hustle N' Tussle</div>
+          <div class="evt-price paid">$25</div>
+        </div>
+        <div class="evt-bottom">
+          <span class="evt-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 6:45 &ndash; 11:30 PM</span>
+          <span class="evt-location">Modega, Long Island City</span>
+          <span class="evt-type battle">Battle</span>
+        </div>
+        <div class="evt-desc">The grand finale! 7-to-Smoke and Jack &amp; Jill battle formats. Whether you're competing or cheering from the crowd, this is the moment everyone's been waiting for. Battle entry is limited to festival participants. Opening party with Waterparkjones from NSH San Diego.</div>
+        <div class="evt-sub-timeline">
+          <div class="evt-sub-item">
+            <span class="evt-sub-time">6:45 PM</span>
+            <span class="evt-sub-name">Opening Party &amp; Warm-Up</span>
+          </div>
+          <div class="evt-sub-item">
+            <span class="evt-sub-time">8:00 PM</span>
+            <span class="evt-sub-name">Preliminary Rounds</span>
+          </div>
+          <div class="evt-sub-item">
+            <span class="evt-sub-time">9:00 PM</span>
+            <span class="evt-sub-name">HNT Battle Finals</span>
+          </div>
+          <div class="evt-sub-item">
+            <span class="evt-sub-time">10:30 PM</span>
+            <span class="evt-sub-name">Closing Party</span>
+          </div>
+        </div>
+        <div class="evt-expand-hint">tap for full battle schedule</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+  </div>
+</section>
+
+<!-- TICKETS -->
+<section id="tickets">
+  <div class="section-inner">
+    <h2 class="section-title">Get Your Pass</h2>
+    <p class="section-subtitle">Registration details and discounted festival packages open in March.</p>
+    <div class="ticket-grid">
+      <div class="ticket-card">
+        <div class="ticket-type">Day Pass</div>
+        <div class="ticket-name">Single Day</div>
+        <div class="ticket-price">$65</div>
+        <div class="ticket-price-sub">per day (Thu&ndash;Sun)</div>
+        <ul class="ticket-features">
+          <li>All events for one day</li>
+          <li>Workshops on that day</li>
+          <li>Evening party access</li>
+        </ul>
+        <a href="#" class="ticket-btn ticket-btn-outline">Get Tickets</a>
+      </div>
+      <div class="ticket-card featured">
+        <div class="ticket-type">Full Pass</div>
+        <div class="ticket-name">All Access</div>
+        <div class="ticket-price">$199</div>
+        <div class="ticket-price-sub">all 5 days</div>
+        <ul class="ticket-features">
+          <li>All workshops included</li>
+          <li>All parties &amp; socials</li>
+          <li>Jeff Selby Q&A access</li>
+          <li>HNT Battle entry/spectator</li>
+          <li>Priority check-in</li>
+        </ul>
+        <a href="#" class="ticket-btn ticket-btn-primary">Get Tickets</a>
+      </div>
+      <div class="ticket-card">
+        <div class="ticket-type">Party Pass</div>
+        <div class="ticket-name">Socials Only</div>
+        <div class="ticket-price">$85</div>
+        <div class="ticket-price-sub">all parties</div>
+        <ul class="ticket-features">
+          <li>All evening parties</li>
+          <li>Welcome events included</li>
+          <li>HNT Battle spectator</li>
+        </ul>
+        <a href="#" class="ticket-btn ticket-btn-outline">Get Tickets</a>
+      </div>
+    </div>
+    <p class="tickets-note">Tickets and individual workshop registration available via <strong>Ticket Tailor</strong>.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-inner">
+    <h2 class="section-title">FAQ</h2>
+    <p class="section-subtitle">Everything you need to know before you arrive.</p>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question">
+          What dance styles are featured at this festival?
+          <span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>To The Music is centered on NewStyle Hustle. Workshops, the battle, and social dances are all focused on this style. Whether you're a beginner or advanced, there's something for every level.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          Do I need a partner to attend?
+          <span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Not at all! Social dance festivals are built around rotating partners. You'll dance with many different people throughout the week. Solo attendees are the norm.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          What shoes should I bring?
+          <span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Smooth-soled shoes work best for hustle. Dance sneakers, character shoes, or jazz shoes are all great options. Avoid rubber soles as they grip the floor too much. Bring a separate pair for outdoor events.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          What is the Dancers List?
+          <span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>The Dancers List is a discounted entry option for parties. Details on how to get on the Dancers List will be shared when registration opens in March.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          What is the refund policy?
+          <span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Full refunds are available up to 30 days before the festival. Within 30 days, passes can be transferred to another dancer. No refunds within 7 days of the event. Details will be posted with ticket sales.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          Are there hotels nearby?
+          <span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Yes! We'll share a list of recommended hotels and Airbnb options near the venue when registration opens. Some attendees also coordinate shared housing &mdash; check our social media for roommate-matching threads.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          Can I attend individual workshops without a full pass?
+          <span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Yes! Individual workshop drop-in tickets will be available. Prices range from $35 for 90-minute sessions to $40 for 2-hour intensives. The full pass is the best value if you plan to take multiple classes.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CODE OF CONDUCT -->
+<section id="conduct">
+  <div class="section-inner">
+    <h2 class="section-title">Code of Conduct</h2>
+    <p class="section-subtitle">Creating a safe, inclusive, and joyful space for everyone.</p>
+    <div class="conduct-content">
+      <p>To The Music is committed to providing a welcoming, respectful, and harassment-free experience for all attendees, regardless of gender identity, sexual orientation, disability, body size, race, ethnicity, age, religion, or dance level.</p>
+      <div class="conduct-highlight">
+        <p>Consent is essential in partner dancing. Always ask before dancing with someone, and always respect a "no" gracefully. On the dance floor, be mindful of your partner's comfort and physical boundaries.</p>
+      </div>
+      <p>We do not tolerate harassment, intimidation, or disrespectful behavior in any form &mdash; on the dance floor, in workshops, at social events, or online. This includes unwelcome physical contact, inappropriate comments, and taking photos or videos without consent.</p>
+      <p>If you experience or witness behavior that violates this code, please speak to any member of the organizing team immediately. We take all reports seriously and will respond promptly to ensure everyone feels safe.</p>
+      <p>Let's make this festival about what brings us together: the music, the movement, and each other.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<!-- ========== HOUSING ========== -->
+<section id="housing">
+  <div class="container">
+    <div class="section-header">
+      <h2>Housing Coordination</h2>
+      <p class="section-sub">Need a place to stay? We've got you covered.</p>
+    </div>
+    <div class="housing-content">
+      <div class="housing-card">
+        <div class="housing-icon">&#127968;</div>
+        <h3>Coordinated by Reina</h3>
+        <p>To The Music has a dedicated housing coordinator — Reina — who works with attendees to help find accommodations for the festival week. Whether you're looking to connect with other dancers for shared housing or just need recommendations, Reina can help.</p>
+        <p class="housing-sub">Submit the form below and Reina will follow up with you directly.</p>
+        <a href="#" class="btn-primary housing-btn" target="_blank" rel="noopener">Request Housing Coordination</a>
+        <p class="housing-note">This opens a Google Form in a new tab. Reina will reach out via email.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== MAP ========== -->
+<section id="map">
+  <div class="container">
+    <div class="section-header">
+      <h2>Festival Venues</h2>
+      <p class="section-sub">All events take place across Brooklyn and Long Island City</p>
+    </div>
+    <div class="venues-list">
+      <div class="venue-item">
+        <span class="venue-dot" style="background:var(--accent)"></span>
+        <div>
+          <strong>Time Out Market BK</strong>
+          <span>May 13 &mdash; Soul Records Laboratory</span>
+        </div>
+      </div>
+      <div class="venue-item">
+        <span class="venue-dot" style="background:var(--secondary)"></span>
+        <div>
+          <strong>El Santo, Bushwick</strong>
+          <span>May 15 &mdash; All Workshops</span>
+        </div>
+      </div>
+      <div class="venue-item">
+        <span class="venue-dot" style="background:var(--gold)"></span>
+        <div>
+          <strong>Crossroads Cafe, Bushwick</strong>
+          <span>May 16 &mdash; Love City NYC Afterparty</span>
+        </div>
+      </div>
+      <div class="venue-item">
+        <span class="venue-dot" style="background:#a78bfa"></span>
+        <div>
+          <strong>Modega, Long Island City</strong>
+          <span>May 17 &mdash; All Workshops + Battle</span>
+        </div>
+      </div>
+    </div>
+    <div class="map-embed">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d48372.27905887265!2d-73.97760599999999!3d40.7127753!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a22a3bda30d%3A0xb89d1fe6bc499443!2sBrooklyn%2C%20NY!5e0!3m2!1sen!2sus!4v1"
+        width="100%"
+        height="450"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Festival Venues Map">
+      </iframe>
+    </div>
+    <p class="map-note">For a full interactive map with all venue pins, create a custom map at <a href="https://maps.google.com" target="_blank">Google Maps</a> and replace the embed above.</p>
+  </div>
+</section>
+
+<!-- ========== MERCH ========== -->
+<section id="merch">
+  <div class="container">
+    <div class="section-header">
+      <h2>Festival Merch</h2>
+      <p class="section-sub">Represent To The Music on and off the dance floor</p>
+    </div>
+    <div class="merch-grid">
+      <div class="merch-card">
+        <div class="merch-img-wrap">
+          <img src="assets/merch/tshirts.PNG" alt="To The Music T-Shirts in 3 colors" loading="lazy">
+        </div>
+        <div class="merch-info">
+          <h3>Festival T-Shirt</h3>
+          <p class="merch-desc">Comfort Colors heavyweight cotton. Available in 3 colorways. Sizes S&ndash;XL.</p>
+          <div class="merch-price">$20</div>
+        </div>
+      </div>
+      <div class="merch-card">
+        <div class="merch-img-wrap">
+          <img src="assets/merch/sweat_towels.PNG" alt="To The Music Sweat Towels in 3 colors" loading="lazy">
+        </div>
+        <div class="merch-info">
+          <h3>Sweat Towel</h3>
+          <p class="merch-desc">100% cotton terry cloth. Available in 3 colorways. The perfect dance floor companion.</p>
+          <div class="merch-price">$5 <span class="merch-price-note">with t-shirt purchase</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="merch-cta">
+      <a href="#" class="btn-primary" target="_blank" rel="noopener">Order Merch</a>
+      <p class="merch-note">Orders fulfilled via Ticket Tailor at checkout.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== INSTAGRAM ========== -->
+<section id="instagram">
+  <div class="container">
+    <div class="section-header">
+      <h2>Follow Along</h2>
+      <p class="section-sub"><a href="https://instagram.com/tothemusicnyc" target="_blank" rel="noopener" class="ig-handle">@tothemusicnyc</a></p>
+    </div>
+    <div class="ig-embed-wrap">
+      <!-- Behold.so Instagram feed widget -->
+      <!-- To set up: create a free account at behold.so, connect @tothemusicnyc, copy the embed snippet and replace the placeholder div below -->
+      <div class="ig-placeholder">
+        <p>Instagram feed coming soon</p>
+        <a href="https://instagram.com/tothemusicnyc" target="_blank" rel="noopener" class="btn-secondary">View on Instagram</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CONTACT ========== -->
+<section id="contact">
+  <div class="container">
+    <div class="section-header">
+      <h2>Get In Touch</h2>
+      <p class="section-sub">Questions? We&rsquo;re here to help.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="contact-icon">&#9993;</div>
+        <h3>Email</h3>
+        <p>For general inquiries about the festival:</p>
+        <a href="mailto:hello@tothemusicnyc.com" class="contact-link">hello@tothemusicnyc.com</a>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon">&#128247;</div>
+        <h3>Instagram</h3>
+        <p>Follow us for announcements, schedule updates, and behind-the-scenes content:</p>
+        <a href="https://instagram.com/tothemusicnyc" target="_blank" rel="noopener" class="contact-link">@tothemusicnyc</a>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon">&#127968;</div>
+        <h3>Housing</h3>
+        <p>Need help with accommodations for the festival week?</p>
+        <a href="#housing" class="contact-link">Request Housing Coordination &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <img src="assets/to-the-music-logo.jpg" alt="To The Music" class="footer-logo" />
+  <p class="footer-tagline">A NewStyle Hustle Dance Festival &bull; May 13&ndash;17, 2026</p>
+  <div class="footer-links">
+    <a href="#about">About</a>
+    <a href="#teachers">Teachers</a>
+    <a href="#schedule">Schedule</a>
+    <a href="#tickets">Tickets</a>
+    <a href="#housing">Housing</a>
+    <a href="#map">Venues</a>
+    <a href="#merch">Merch</a>
+    <a href="#instagram">Instagram</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="social-links">
+    <a href="#" aria-label="Instagram" title="Instagram">&#9679;</a>
+    <a href="#" aria-label="Facebook" title="Facebook">&#9679;</a>
+    <a href="#" aria-label="YouTube" title="YouTube">&#9679;</a>
+  </div>
+  <p class="footer-copy">&copy; 2026 To The Music. All rights reserved.</p>
+</footer>
+
+<script>
+  // Countdown
+  function updateCountdown() {
+    const fest = new Date('2026-05-13T17:30:00');
+    const now = new Date();
+    const diff = fest - now;
+    if (diff <= 0) {
+      document.getElementById('countdown').innerHTML = '<div style="font-size:1.2rem;font-weight:700;color:var(--accent);">The festival is here!</div>';
+      return;
+    }
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    document.getElementById('countdown').innerHTML =
+      `<div class="countdown-item"><div class="countdown-num">${d}</div><div class="countdown-label">Days</div></div>
+       <div class="countdown-item"><div class="countdown-num">${h}</div><div class="countdown-label">Hours</div></div>
+       <div class="countdown-item"><div class="countdown-num">${m}</div><div class="countdown-label">Minutes</div></div>
+       <div class="countdown-item"><div class="countdown-num">${s}</div><div class="countdown-label">Seconds</div></div>`;
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  // Navbar scroll
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // Schedule tabs with re-trigger animation
+  document.querySelectorAll('.schedule-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.schedule-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.schedule-day').forEach(d => { d.classList.remove('active'); d.style.animation = 'none'; });
+      tab.classList.add('active');
+      const dayEl = document.getElementById('day-' + tab.dataset.day);
+      dayEl.offsetHeight; // force reflow
+      dayEl.style.animation = '';
+      dayEl.classList.add('active');
+      applyFilter(); // re-apply current filter when switching days
+    });
+  });
+
+  // Event card expand/collapse
+  document.querySelectorAll('.evt-card').forEach(card => {
+    card.addEventListener('click', () => {
+      card.classList.toggle('expanded');
+    });
+    card.style.cursor = 'pointer';
+  });
+
+  // Filter pills
+  let currentFilter = 'all';
+  function applyFilter() {
+    document.querySelectorAll('.evt-card').forEach(card => {
+      if (currentFilter === 'all' || card.dataset.type === currentFilter) {
+        card.classList.remove('filtered-out');
+      } else {
+        card.classList.add('filtered-out');
+      }
+    });
+    // Hide time-groups with all cards filtered out
+    document.querySelectorAll('.time-group').forEach(group => {
+      const visible = group.querySelectorAll('.evt-card:not(.filtered-out)');
+      group.style.display = visible.length ? '' : 'none';
+    });
+  }
+  document.querySelectorAll('.filter-pill').forEach(pill => {
+    pill.addEventListener('click', () => {
+      document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      currentFilter = pill.dataset.filter;
+      applyFilter();
+    });
+  });
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-question').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement;
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+
+  // Smooth scroll for nav links (close mobile menu too)
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', () => {
+      document.getElementById('navbar').classList.remove('menu-open');
+    });
+  });
+</script>
+
+</body>
+</html>

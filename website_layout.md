@@ -1,0 +1,18 @@
+
+- About the festival
+	- Who are the teachers
+	- Describe how the parties are setup
+		- Working with local NYC club/party organizers and promoters to curate collaborative parties for this festival
+			- We won’t know until the month of probably
+- Housing coordination (reina)
+	- Submit a form, reina to coordinate
+- Map of locations
+- Schedule
+- Pricing, ticketing
+	- Ticketing system will be done with Ticket Tailor
+- Artist/teacher bios
+- Social media overview, instagram posts
+	- @tothemusicnyc
+- Merch 
+	- Use Ticket Tailor if possible, otherwise google sheet
+- Contact info

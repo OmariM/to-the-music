@@ -1,0 +1,13 @@
+# Large files
+*.mov
+*.mp4
+
+# Deliverables / private docs
+deliverables/
+
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Obsidian
+.obsidian/
