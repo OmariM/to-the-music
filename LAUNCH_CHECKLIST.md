@@ -42,16 +42,8 @@ Check off each item as it's completed. For items needing a URL or embed code, pa
 ## 🟡 Nice to Have Before Launch
 
 ### Map
-- [ ] **Google My Maps — custom venue pins**
-  - Go to [Google My Maps](https://www.google.com/maps/d/) and create a new map
-  - Add pins for:
-    - Time Out Market BK (May 13)
-    - El Santo, Bushwick (May 15)
-    - Crossroads Cafe, Bushwick (May 16)
-    - Modega, Long Island City (May 17)
-  - Click Share → Embed → copy the iframe `src` URL
-  - Replace the existing `src="..."` in the `#map` iframe in `index.html`
-  - _Embed URL:_ _______________
+- [x] **Google My Maps — custom venue pins**
+  - Embed URL: `https://www.google.com/maps/d/embed?mid=1qcN8Wg6fLk81OmWGx8F-QeE_LjnkfE4`
 
 ### Social Media
 - [ ] **Update Instagram link in footer/nav**
