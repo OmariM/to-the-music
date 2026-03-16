@@ -663,9 +663,104 @@
 .contact-card p { color: var(--text-muted); font-size: 0.85rem; line-height: 1.6; margin-bottom: 0.75rem; }
 .contact-link { color: var(--accent); text-decoration: none; font-size: 0.9rem; font-weight: 500; }
 .contact-link:hover { text-decoration: underline; }
+
+/* COMING SOON OVERLAY */
+#coming-soon-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--bg-dark);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+}
+#coming-soon-overlay.hidden { display: none; }
+.cs-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  max-width: 480px;
+}
+.cs-logo {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  animation: float 6s ease-in-out infinite;
+}
+.cs-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  background: linear-gradient(135deg, #fff 0%, var(--accent) 60%, var(--teal) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.cs-subtitle {
+  font-size: clamp(1rem, 3vw, 1.4rem);
+  color: var(--text-muted);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 300;
+}
+.cs-details {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+.cs-dot { color: var(--accent); }
+.cs-countdown {
+  display: flex;
+  gap: 1.5rem;
+  margin: 0.5rem 0;
+}
+.cs-count-item { text-align: center; }
+.cs-count-num {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1;
+}
+.cs-count-label {
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-top: 0.25rem;
+}
+.cs-instagram {
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+.cs-instagram:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
+
+<!-- ========== COMING SOON OVERLAY ========== -->
+<div id="coming-soon-overlay">
+  <div class="cs-inner">
+    <img src="assets/to-the-music-logo.jpg" alt="To The Music" class="cs-logo">
+    <h1 class="cs-title">To The Music</h1>
+    <p class="cs-subtitle">Coming Soon</p>
+    <div class="cs-details">
+      <span>May 13–17, 2026</span>
+      <span class="cs-dot">&bull;</span>
+      <span>New York City</span>
+    </div>
+    <div class="cs-countdown" id="cs-countdown"></div>
+    <a href="https://instagram.com/tothemusicnyc" target="_blank" rel="noopener" class="cs-instagram">@tothemusicnyc</a>
+  </div>
+</div>
 
 <!-- NAV -->
 <nav id="navbar">
@@ -1613,6 +1708,49 @@
       document.getElementById('navbar').classList.remove('menu-open');
     });
   });
+
+  // Coming soon overlay — unlock with ?key=letsgofrank
+  (function() {
+    const PREVIEW_KEY = 'letsgofrank';
+    const SESSION_FLAG = 'ttm_preview';
+    const params = new URLSearchParams(window.location.search);
+
+    if (params.get('key') === PREVIEW_KEY) {
+      sessionStorage.setItem(SESSION_FLAG, '1');
+      // Clean the key out of the URL without reloading
+      params.delete('key');
+      const clean = window.location.pathname + (params.toString() ? '?' + params.toString() : '');
+      window.history.replaceState({}, '', clean);
+    }
+
+    const overlay = document.getElementById('coming-soon-overlay');
+    if (sessionStorage.getItem(SESSION_FLAG) === '1') {
+      overlay.classList.add('hidden');
+    } else {
+      // Run a separate countdown for the coming soon screen
+      const festDate = new Date('2026-05-13T00:00:00');
+      function updateCSCountdown() {
+        const now = new Date();
+        const diff = festDate - now;
+        if (diff <= 0) {
+          document.getElementById('cs-countdown').innerHTML =
+            '<div style="color:var(--accent);font-weight:700;">The festival is here!</div>';
+          return;
+        }
+        const d = Math.floor(diff / 86400000);
+        const h = Math.floor((diff % 86400000) / 3600000);
+        const m = Math.floor((diff % 3600000) / 60000);
+        const s = Math.floor((diff % 60000) / 1000);
+        document.getElementById('cs-countdown').innerHTML =
+          `<div class="cs-count-item"><div class="cs-count-num">${d}</div><div class="cs-count-label">Days</div></div>
+           <div class="cs-count-item"><div class="cs-count-num">${h}</div><div class="cs-count-label">Hours</div></div>
+           <div class="cs-count-item"><div class="cs-count-num">${m}</div><div class="cs-count-label">Minutes</div></div>
+           <div class="cs-count-item"><div class="cs-count-num">${s}</div><div class="cs-count-label">Seconds</div></div>`;
+      }
+      updateCSCountdown();
+      setInterval(updateCSCountdown, 1000);
+    }
+  })();
 </script>
 
 </body>
