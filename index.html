@@ -819,44 +819,54 @@
 
 /* PLAN */
 #plan { background: var(--bg-section); }
-.plan-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-.plan-card {
+.plan-accordion { margin-top: 2rem; display: flex; flex-direction: column; gap: 0.75rem; }
+.plan-item {
   background: var(--bg-card);
   border: 1px solid #2a2a3a;
   border-radius: 12px;
-  padding: 1.75rem;
-  text-decoration: none;
+  overflow: hidden;
+  transition: border-color 0.3s;
+}
+.plan-item.open { border-color: var(--accent); }
+.plan-item-header {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 1.25rem 1.5rem;
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  transition: transform 0.3s, border-color 0.3s;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  text-align: left;
 }
-.plan-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--accent);
-}
-.plan-card-icon { font-size: 2rem; }
-.plan-card h3 {
+.plan-item-header:hover .plan-item-title h3 { color: var(--accent); }
+.plan-item-icon { font-size: 1.5rem; flex-shrink: 0; }
+.plan-item-title { flex: 1; }
+.plan-item-title h3 {
   font-family: 'Playfair Display', serif;
   font-size: 1.1rem;
   color: var(--text);
+  margin-bottom: 0.2rem;
+  transition: color 0.2s;
 }
-.plan-card p {
-  color: var(--text-muted);
-  font-size: 0.85rem;
-  line-height: 1.5;
-  flex: 1;
-}
-.plan-card-cta {
+.plan-item-title p { font-size: 0.85rem; color: var(--text-muted); }
+.plan-item-arrow {
+  font-size: 1.4rem;
   color: var(--accent);
-  font-size: 0.85rem;
-  font-weight: 500;
-  margin-top: 0.25rem;
+  flex-shrink: 0;
+  transition: transform 0.3s;
+  line-height: 1;
+}
+.plan-item.open .plan-item-arrow { transform: rotate(45deg); }
+.plan-item-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.3s;
+  padding: 0 1.5rem;
+}
+.plan-item.open .plan-item-body {
+  max-height: 2000px;
+  padding: 0 1.5rem 1.5rem;
 }
   </style>
 </head>
@@ -1451,95 +1461,7 @@
   </div>
 </section>
 
-<!-- FAQ -->
-<section id="faq">
-  <div class="section-inner">
-    <h2 class="section-title">FAQ</h2>
-    <p class="section-subtitle">Everything you need to know before you arrive.</p>
-    <div class="faq-list">
-      <div class="faq-item">
-        <button class="faq-question">
-          What dance styles are featured at this festival?
-          <span class="faq-arrow">+</span>
-        </button>
-        <div class="faq-answer">
-          <p>To The Music is centered on NewStyle Hustle. Workshops, the battle, and social dances are all focused on this style. Whether you're a beginner or advanced, there's something for every level.</p>
-        </div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question">
-          Do I need a partner to attend?
-          <span class="faq-arrow">+</span>
-        </button>
-        <div class="faq-answer">
-          <p>Not at all! Social dance festivals are built around rotating partners. You'll dance with many different people throughout the week. Solo attendees are the norm.</p>
-        </div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question">
-          What shoes should I bring?
-          <span class="faq-arrow">+</span>
-        </button>
-        <div class="faq-answer">
-          <p>Smooth-soled shoes work best for hustle. Dance sneakers, character shoes, or jazz shoes are all great options. Avoid rubber soles as they grip the floor too much. Bring a separate pair for outdoor events.</p>
-        </div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question">
-          What is the Dancers List?
-          <span class="faq-arrow">+</span>
-        </button>
-        <div class="faq-answer">
-          <p>The Dancers List is a discounted entry option for parties. Details on how to get on the Dancers List will be shared when registration opens in March.</p>
-        </div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question">
-          What is the refund policy?
-          <span class="faq-arrow">+</span>
-        </button>
-        <div class="faq-answer">
-          <p>Full refunds are available up to 30 days before the festival. Within 30 days, passes can be transferred to another dancer. No refunds within 7 days of the event. Details will be posted with ticket sales.</p>
-        </div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question">
-          Are there hotels nearby?
-          <span class="faq-arrow">+</span>
-        </button>
-        <div class="faq-answer">
-          <p>Yes! We'll share a list of recommended hotels and Airbnb options near the venue when registration opens. Some attendees also coordinate shared housing &mdash; check our social media for roommate-matching threads.</p>
-        </div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question">
-          Can I attend individual workshops without a full pass?
-          <span class="faq-arrow">+</span>
-        </button>
-        <div class="faq-answer">
-          <p>Yes! Individual workshop drop-in tickets will be available. Prices range from $35 for 90-minute sessions to $40 for 2-hour intensives. The full pass is the best value if you plan to take multiple classes.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- CODE OF CONDUCT -->
-<section id="conduct">
-  <div class="section-inner">
-    <h2 class="section-title">Code of Conduct</h2>
-    <p class="section-subtitle">Creating a safe, inclusive, and joyful space for everyone.</p>
-    <div class="conduct-content">
-      <p>To The Music is committed to providing a welcoming, respectful, and harassment-free experience for all attendees, regardless of gender identity, sexual orientation, disability, body size, race, ethnicity, age, religion, or dance level.</p>
-      <div class="conduct-highlight">
-        <p>Consent is essential in partner dancing. Always ask before dancing with someone, and always respect a "no" gracefully. On the dance floor, be mindful of your partner's comfort and physical boundaries.</p>
-      </div>
-      <p>We do not tolerate harassment, intimidation, or disrespectful behavior in any form &mdash; on the dance floor, in workshops, at social events, or online. This includes unwelcome physical contact, inappropriate comments, and taking photos or videos without consent.</p>
-      <p>If you experience or witness behavior that violates this code, please speak to any member of the organizing team immediately. We take all reports seriously and will respond promptly to ensure everyone feels safe.</p>
-      <p>Let's make this festival about what brings us together: the music, the movement, and each other.</p>
-    </div>
-  </div>
-</section>
 
 <!-- ========== PLAN ========== -->
 <section id="plan">
@@ -1548,113 +1470,155 @@
       <h2>Plan Your Festival Experience</h2>
       <p class="section-sub">Everything you need to know before you arrive</p>
     </div>
-    <div class="plan-grid">
+    <div class="plan-accordion">
 
-      <a href="#map" class="plan-card">
-        <div class="plan-card-icon">&#128205;</div>
-        <h3>Venues</h3>
-        <p>All festival locations across Brooklyn and Long Island City</p>
-        <span class="plan-card-cta">View map &rarr;</span>
-      </a>
+      <div class="plan-item" id="plan-venues">
+        <button class="plan-item-header">
+          <span class="plan-item-icon">&#128205;</span>
+          <div class="plan-item-title">
+            <h3>Venues</h3>
+            <p>All festival locations across Brooklyn and Long Island City</p>
+          </div>
+          <span class="plan-item-arrow">+</span>
+        </button>
+        <div class="plan-item-body">
+          <div class="venues-list">
+            <div class="venue-item">
+              <span class="venue-dot" style="background:var(--accent)"></span>
+              <div>
+                <a href="https://maps.google.com/?q=Time+Out+Market+Brooklyn+NY" target="_blank" rel="noopener"><strong>Time Out Market BK</strong></a>
+                <span>May 13 &mdash; Soul Records Laboratory</span>
+              </div>
+            </div>
+            <div class="venue-item">
+              <span class="venue-dot" style="background:var(--secondary)"></span>
+              <div>
+                <a href="https://maps.google.com/?q=El+Santo+Bushwick+Brooklyn+NY" target="_blank" rel="noopener"><strong>El Santo, Bushwick</strong></a>
+                <span>May 15 &mdash; All Workshops</span>
+              </div>
+            </div>
+            <div class="venue-item">
+              <span class="venue-dot" style="background:var(--gold)"></span>
+              <div>
+                <a href="https://maps.google.com/?q=Crossroads+Cafe+Bushwick+Brooklyn+NY" target="_blank" rel="noopener"><strong>Crossroads Cafe, Bushwick</strong></a>
+                <span>May 16 &mdash; Love City NYC Afterparty</span>
+              </div>
+            </div>
+            <div class="venue-item">
+              <span class="venue-dot" style="background:#a78bfa"></span>
+              <div>
+                <a href="https://maps.google.com/?q=Modega+Long+Island+City+NY" target="_blank" rel="noopener"><strong>Modega, Long Island City</strong></a>
+                <span>May 17 &mdash; All Workshops + Battle</span>
+              </div>
+            </div>
+          </div>
+          <div class="map-embed" style="margin-top:1.5rem;">
+            <iframe
+              src="https://www.google.com/maps/d/embed?mid=1qcN8Wg6fLk81OmWGx8F-QeE_LjnkfE4"
+              width="100%"
+              height="400"
+              style="border:0;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Festival Venues Map">
+            </iframe>
+          </div>
+          <p class="map-note" style="margin-top:0.75rem;">Click any venue name to open in Google Maps.</p>
+        </div>
+      </div>
 
-      <a href="#housing" class="plan-card">
-        <div class="plan-card-icon">&#127968;</div>
-        <h3>Housing</h3>
-        <p>Reina coordinates accommodations for festival attendees</p>
-        <span class="plan-card-cta">Get help &rarr;</span>
-      </a>
+      <div class="plan-item" id="plan-housing">
+        <button class="plan-item-header">
+          <span class="plan-item-icon">&#127968;</span>
+          <div class="plan-item-title">
+            <h3>Housing</h3>
+            <p>Reina coordinates accommodations for festival attendees</p>
+          </div>
+          <span class="plan-item-arrow">+</span>
+        </button>
+        <div class="plan-item-body">
+          <div class="housing-card" style="max-width:100%;padding:2rem;">
+            <div class="housing-icon">&#127968;</div>
+            <h3>Coordinated by Reina</h3>
+            <p>To The Music has a dedicated housing coordinator — Reina — who works with attendees to help find accommodations for the festival week. Whether you're looking to connect with other dancers for shared housing or just need recommendations, Reina can help.</p>
+            <p class="housing-sub">Submit the form below and Reina will follow up with you directly.</p>
+            <a href="#" class="btn-primary housing-btn" target="_blank" rel="noopener">Request Housing Coordination</a>
+            <p class="housing-note">This opens a Google Form in a new tab. Reina will reach out via email.</p>
+          </div>
+        </div>
+      </div>
 
-      <a href="#faq" class="plan-card">
-        <div class="plan-card-icon">&#10067;</div>
-        <h3>FAQ</h3>
-        <p>Answers to common questions about the festival</p>
-        <span class="plan-card-cta">Read FAQ &rarr;</span>
-      </a>
+      <div class="plan-item" id="plan-faq">
+        <button class="plan-item-header">
+          <span class="plan-item-icon">&#10067;</span>
+          <div class="plan-item-title">
+            <h3>FAQ</h3>
+            <p>Answers to common questions about the festival</p>
+          </div>
+          <span class="plan-item-arrow">+</span>
+        </button>
+        <div class="plan-item-body">
+          <div class="faq-list">
+            <div class="faq-item">
+              <button class="faq-question">What dance styles are featured at this festival?<span class="faq-arrow">+</span></button>
+              <div class="faq-answer"><p>To The Music is centered on NewStyle Hustle. Workshops, the battle, and social dances are all focused on this style. Whether you're a beginner or advanced, there's something for every level.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question">Do I need a partner to attend?<span class="faq-arrow">+</span></button>
+              <div class="faq-answer"><p>Not at all! Social dance festivals are built around rotating partners. You'll dance with many different people throughout the week. Solo attendees are the norm.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question">What shoes should I bring?<span class="faq-arrow">+</span></button>
+              <div class="faq-answer"><p>Smooth-soled shoes work best for hustle. Dance sneakers, character shoes, or jazz shoes are all great options. Avoid rubber soles as they grip the floor too much. Bring a separate pair for outdoor events.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question">What is the Dancers List?<span class="faq-arrow">+</span></button>
+              <div class="faq-answer"><p>The Dancers List is a discounted entry option for parties. Details on how to get on the Dancers List will be shared when registration opens.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question">What is the refund policy?<span class="faq-arrow">+</span></button>
+              <div class="faq-answer"><p>Full refunds are available up to 30 days before the festival. Within 30 days, passes can be transferred to another dancer. No refunds within 7 days of the event. Details will be posted with ticket sales.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question">Are there hotels nearby?<span class="faq-arrow">+</span></button>
+              <div class="faq-answer"><p>Yes! We'll share a list of recommended hotels and Airbnb options near the venue when registration opens. Some attendees also coordinate shared housing &mdash; check our social media for roommate-matching threads.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question">Can I attend individual workshops without a full pass?<span class="faq-arrow">+</span></button>
+              <div class="faq-answer"><p>Yes! Individual workshop drop-in tickets will be available. Prices range from $35 for 90-minute sessions to $40 for 2-hour intensives. The full pass is the best value if you plan to take multiple classes.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-      <a href="#conduct" class="plan-card">
-        <div class="plan-card-icon">&#129309;</div>
-        <h3>Code of Conduct</h3>
-        <p>Our community guidelines and safety policies</p>
-        <span class="plan-card-cta">Read &rarr;</span>
-      </a>
+      <div class="plan-item" id="plan-conduct">
+        <button class="plan-item-header">
+          <span class="plan-item-icon">&#129309;</span>
+          <div class="plan-item-title">
+            <h3>Code of Conduct</h3>
+            <p>Our community guidelines and safety policies</p>
+          </div>
+          <span class="plan-item-arrow">+</span>
+        </button>
+        <div class="plan-item-body">
+          <div class="conduct-content">
+            <p>To The Music is committed to providing a welcoming, respectful, and harassment-free experience for all attendees, regardless of gender identity, sexual orientation, disability, body size, race, ethnicity, age, religion, or dance level.</p>
+            <div class="conduct-highlight">
+              <p>Consent is essential in partner dancing. Always ask before dancing with someone, and always respect a "no" gracefully. On the dance floor, be mindful of your partner's comfort and physical boundaries.</p>
+            </div>
+            <p>We do not tolerate harassment, intimidation, or disrespectful behavior in any form &mdash; on the dance floor, in workshops, at social events, or online. This includes unwelcome physical contact, inappropriate comments, and taking photos or videos without consent.</p>
+            <p>If you experience or witness behavior that violates this code, please speak to any member of the organizing team immediately. We take all reports seriously and will respond promptly to ensure everyone feels safe.</p>
+            <p>Let's make this festival about what brings us together: the music, the movement, and each other.</p>
+          </div>
+        </div>
+      </div>
 
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
-<!-- ========== HOUSING ========== -->
-<section id="housing">
-  <div class="container">
-    <div class="section-header">
-      <h2>Housing Coordination</h2>
-      <p class="section-sub">Need a place to stay? We've got you covered.</p>
-    </div>
-    <div class="housing-content">
-      <div class="housing-card">
-        <div class="housing-icon">&#127968;</div>
-        <h3>Coordinated by Reina</h3>
-        <p>To The Music has a dedicated housing coordinator — Reina — who works with attendees to help find accommodations for the festival week. Whether you're looking to connect with other dancers for shared housing or just need recommendations, Reina can help.</p>
-        <p class="housing-sub">Submit the form below and Reina will follow up with you directly.</p>
-        <a href="#" class="btn-primary housing-btn" target="_blank" rel="noopener">Request Housing Coordination</a>
-        <p class="housing-note">This opens a Google Form in a new tab. Reina will reach out via email.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ========== MAP ========== -->
-<section id="map">
-  <div class="container">
-    <div class="section-header">
-      <h2>Festival Venues</h2>
-      <p class="section-sub">All events take place across Brooklyn and Long Island City</p>
-    </div>
-    <div class="venues-list">
-      <div class="venue-item">
-        <span class="venue-dot" style="background:var(--accent)"></span>
-        <div>
-          <a href="https://maps.google.com/?q=Time+Out+Market+Brooklyn+NY" target="_blank" rel="noopener"><strong>Time Out Market BK</strong></a>
-          <span>May 13 &mdash; Soul Records Laboratory</span>
-        </div>
-      </div>
-      <div class="venue-item">
-        <span class="venue-dot" style="background:var(--secondary)"></span>
-        <div>
-          <a href="https://maps.google.com/?q=El+Santo+Bushwick+Brooklyn+NY" target="_blank" rel="noopener"><strong>El Santo, Bushwick</strong></a>
-          <span>May 15 &mdash; All Workshops</span>
-        </div>
-      </div>
-      <div class="venue-item">
-        <span class="venue-dot" style="background:var(--gold)"></span>
-        <div>
-          <a href="https://maps.google.com/?q=Crossroads+Cafe+Bushwick+Brooklyn+NY" target="_blank" rel="noopener"><strong>Crossroads Cafe, Bushwick</strong></a>
-          <span>May 16 &mdash; Love City NYC Afterparty</span>
-        </div>
-      </div>
-      <div class="venue-item">
-        <span class="venue-dot" style="background:#a78bfa"></span>
-        <div>
-          <a href="https://maps.google.com/?q=Modega+Long+Island+City+NY" target="_blank" rel="noopener"><strong>Modega, Long Island City</strong></a>
-          <span>May 17 &mdash; All Workshops + Battle</span>
-        </div>
-      </div>
-    </div>
-    <div class="map-embed">
-      <iframe
-        src="https://www.google.com/maps/d/embed?mid=1qcN8Wg6fLk81OmWGx8F-QeE_LjnkfE4"
-        width="100%"
-        height="450"
-        style="border:0;"
-        allowfullscreen=""
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-        title="Festival Venues Map">
-      </iframe>
-    </div>
-    <p class="map-note">Click any venue name to open in Google Maps.</p>
-  </div>
-</section>
 
 <!-- ========== MERCH ========== -->
 <section id="merch">
@@ -1836,6 +1800,18 @@
       const wasOpen = item.classList.contains('open');
       document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
       if (!wasOpen) item.classList.add('open');
+    });
+  });
+
+  // Plan accordion
+  document.querySelectorAll('.plan-item-header').forEach(header => {
+    header.addEventListener('click', () => {
+      const item = header.closest('.plan-item');
+      const isOpen = item.classList.contains('open');
+      // Close all
+      document.querySelectorAll('.plan-item').forEach(i => i.classList.remove('open'));
+      // Toggle clicked
+      if (!isOpen) item.classList.add('open');
     });
   });
 
