@@ -574,8 +574,7 @@
          always visible on both sides, regardless of card index */
       .about-grid,
       .teachers-grid,
-      .ticket-grid,
-      .schedule-days-wrap {
+      .ticket-grid {
         display: flex;
         overflow-x: auto;
         scroll-snap-type: x mandatory;
@@ -586,8 +585,7 @@
       }
       .about-grid::-webkit-scrollbar,
       .teachers-grid::-webkit-scrollbar,
-      .ticket-grid::-webkit-scrollbar,
-      .schedule-days-wrap::-webkit-scrollbar { display: none; }
+      .ticket-grid::-webkit-scrollbar { display: none; }
 
       /* Cards are container-width minus 4rem so ~2rem peeks on each side */
       .about-grid .about-card,
@@ -600,16 +598,14 @@
       /* Carousel focus: inactive cards dimmed and slightly scaled down */
       .about-grid .about-card,
       .teachers-grid .teacher-card,
-      .ticket-grid .ticket-card,
-      .schedule-days-wrap .schedule-day {
+      .ticket-grid .ticket-card {
         transition: opacity 0.3s ease, transform 0.3s ease;
         opacity: 0.45;
         transform: scale(0.95);
       }
       .about-grid .about-card.carousel-active,
       .teachers-grid .teacher-card.carousel-active,
-      .ticket-grid .ticket-card.carousel-active,
-      .schedule-days-wrap .schedule-day.carousel-active {
+      .ticket-grid .ticket-card.carousel-active {
         opacity: 1;
         transform: scale(1);
       }
@@ -619,17 +615,8 @@
       .teachers-grid .teacher-card:hover,
       .ticket-grid .ticket-card:hover { transform: scale(1) !important; }
 
-      /* Schedule carousel */
-      .schedule-tabs { display: none; }
-      .schedule-day {
-        display: block !important;
-        flex: 0 0 calc(100% - 4rem);
-        scroll-snap-align: center;
-        background: var(--bg-card);
-        border: 1px solid #2a2a3a;
-        border-radius: 12px;
-        padding: 1.25rem;
-      }
+      /* Schedule — tabs visible on mobile, standard tab behaviour */
+      .schedule-tabs { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; }
 
       /* Ticket grid overrides */
       .ticket-grid { max-width: none; margin: 0; }
@@ -1845,7 +1832,6 @@
     initCarouselFocus('.about-grid', '.about-card');
     initCarouselFocus('.teachers-grid', '.teacher-card');
     initCarouselFocus('.ticket-grid', '.ticket-card');
-    initCarouselFocus('.schedule-days-wrap', '.schedule-day');
   }
 
   // Smooth scroll for nav links (close mobile menu too)
