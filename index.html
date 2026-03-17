@@ -570,7 +570,7 @@
       .countdown-num { font-size: 1.6rem; }
       .section-title { font-size: 2rem; }
 
-      /* Shared carousel pattern — 8% peek on each side, no lift on focus */
+      /* Shared carousel pattern — cards at 80vw, center-snapped so ~10vw peeks on each side */
       .about-grid,
       .teachers-grid,
       .ticket-grid,
@@ -580,7 +580,7 @@
         scroll-snap-type: x mandatory;
         -webkit-overflow-scrolling: touch;
         gap: 1rem;
-        padding: 0 8vw 1rem;
+        padding-bottom: 1rem;
         scrollbar-width: none;
       }
       .about-grid::-webkit-scrollbar,
@@ -591,7 +591,7 @@
       .about-grid .about-card,
       .teachers-grid .teacher-card,
       .ticket-grid .ticket-card {
-        flex: 0 0 84vw;
+        flex: 0 0 80vw;
         scroll-snap-align: center;
       }
 
@@ -604,7 +604,7 @@
       .schedule-tabs { display: none; }
       .schedule-day {
         display: block !important;
-        flex: 0 0 84vw;
+        flex: 0 0 80vw;
         scroll-snap-align: center;
         background: var(--bg-card);
         border: 1px solid #2a2a3a;
