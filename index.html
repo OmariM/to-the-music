@@ -247,6 +247,13 @@
       border: 1px solid rgba(233, 69, 96, 0.3);
       border-radius: 4px;
       padding: 0.2rem 0.5rem;
+      cursor: pointer;
+      border: none;
+      font-family: inherit;
+    }
+    .teacher-day:hover {
+      background: rgba(233, 69, 96, 0.3);
+      border-color: var(--accent);
     }
     .teacher-bio-placeholder {
       font-size: 0.85rem;
@@ -270,6 +277,8 @@
     .schedule-tab.active { background: var(--accent); border-color: var(--accent); color: #fff; }
     .schedule-tab .tab-day { display: block; font-size: 0.65rem; color: var(--text-dim); margin-top: 1px; }
     .schedule-tab.active .tab-day { color: rgba(255,255,255,0.7); }
+    .tab-word { display: block; font-size: 0.6rem; color: rgba(255,255,255,0.5); margin-top: 1px; letter-spacing: 0.05em; }
+    .schedule-tab.active .tab-word { color: rgba(255,255,255,0.8); }
 
     /* Filter pills */
     .schedule-filters {
@@ -381,12 +390,14 @@
     .evt-location {
       font-size: 0.75rem;
       color: var(--secondary);
+      display: flex; align-items: center; gap: 0.3rem;
     }
     .evt-location a {
       color: var(--secondary);
       text-decoration: none;
     }
     .evt-location a:hover { text-decoration: underline; }
+    .location-pin { flex-shrink: 0; color: var(--secondary); }
 
     .evt-desc {
       font-size: 0.82rem; color: var(--text-muted); margin-top: 0.5rem;
@@ -398,6 +409,11 @@
       transition: opacity 0.3s; cursor: pointer;
     }
     .evt-card.expanded .evt-expand-hint { display: none; }
+    .evt-expand-hint::before { content: "Tap "; }
+    @media (pointer: fine) {
+      .evt-expand-hint::before { content: "Click "; }
+    }
+    .evt-expand-hint::after { content: attr(data-hint); }
 
     /* Battle sub-events */
     .evt-sub-timeline {
@@ -553,6 +569,64 @@
       .countdown-inner { gap: 1rem; }
       .countdown-num { font-size: 1.6rem; }
       .section-title { font-size: 2rem; }
+
+      /* About cards — horizontal swipeable carousel */
+      .about-grid {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: 1rem;
+        padding-bottom: 1rem;
+        scrollbar-width: none;
+      }
+      .about-grid::-webkit-scrollbar { display: none; }
+      .about-grid .about-card {
+        flex: 0 0 80vw;
+        scroll-snap-align: start;
+      }
+
+      /* Teacher cards — horizontal swipeable carousel */
+      .teachers-grid {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: 1rem;
+        padding-bottom: 1rem;
+        scrollbar-width: none;
+      }
+      .teachers-grid::-webkit-scrollbar { display: none; }
+      .teachers-grid .teacher-card {
+        flex: 0 0 75vw;
+        scroll-snap-align: start;
+      }
+
+      /* Ticket cards — horizontal scroll */
+      .ticket-grid {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: 1rem;
+        padding-bottom: 1rem;
+        scrollbar-width: none;
+        max-width: none;
+        margin: 0;
+      }
+      .ticket-grid::-webkit-scrollbar { display: none; }
+      .ticket-grid .ticket-card {
+        flex: 0 0 85vw;
+        scroll-snap-align: start;
+      }
+
+      /* Schedule — continuous scroll: hide tabs, show all days */
+      .schedule-tabs { display: none; }
+      .schedule-day { display: block !important; }
+      .schedule-day + .schedule-day { margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #2a2a3a; }
+
+      /* Housing section — hidden on mobile (compact card lives in #contact) */
+      #housing { display: none; }
     }
 
 /* HOUSING */
@@ -742,6 +816,48 @@
   letter-spacing: 0.05em;
 }
 .cs-instagram:hover { text-decoration: underline; }
+
+/* PLAN */
+#plan { background: var(--bg-section); }
+.plan-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+.plan-card {
+  background: var(--bg-card);
+  border: 1px solid #2a2a3a;
+  border-radius: 12px;
+  padding: 1.75rem;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: transform 0.3s, border-color 0.3s;
+}
+.plan-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+}
+.plan-card-icon { font-size: 2rem; }
+.plan-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  color: var(--text);
+}
+.plan-card p {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  flex: 1;
+}
+.plan-card-cta {
+  color: var(--accent);
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-top: 0.25rem;
+}
   </style>
 </head>
 <body>
@@ -771,10 +887,8 @@
       <li><a href="#teachers">Teachers</a></li>
       <li><a href="#schedule">Schedule</a></li>
       <li><a href="#tickets">Tickets</a></li>
-      <li><a href="#housing">Housing</a></li>
-      <li><a href="#map">Venues</a></li>
       <li><a href="#merch">Merch</a></li>
-      <li><a href="#instagram">Instagram</a></li>
+      <li><a href="#plan">Plan</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <a href="#tickets" class="nav-cta">Get Passes</a>
@@ -820,11 +934,6 @@
         <p>The NewStyle Hustle N' Tussle &mdash; featuring 7-to-Smoke and Jack & Jill formats. Compete or cheer from the crowd on the final night.</p>
       </div>
       <div class="about-card">
-        <div class="about-icon">&#127926;</div>
-        <h3>4 Parties</h3>
-        <p>From the opening night party on Wednesday through the afternoon party on Saturday, dance late into the night with incredible DJs and a vibrant community.</p>
-      </div>
-      <div class="about-card">
         <div class="about-icon">&#127908;</div>
         <h3>Q&A with Jeff Selby</h3>
         <p>An intimate evening session with NewStyle Hustle pioneer Jeff Selby. Ask questions, gain insight, and connect with the movement's roots.</p>
@@ -833,11 +942,6 @@
         <div class="about-icon">&#129309;</div>
         <h3>Community First</h3>
         <p>A dedicated organizers workshop, outdoor potluck, and happy hours built to strengthen the bonds that make the hustle community special.</p>
-      </div>
-      <div class="about-card">
-        <div class="about-icon">&#127751;</div>
-        <h3>Free Time</h3>
-        <p>Saturday night is yours. Explore the city, grab dinner with new friends, or rest up before the Sunday battle.</p>
       </div>
     </div>
     <div class="about-parties">
@@ -864,8 +968,8 @@
         <div class="teacher-info">
           <h3 class="teacher-name">Kenji</h3>
           <div class="teacher-days">
-            <span class="teacher-day">Fri May 15</span>
-            <span class="teacher-day">Sun May 17</span>
+            <button class="teacher-day" data-day="fri">Fri May 15</button>
+            <button class="teacher-day" data-day="sun">Sun May 17</button>
           </div>
           <p class="teacher-bio-placeholder">Bio coming soon</p>
         </div>
@@ -878,8 +982,8 @@
         <div class="teacher-info">
           <h3 class="teacher-name">Jeff Selby</h3>
           <div class="teacher-days">
-            <span class="teacher-day">Thu May 14</span>
-            <span class="teacher-day">Fri May 15</span>
+            <button class="teacher-day" data-day="thu">Thu May 14</button>
+            <button class="teacher-day" data-day="fri">Fri May 15</button>
           </div>
           <p class="teacher-bio-placeholder">Bio coming soon</p>
         </div>
@@ -892,8 +996,8 @@
         <div class="teacher-info">
           <h3 class="teacher-name">Melina</h3>
           <div class="teacher-days">
-            <span class="teacher-day">Fri May 15</span>
-            <span class="teacher-day">Sun May 17</span>
+            <button class="teacher-day" data-day="fri">Fri May 15</button>
+            <button class="teacher-day" data-day="sun">Sun May 17</button>
           </div>
           <p class="teacher-bio-placeholder">Bio coming soon</p>
         </div>
@@ -906,8 +1010,8 @@
         <div class="teacher-info">
           <h3 class="teacher-name">Miss Bibi</h3>
           <div class="teacher-days">
-            <span class="teacher-day">Fri May 15</span>
-            <span class="teacher-day">Sun May 17</span>
+            <button class="teacher-day" data-day="fri">Fri May 15</button>
+            <button class="teacher-day" data-day="sun">Sun May 17</button>
           </div>
           <p class="teacher-bio-placeholder">Bio coming soon</p>
         </div>
@@ -924,11 +1028,11 @@
     <p class="section-subtitle">Five packed days &mdash; tap a day to explore, click any event for details.</p>
 
     <div class="schedule-tabs">
-      <button class="schedule-tab active" data-day="wed">Wed <span class="tab-day">May 13</span></button>
-      <button class="schedule-tab" data-day="thu">Thu <span class="tab-day">May 14</span></button>
-      <button class="schedule-tab" data-day="fri">Fri <span class="tab-day">May 15</span></button>
-      <button class="schedule-tab" data-day="sat">Sat <span class="tab-day">May 16</span></button>
-      <button class="schedule-tab" data-day="sun">Sun <span class="tab-day">May 17</span></button>
+      <button class="schedule-tab active" data-day="wed">Wed <span class="tab-day">May 13</span><span class="tab-word">Arrive</span></button>
+      <button class="schedule-tab" data-day="thu">Thu <span class="tab-day">May 14</span><span class="tab-word">Community</span></button>
+      <button class="schedule-tab" data-day="fri">Fri <span class="tab-day">May 15</span><span class="tab-word">Train</span></button>
+      <button class="schedule-tab" data-day="sat">Sat <span class="tab-day">May 16</span><span class="tab-word">Parade</span></button>
+      <button class="schedule-tab" data-day="sun">Sun <span class="tab-day">May 17</span><span class="tab-word">Battle</span></button>
     </div>
 
     <div class="schedule-filters">
@@ -960,11 +1064,11 @@
         </div>
         <div class="evt-bottom">
           <span class="evt-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 5:30 &ndash; 8:30 PM</span>
-          <span class="evt-location"><a href="https://maps.google.com/?q=Em+Vietnamese+Bistro+Brooklyn+NY" target="_blank" rel="noopener">Em Vietnamese Bistro</a></span>
+          <span class="evt-location"><svg class="location-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><a href="https://maps.google.com/?q=Em+Vietnamese+Bistro+Brooklyn+NY" target="_blank" rel="noopener">Em Vietnamese Bistro</a></span>
           <span class="evt-type social">Social</span>
         </div>
         <div class="evt-desc">Pick up your festival badge over dinner. A relaxed welcome to the week — meet your fellow dancers at Em Vietnamese Bistro before the night heats up.</div>
-        <div class="evt-expand-hint">tap for details</div>
+        <div class="evt-expand-hint" data-hint="for details"></div>
       </div>
     </div>
 
@@ -981,11 +1085,11 @@
         </div>
         <div class="evt-bottom">
           <span class="evt-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 8:00 PM &ndash; 12:00 AM</span>
-          <span class="evt-location"><a href="https://maps.google.com/?q=Time+Out+Market+Brooklyn+NY" target="_blank" rel="noopener">Time Out Market BK</a></span>
+          <span class="evt-location"><svg class="location-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><a href="https://maps.google.com/?q=Time+Out+Market+Brooklyn+NY" target="_blank" rel="noopener">Time Out Market BK</a></span>
           <span class="evt-type party">Party</span>
         </div>
         <div class="evt-desc">Kick off the festival with a vinyl-driven night at Time Out Market BK. Discounted entry through the Dancers List.</div>
-        <div class="evt-expand-hint">tap for details</div>
+        <div class="evt-expand-hint" data-hint="for details"></div>
       </div>
     </div>
 
@@ -1017,7 +1121,7 @@
           <span class="evt-type social">Social</span>
         </div>
         <div class="evt-desc">Bring your own food and drinks for free entry, or drop in for $10. A relaxed outdoor afternoon to connect with the community over food and casual dancing.</div>
-        <div class="evt-expand-hint">tap for details</div>
+        <div class="evt-expand-hint" data-hint="for details"></div>
       </div>
     </div>
 
@@ -1038,7 +1142,7 @@
           <span class="evt-type community">Community</span>
         </div>
         <div class="evt-desc">An intimate evening discussion with NewStyle Hustle pioneer Jeff Selby. Ask questions, gain insight, and connect with the movement's roots — then dance it out at the afterparty. Limited spots available.</div>
-        <div class="evt-expand-hint">tap for details</div>
+        <div class="evt-expand-hint" data-hint="for details"></div>
       </div>
     </div>
 
@@ -1066,11 +1170,11 @@
         </div>
         <div class="evt-bottom">
           <span class="evt-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 12:00 &ndash; 1:30 PM</span>
-          <span class="evt-location"><a href="https://maps.google.com/?q=El+Santo+Bushwick+Brooklyn+NY" target="_blank" rel="noopener">El Santo, Bushwick</a></span>
+          <span class="evt-location"><svg class="location-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><a href="https://maps.google.com/?q=El+Santo+Bushwick+Brooklyn+NY" target="_blank" rel="noopener">El Santo, Bushwick</a></span>
           <span class="evt-type workshop">Workshop</span>
         </div>
         <div class="evt-desc">Opening workshop of the festival with Kenji. Details TBA.</div>
-        <div class="evt-expand-hint">tap for details</div>
+        <div class="evt-expand-hint" data-hint="for details"></div>
       </div>
     </div>
 
@@ -1087,11 +1191,11 @@
         </div>
         <div class="evt-bottom">
           <span class="evt-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 3:00 &ndash; 5:00 PM</span>
-          <span class="evt-location"><a href="https://maps.google.com/?q=El+Santo+Bushwick+Brooklyn+NY" target="_blank" rel="noopener">El Santo, Bushwick</a></span>
+          <span class="evt-location"><svg class="location-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><a href="https://maps.google.com/?q=El+Santo+Bushwick+Brooklyn+NY" target="_blank" rel="noopener">El Santo, Bushwick</a></span>
           <span class="evt-type workshop">Workshop</span>
         </div>
         <div class="evt-desc">Workshop with NewStyle Hustle pioneer Jeff Selby. Details TBA.</div>
-        <div class="evt-expand-hint">tap for details</div>
+        <div class="evt-expand-hint" data-hint="for details"></div>
       </div>
       <div class="evt-card" data-type="workshop">
         <div class="evt-top">
@@ -1100,11 +1204,11 @@
         </div>
         <div class="evt-bottom">
           <span class="evt-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 5:30 &ndash; 7:00 PM</span>
-          <span class="evt-location"><a href="https://maps.google.com/?q=El+Santo+Bushwick+Brooklyn+NY" target="_blank" rel="noopener">El Santo, Bushwick</a></span>
+          <span class="evt-location"><svg class="location-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><a href="https://maps.google.com/?q=El+Santo+Bushwick+Brooklyn+NY" target="_blank" rel="noopener">El Santo, Bushwick</a></span>
           <span class="evt-type workshop">Workshop</span>
         </div>
         <div class="evt-desc">Workshop with Melina. Details TBA.</div>
-        <div class="evt-expand-hint">tap for details</div>
+        <div class="evt-expand-hint" data-hint="for details"></div>
       </div>
       <div class="evt-card" data-type="workshop">
         <div class="evt-top">
@@ -1113,11 +1217,11 @@
         </div>
         <div class="evt-bottom">
           <span class="evt-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 7:00 &ndash; 9:00 PM</span>
-          <span class="evt-location"><a href="https://maps.google.com/?q=El+Santo+Bushwick+Brooklyn+NY" target="_blank" rel="noopener">El Santo, Bushwick</a></span>
+          <span class="evt-location"><svg class="location-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><a href="https://maps.google.com/?q=El+Santo+Bushwick+Brooklyn+NY" target="_blank" rel="noopener">El Santo, Bushwick</a></span>
           <span class="evt-type workshop">Workshop</span>
         </div>
         <div class="evt-desc">Miss Bibi's signature "Flower" styling workshop. Details TBA.</div>
-        <div class="evt-expand-hint">tap for details</div>
+        <div class="evt-expand-hint" data-hint="for details"></div>
       </div>
     </div>
 
@@ -1138,7 +1242,7 @@
           <span class="evt-type party">Party</span>
         </div>
         <div class="evt-desc">Dance the night away after a full day of workshops. Jihad Muhammad on the decks. Discounted entry via Dancers List.</div>
-        <div class="evt-expand-hint">tap for details</div>
+        <div class="evt-expand-hint" data-hint="for details"></div>
       </div>
     </div>
 
@@ -1170,7 +1274,7 @@
           <span class="evt-type social">Social</span>
         </div>
         <div class="evt-desc">Join the NYC Dance Parade! Our very own Jeff Selby is the 2026 Grand Marshal. Details and parade route at danceparade.org.</div>
-        <div class="evt-expand-hint">tap for details</div>
+        <div class="evt-expand-hint" data-hint="for details"></div>
       </div>
     </div>
 
@@ -1187,11 +1291,11 @@
         </div>
         <div class="evt-bottom">
           <span class="evt-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 2:00 &ndash; 10:00 PM</span>
-          <span class="evt-location"><a href="https://maps.google.com/?q=Crossroads+Cafe+Bushwick+Brooklyn+NY" target="_blank" rel="noopener">Crossroads Cafe, Bushwick</a></span>
+          <span class="evt-location"><svg class="location-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><a href="https://maps.google.com/?q=Crossroads+Cafe+Bushwick+Brooklyn+NY" target="_blank" rel="noopener">Crossroads Cafe, Bushwick</a></span>
           <span class="evt-type party">Party</span>
         </div>
         <div class="evt-desc">The official Dance Parade afterparty. Afternoon into evening social dance vibes at Crossroads Cafe in Bushwick. Discounted entry via Dancers List.</div>
-        <div class="evt-expand-hint">tap for details</div>
+        <div class="evt-expand-hint" data-hint="for details"></div>
       </div>
     </div>
 
@@ -1219,11 +1323,11 @@
         </div>
         <div class="evt-bottom">
           <span class="evt-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 12:00 &ndash; 2:00 PM</span>
-          <span class="evt-location"><a href="https://maps.google.com/?q=Modega+Long+Island+City+NY" target="_blank" rel="noopener">Modega, Long Island City</a></span>
+          <span class="evt-location"><svg class="location-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><a href="https://maps.google.com/?q=Modega+Long+Island+City+NY" target="_blank" rel="noopener">Modega, Long Island City</a></span>
           <span class="evt-type workshop">Workshop</span>
         </div>
         <div class="evt-desc">Final workshop with Kenji before the battle. Details TBA.</div>
-        <div class="evt-expand-hint">tap for details</div>
+        <div class="evt-expand-hint" data-hint="for details"></div>
       </div>
       <div class="evt-card" data-type="workshop">
         <div class="evt-top">
@@ -1232,11 +1336,11 @@
         </div>
         <div class="evt-bottom">
           <span class="evt-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 2:15 &ndash; 4:15 PM</span>
-          <span class="evt-location"><a href="https://maps.google.com/?q=Modega+Long+Island+City+NY" target="_blank" rel="noopener">Modega, Long Island City</a></span>
+          <span class="evt-location"><svg class="location-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><a href="https://maps.google.com/?q=Modega+Long+Island+City+NY" target="_blank" rel="noopener">Modega, Long Island City</a></span>
           <span class="evt-type workshop">Workshop</span>
         </div>
         <div class="evt-desc">Afternoon intensive with Melina. Details TBA.</div>
-        <div class="evt-expand-hint">tap for details</div>
+        <div class="evt-expand-hint" data-hint="for details"></div>
       </div>
       <div class="evt-card" data-type="workshop">
         <div class="evt-top">
@@ -1245,11 +1349,11 @@
         </div>
         <div class="evt-bottom">
           <span class="evt-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 4:30 &ndash; 6:30 PM</span>
-          <span class="evt-location"><a href="https://maps.google.com/?q=Modega+Long+Island+City+NY" target="_blank" rel="noopener">Modega, Long Island City</a></span>
+          <span class="evt-location"><svg class="location-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><a href="https://maps.google.com/?q=Modega+Long+Island+City+NY" target="_blank" rel="noopener">Modega, Long Island City</a></span>
           <span class="evt-type workshop">Workshop</span>
         </div>
         <div class="evt-desc">Final workshop of the festival with Miss Bibi before the battle begins. Details TBA.</div>
-        <div class="evt-expand-hint">tap for details</div>
+        <div class="evt-expand-hint" data-hint="for details"></div>
       </div>
     </div>
 
@@ -1266,7 +1370,7 @@
         </div>
         <div class="evt-bottom">
           <span class="evt-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 6:45 &ndash; 11:30 PM</span>
-          <span class="evt-location"><a href="https://maps.google.com/?q=Modega+Long+Island+City+NY" target="_blank" rel="noopener">Modega, Long Island City</a></span>
+          <span class="evt-location"><svg class="location-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><a href="https://maps.google.com/?q=Modega+Long+Island+City+NY" target="_blank" rel="noopener">Modega, Long Island City</a></span>
           <span class="evt-type battle">Battle</span>
         </div>
         <div class="evt-desc">The grand finale! 7-to-Smoke and Jack &amp; Jill battle formats. Whether you're competing or cheering from the crowd, this is the moment everyone's been waiting for. Battle entry is limited to festival participants. Opening party with Waterparkjones from NSH San Diego.</div>
@@ -1288,7 +1392,7 @@
             <span class="evt-sub-name">Closing Party</span>
           </div>
         </div>
-        <div class="evt-expand-hint">tap for full battle schedule</div>
+        <div class="evt-expand-hint" data-hint="for full battle schedule"></div>
       </div>
     </div>
 
@@ -1437,6 +1541,47 @@
   </div>
 </section>
 
+<!-- ========== PLAN ========== -->
+<section id="plan">
+  <div class="container">
+    <div class="section-header">
+      <h2>Plan Your Festival Experience</h2>
+      <p class="section-sub">Everything you need to know before you arrive</p>
+    </div>
+    <div class="plan-grid">
+
+      <a href="#map" class="plan-card">
+        <div class="plan-card-icon">&#128205;</div>
+        <h3>Venues</h3>
+        <p>All festival locations across Brooklyn and Long Island City</p>
+        <span class="plan-card-cta">View map &rarr;</span>
+      </a>
+
+      <a href="#housing" class="plan-card">
+        <div class="plan-card-icon">&#127968;</div>
+        <h3>Housing</h3>
+        <p>Reina coordinates accommodations for festival attendees</p>
+        <span class="plan-card-cta">Get help &rarr;</span>
+      </a>
+
+      <a href="#faq" class="plan-card">
+        <div class="plan-card-icon">&#10067;</div>
+        <h3>FAQ</h3>
+        <p>Answers to common questions about the festival</p>
+        <span class="plan-card-cta">Read FAQ &rarr;</span>
+      </a>
+
+      <a href="#conduct" class="plan-card">
+        <div class="plan-card-icon">&#129309;</div>
+        <h3>Code of Conduct</h3>
+        <p>Our community guidelines and safety policies</p>
+        <span class="plan-card-cta">Read &rarr;</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <!-- ========== HOUSING ========== -->
 <section id="housing">
@@ -1580,12 +1725,6 @@
         <a href="mailto:hello@tothemusicnyc.com" class="contact-link">hello@tothemusicnyc.com</a>
       </div>
       <div class="contact-card">
-        <div class="contact-icon">&#128247;</div>
-        <h3>Instagram</h3>
-        <p>Follow us for announcements, schedule updates, and behind-the-scenes content:</p>
-        <a href="https://instagram.com/tothemusicnyc" target="_blank" rel="noopener" class="contact-link">@tothemusicnyc</a>
-      </div>
-      <div class="contact-card">
         <div class="contact-icon">&#127968;</div>
         <h3>Housing</h3>
         <p>Need help with accommodations for the festival week?</p>
@@ -1603,10 +1742,8 @@
     <a href="#teachers">Teachers</a>
     <a href="#schedule">Schedule</a>
     <a href="#tickets">Tickets</a>
-    <a href="#housing">Housing</a>
-    <a href="#map">Venues</a>
     <a href="#merch">Merch</a>
-    <a href="#instagram">Instagram</a>
+    <a href="#plan">Plan</a>
     <a href="#contact">Contact</a>
   </div>
   <div class="social-links">
@@ -1751,6 +1888,18 @@
       setInterval(updateCSCountdown, 1000);
     }
   })();
+
+  // Teacher day badges → scroll to schedule + activate correct tab
+  document.querySelectorAll('.teacher-day[data-day]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const day = btn.dataset.day;
+      const tab = document.querySelector(`.schedule-tab[data-day="${day}"]`);
+      if (tab) {
+        tab.click();
+        document.getElementById('schedule').scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
 </script>
 
 </body>
