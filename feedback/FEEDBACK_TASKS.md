@@ -23,60 +23,74 @@ Sources: `desktop-website-feedback.md`, `mobile-website-feedback.md`
 
 ## 🧭 Navigation
 
-- [ ] **Remove Instagram from nav** — drop the Instagram link from the navbar
-- [ ] **Add "Plan Your Experience" nav section** — group FAQ, Housing, Code of Conduct, and Venues under a single nav item or section called "Plan Your Festival Experience"
+- [x] **Remove Instagram from nav** — dropped from navbar and footer nav
+- [x] **Add "Plan Your Experience" nav section** — new #plan section added with 4 cards (Venues, Housing, FAQ, Code of Conduct); nav updated with single "Plan" link replacing Housing/Venues/Instagram
 
 ---
 
 ## 📋 About Section
 
-- [ ] **Remove Parties card** — it's redundant with the parties description already on the page
-- [ ] **Remove Free Time card** — cut this card from the about grid
+- [x] **Remove Parties card** — removed
+- [x] **Remove Free Time card** — removed
 - [ ] **Replace emoji/backgrounds on day cards** — use images instead of emojis as the visual treatment for the five days of dance cards
-- [ ] **Mobile: swipeable carousel** — about cards take up too much vertical space on mobile; convert to a horizontal swipeable carousel
+- [x] **Mobile: swipeable carousel** — about grid is now a horizontal swipeable carousel on mobile
 
 ---
 
 ## 👩‍🏫 Teachers Section
 
-- [ ] **Day badges link to schedule** — clicking a day badge (e.g. "Fri May 15") should scroll to and highlight that day in the schedule
-- [ ] **Mobile: horizontal swipeable carousel** — teacher cards should be swipeable horizontally on mobile
+- [x] **Day badges link to schedule** — badges are now buttons; clicking scrolls to and activates the correct day tab in the schedule
+- [x] **Mobile: horizontal swipeable carousel** — teacher cards are horizontally swipeable on mobile
 
 ---
 
 ## 📅 Schedule Section
 
-- [ ] **One-word day summary** — add a one-word descriptor for each day visible in the tab (e.g. "Arrive", "Community", "Train", "Parade", "Battle")
-- [ ] **"tap" vs "click" by device** — show "tap for details" on mobile, "click for details" on desktop
-- [ ] **Mobile: continuous scroll** — replace the 5-tab button navigation with one continuous scrollable schedule on mobile
-- [ ] **Location link icon** — add a map pin icon (📍 or SVG) next to location names so it's clear they're tappable/clickable links to Google Maps
+- [x] **One-word day summary** — tabs now show: Arrive · Community · Train · Parade · Battle
+- [x] **"tap" vs "click" by device** — CSS pointer media query shows "Tap" on touch, "Click" on desktop
+- [x] **Mobile: continuous scroll** — tabs hidden on mobile; all 5 days shown as one continuous scroll
+- [x] **Location link icon** — map pin SVG added to all clickable venue location names
 
 ---
 
 ## 🎟️ Tickets Section
 
-- [ ] **Mobile: horizontal scroll** — ticket cards should be horizontally scrollable on mobile instead of stacked vertically
+- [x] **Mobile: horizontal scroll** — ticket cards are horizontally scrollable on mobile
 
 ---
 
 ## 🏠 Housing Section
 
-- [ ] **Mobile: remove full section** — the housing coordination section is too heavy on mobile; replace with a compact card in the footer/contact area instead
+- [x] **Mobile: remove full section** — housing section hidden on mobile; compact Housing card present in contact section
 
 ---
 
 ## 📸 Instagram & Contact Section
 
-- [ ] **Remove Instagram card from Contact** — the contact section has an Instagram card that's redundant since we already have the Instagram feed section; remove it
+- [x] **Remove Instagram card from Contact** — removed; contact section now has Email and Housing cards
 
 ---
 
 ## 🌍 Accessibility & Internationalization
 
-- [ ] **Add translate button** — add a language switcher for English, Japanese, and French
-- [ ] **Fonts consistently sans-serif** — audit all uses of Playfair Display (serif) and evaluate switching to a consistent sans-serif across the site
+- [ ] **Add translate button** — add a language switcher for English, Japanese, and French *(holding)*
+- [ ] **Fonts consistently sans-serif** — audit all uses of Playfair Display (serif) and evaluate switching to a consistent sans-serif across the site *(holding)*
 
 ---
 
 ## ✅ Completed
-_(move items here as they're done)_
+
+- [x] Remove Instagram from nav
+- [x] Add "Plan Your Festival Experience" section + nav link
+- [x] Remove Parties card from About
+- [x] Remove Free Time card from About
+- [x] Mobile: About cards swipeable carousel
+- [x] Teacher day badges link to schedule
+- [x] Mobile: Teacher cards horizontal carousel
+- [x] Schedule tabs one-word day descriptors (Arrive/Community/Train/Parade/Battle)
+- [x] "Tap/Click for details" device-aware via CSS
+- [x] Mobile: Schedule continuous scroll (tabs hidden)
+- [x] Location map pin icons on all venue links in schedule
+- [x] Mobile: Ticket cards horizontal scroll
+- [x] Mobile: Housing section hidden, compact card in contact
+- [x] Remove Instagram card from Contact section
