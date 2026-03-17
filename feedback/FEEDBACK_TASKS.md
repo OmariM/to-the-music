@@ -15,7 +15,7 @@ Sources: `desktop-website-feedback.md`, `mobile-website-feedback.md`
 ## 🦸 Hero Section
 
 - [ ] **Expand hero subtitle** — add more detail to the subheading beneath "To The Music" (e.g. what kind of festival, who it's for)
-- [ ] **Swap button order** — "View Schedule" should come before "Get Your Pass"
+- [x] **Swap button order** — "View Schedule" now comes before "Get Your Pass"
 - [ ] **Clarify countdown purpose** — label the countdown clearly: is it counting down to festival start or registration open?
 - [ ] **Highlight NYC** — make it more prominent that this is happening in New York City
 
@@ -79,6 +79,8 @@ Sources: `desktop-website-feedback.md`, `mobile-website-feedback.md`
 ---
 
 ## ✅ Completed
+
+- [x] Swap hero button order (View Schedule before Get Your Pass)
 
 - [x] Remove Instagram from nav
 - [x] Add "Plan Your Festival Experience" section + nav link
