@@ -620,10 +620,27 @@
         scroll-snap-align: start;
       }
 
-      /* Schedule — continuous scroll: hide tabs, show all days */
+      /* Schedule — horizontal swipeable carousel */
       .schedule-tabs { display: none; }
-      .schedule-day { display: block !important; }
-      .schedule-day + .schedule-day { margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #2a2a3a; }
+      .schedule-days-wrap {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: 1rem;
+        padding-bottom: 1rem;
+        scrollbar-width: none;
+      }
+      .schedule-days-wrap::-webkit-scrollbar { display: none; }
+      .schedule-day {
+        display: block !important;
+        flex: 0 0 88vw;
+        scroll-snap-align: start;
+        background: var(--bg-card);
+        border: 1px solid #2a2a3a;
+        border-radius: 12px;
+        padding: 1.25rem;
+      }
 
       /* Housing section — hidden on mobile (compact card lives in #contact) */
       #housing { display: none; }
@@ -1053,6 +1070,7 @@
       <button class="filter-pill" data-filter="battle">Battle</button>
     </div>
 
+    <div class="schedule-days-wrap">
     <!-- ========== WEDNESDAY ========== -->
     <div class="schedule-day active" id="day-wed">
   <div class="schedule-day-header">
@@ -1408,6 +1426,7 @@
 
   </div>
 </div>
+    </div><!-- end .schedule-days-wrap -->
 
   </div>
 </section>
