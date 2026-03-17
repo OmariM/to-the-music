@@ -570,7 +570,8 @@
       .countdown-num { font-size: 1.6rem; }
       .section-title { font-size: 2rem; }
 
-      /* Shared carousel pattern — cards at 80vw, center-snapped so ~10vw peeks on each side */
+      /* Shared carousel pattern — cards sized relative to container so peek is
+         always visible on both sides, regardless of card index */
       .about-grid,
       .teachers-grid,
       .ticket-grid,
@@ -588,23 +589,41 @@
       .ticket-grid::-webkit-scrollbar,
       .schedule-days-wrap::-webkit-scrollbar { display: none; }
 
+      /* Cards are container-width minus 4rem so ~2rem peeks on each side */
       .about-grid .about-card,
       .teachers-grid .teacher-card,
       .ticket-grid .ticket-card {
-        flex: 0 0 80vw;
+        flex: 0 0 calc(100% - 4rem);
         scroll-snap-align: center;
+      }
+
+      /* Carousel focus: inactive cards dimmed and slightly scaled down */
+      .about-grid .about-card,
+      .teachers-grid .teacher-card,
+      .ticket-grid .ticket-card,
+      .schedule-days-wrap .schedule-day {
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        opacity: 0.45;
+        transform: scale(0.95);
+      }
+      .about-grid .about-card.carousel-active,
+      .teachers-grid .teacher-card.carousel-active,
+      .ticket-grid .ticket-card.carousel-active,
+      .schedule-days-wrap .schedule-day.carousel-active {
+        opacity: 1;
+        transform: scale(1);
       }
 
       /* Disable lift transform inside carousels so top isn't clipped */
       .about-grid .about-card:hover,
       .teachers-grid .teacher-card:hover,
-      .ticket-grid .ticket-card:hover { transform: none !important; }
+      .ticket-grid .ticket-card:hover { transform: scale(1) !important; }
 
       /* Schedule carousel */
       .schedule-tabs { display: none; }
       .schedule-day {
         display: block !important;
-        flex: 0 0 80vw;
+        flex: 0 0 calc(100% - 4rem);
         scroll-snap-align: center;
         background: var(--bg-card);
         border: 1px solid #2a2a3a;
@@ -1806,6 +1825,28 @@
       if (!isOpen) item.classList.add('open');
     });
   });
+
+  // Mobile carousel focus — highlight the centered (snapped) card
+  function initCarouselFocus(containerSelector, cardSelector) {
+    document.querySelectorAll(containerSelector).forEach(container => {
+      const cards = container.querySelectorAll(cardSelector);
+      if (!cards.length) return;
+      // Mark first card active on init
+      cards[0].classList.add('carousel-active');
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          entry.target.classList.toggle('carousel-active', entry.isIntersecting);
+        });
+      }, { root: container, threshold: 0.6 });
+      cards.forEach(card => observer.observe(card));
+    });
+  }
+  if (window.matchMedia('(max-width: 768px)').matches) {
+    initCarouselFocus('.about-grid', '.about-card');
+    initCarouselFocus('.teachers-grid', '.teacher-card');
+    initCarouselFocus('.ticket-grid', '.ticket-card');
+    initCarouselFocus('.schedule-days-wrap', '.schedule-day');
+  }
 
   // Smooth scroll for nav links (close mobile menu too)
   document.querySelectorAll('a[href^="#"]').forEach(a => {
