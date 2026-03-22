@@ -236,6 +236,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 2rem;
+      align-items: start;
       margin-top: 2rem;
     }
     .teacher-card {
@@ -1954,8 +1955,8 @@
     }
   })();
 
-  // Teacher bio accordion — force-initialize all bodies closed, then toggle per-card
-  document.querySelectorAll('.teacher-bio-body').forEach(b => {
+  // Teacher bio accordion
+  document.querySelectorAll('.teacher-bio-body').forEach(function(b) {
     b.style.maxHeight = '0px';
     b.style.paddingBottom = '0';
     b.style.overflow = 'hidden';
@@ -1967,11 +1968,11 @@
       var card = this.closest('.teacher-card');
       if (!card) return;
       var body = card.querySelector('.teacher-bio-body');
-      var arrow = card.querySelector('.teacher-bio-arrow');
       if (!body) return;
       var isOpen = body.style.maxHeight && body.style.maxHeight !== '0px';
       body.style.maxHeight = isOpen ? '0px' : body.scrollHeight + 'px';
       body.style.paddingBottom = isOpen ? '0' : '1.25rem';
+      var arrow = card.querySelector('.teacher-bio-arrow');
       if (arrow) arrow.style.transform = isOpen ? '' : 'rotate(45deg)';
     });
   });
