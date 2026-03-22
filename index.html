@@ -340,12 +340,6 @@
     .tab-word { display: block; font-size: 0.6rem; color: rgba(255,255,255,0.5); margin-top: 1px; letter-spacing: 0.05em; }
     .schedule-tab.active .tab-word { color: rgba(255,255,255,0.8); }
 
-    /* Filter groups */
-    .schedule-filter-groups { margin-bottom: 2.5rem; display: flex; flex-direction: column; gap: 1rem; }
-    .filter-group-label {
-      font-size: 0.68rem; color: var(--text-dim); text-transform: uppercase;
-      letter-spacing: 0.12em; margin-bottom: 0.5rem; text-align: center;
-    }
     .schedule-filters {
       display: flex; justify-content: center; gap: 0.4rem; flex-wrap: wrap;
     }
@@ -1139,27 +1133,12 @@
   <div class="section-inner">
     <h2 class="section-title">Festival Schedule</h2>
 
-    <div class="schedule-filter-groups">
-      <div>
-        <p class="filter-group-label">By Day</p>
-        <div class="schedule-filters">
-          <button class="filter-pill day-filter active" data-day="wed">Wed · May 13</button>
-          <button class="filter-pill day-filter" data-day="thu">Thu · May 14</button>
-          <button class="filter-pill day-filter" data-day="fri">Fri · May 15</button>
-          <button class="filter-pill day-filter" data-day="sat">Sat · May 16</button>
-          <button class="filter-pill day-filter" data-day="sun">Sun · May 17</button>
-        </div>
-      </div>
-      <div>
-        <p class="filter-group-label">By Event Type</p>
-        <div class="schedule-filters">
-          <button class="filter-pill type-filter" data-type="workshop">Workshops</button>
-          <button class="filter-pill type-filter" data-type="party">Parties</button>
-          <button class="filter-pill type-filter" data-type="social">Social</button>
-          <button class="filter-pill type-filter" data-type="battle">Battle</button>
-          <button class="filter-pill type-filter" data-type="community">Q&amp;A</button>
-        </div>
-      </div>
+    <div class="schedule-filters" style="margin-bottom:2.5rem;">
+      <button class="filter-pill day-filter active" data-day="wed">Wed · May 13</button>
+      <button class="filter-pill day-filter" data-day="thu">Thu · May 14</button>
+      <button class="filter-pill day-filter" data-day="fri">Fri · May 15</button>
+      <button class="filter-pill day-filter" data-day="sat">Sat · May 16</button>
+      <button class="filter-pill day-filter" data-day="sun">Sun · May 17</button>
     </div>
 
     <div class="schedule-days-wrap">
@@ -1810,54 +1789,24 @@
     card.style.cursor = 'pointer';
   });
 
-  // Schedule dual-filter system
-  let scheduleFilterMode = 'day';
+  // Schedule filter
   let scheduleFilterValue = 'wed';
 
   function applyScheduleFilter() {
-    if (scheduleFilterMode === 'day') {
-      document.querySelectorAll('.schedule-day').forEach(day => {
-        const isActive = day.id === 'day-' + scheduleFilterValue;
-        day.style.animation = 'none';
-        day.classList.toggle('active', isActive);
-      });
-      const activeDay = document.getElementById('day-' + scheduleFilterValue);
-      if (activeDay) { activeDay.offsetHeight; activeDay.style.animation = ''; }
-      document.querySelectorAll('.evt-card').forEach(card => card.classList.remove('filtered-out'));
-      document.querySelectorAll('.time-group').forEach(g => g.style.display = '');
-    } else {
-      document.querySelectorAll('.schedule-day').forEach(day => day.classList.add('active'));
-      document.querySelectorAll('.evt-card').forEach(card => {
-        card.classList.toggle('filtered-out', card.dataset.type !== scheduleFilterValue);
-      });
-      document.querySelectorAll('.time-group').forEach(group => {
-        const visible = group.querySelectorAll('.evt-card:not(.filtered-out)');
-        group.style.display = visible.length ? '' : 'none';
-      });
-      // Hide days with no matching events
-      document.querySelectorAll('.schedule-day').forEach(day => {
-        const hasVisible = day.querySelectorAll('.evt-card:not(.filtered-out)').length > 0;
-        day.classList.toggle('active', hasVisible);
-      });
-    }
+    document.querySelectorAll('.schedule-day').forEach(day => {
+      const isActive = day.id === 'day-' + scheduleFilterValue;
+      day.style.animation = 'none';
+      day.classList.toggle('active', isActive);
+    });
+    const activeDay = document.getElementById('day-' + scheduleFilterValue);
+    if (activeDay) { activeDay.offsetHeight; activeDay.style.animation = ''; }
   }
 
   document.querySelectorAll('.day-filter').forEach(btn => {
     btn.addEventListener('click', () => {
-      document.querySelectorAll('.day-filter, .type-filter').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.day-filter').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      scheduleFilterMode = 'day';
       scheduleFilterValue = btn.dataset.day;
-      applyScheduleFilter();
-    });
-  });
-
-  document.querySelectorAll('.type-filter').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.day-filter, .type-filter').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      scheduleFilterMode = 'type';
-      scheduleFilterValue = btn.dataset.type;
       applyScheduleFilter();
     });
   });
@@ -1984,7 +1933,6 @@
       document.querySelectorAll('.day-filter, .type-filter').forEach(b => b.classList.remove('active'));
       const dayBtn = document.querySelector(`.day-filter[data-day="${day}"]`);
       if (dayBtn) dayBtn.classList.add('active');
-      scheduleFilterMode = 'day';
       scheduleFilterValue = day;
       applyScheduleFilter();
       document.getElementById('schedule').scrollIntoView({ behavior: 'smooth' });
