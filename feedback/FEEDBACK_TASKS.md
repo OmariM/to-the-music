@@ -48,7 +48,7 @@ Sources: `desktop-website-feedback.md`, `mobile-website-feedback.md`
 
 - [x] **One-word day summary** — tabs now show: Arrive · Community · Train · Parade · Battle
 - [x] **"tap" vs "click" by device** — CSS pointer media query shows "Tap" on touch, "Click" on desktop
-- [x] **Mobile: continuous scroll** — tabs hidden on mobile; all 5 days shown as one continuous scroll
+- [x] **Mobile: tab-based navigation** — tabs visible on mobile; day content shows/hides via tab selection
 - [x] **Location link icon** — map pin SVG added to all clickable venue location names
 
 ---
@@ -91,8 +91,10 @@ Sources: `desktop-website-feedback.md`, `mobile-website-feedback.md`
 - [x] Mobile: Teacher cards horizontal carousel
 - [x] Schedule tabs one-word day descriptors (Arrive/Community/Train/Parade/Battle)
 - [x] "Tap/Click for details" device-aware via CSS
-- [x] Mobile: Schedule continuous scroll (tabs hidden)
+- [x] Mobile: Schedule tab-based navigation (reverted from horizontal scroll)
 - [x] Location map pin icons on all venue links in schedule
 - [x] Mobile: Ticket cards horizontal scroll
 - [x] Mobile: Housing section hidden, compact card in contact
 - [x] Remove Instagram card from Contact section
+- [x] Mobile: carousel peek fix — adjacent cards always visible on both sides (all card indices)
+- [x] Mobile: carousel focus effect — centered card highlighted, inactive cards dimmed + scaled down

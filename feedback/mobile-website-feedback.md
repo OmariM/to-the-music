@@ -1,0 +1,8 @@
+- the five days of dance cards take up too much vertical space on mobile. maybe having some sort of swipable carousel would help reduce the amount of vertical space it takes up
+- the teachers could be a horizontal swipable carousel 
+- instead of buttons showing the schedule it should just be one continous scrollable component
+- get your pass sections can be a horizontal scroll as well
+- housing coordination section can be cut, we can just keep it as a card in the bottom 
+- delete instagram card on the bottom because we have the instagram feed embed already
+- it isn't clear that the locations in the calendar view are tappable to go to google maps. maybe having an icon that will indicate that it's tappable
+- All keep the fonts consistently sans-serif

@@ -1,0 +1,19 @@
+- figure out what fonts val uses on the canva 
+- match the gradient from the icon with the rest of the color scheme
+- integrate the colors a bit more across the color scheme
+- background can be a video 
+- add some more detail to the subtitle of the main header
+- switch order of get your pass and view schedule
+- maybe add a translate button for international people 
+	- english, japanese, french
+- be clear about timer purpose. time until festival or time until registration ends?
+- highlight that it's happening in new york
+- different emojis for the five days of dance cards, maybe not emojis but background can be images
+- having the parties card and the parties section is a bit redundant. remove the parties card
+- take away free time and parties card
+- the dates on the teacher cards should be interact-able. they should take you to the respective card in the schedule
+- for the schedule, give a one word summary of each day
+- color pallet should match the logo
+- "tap" on mobile, "click" on desktop
+- "instagram" section in the nav bar header can be removed
+- Have a "plan your festival experience" with the FAQ, Housing, Code of Conduct, Venues subsections 

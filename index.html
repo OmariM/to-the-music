@@ -83,6 +83,7 @@
     .hero-content { position: relative; z-index: 2; max-width: 700px; }
     .hero-logo {
       width: 220px; height: 220px; border-radius: 50%; margin-bottom: 2rem;
+      object-fit: contain;
       box-shadow: 0 0 60px var(--accent-glow), 0 0 120px rgba(233,69,96,0.1);
       animation: float 6s ease-in-out infinite;
     }
@@ -101,8 +102,12 @@
       letter-spacing: 0.08em; margin-bottom: 0.5rem;
     }
     .hero-date {
-      font-size: 1.3rem; font-weight: 600; color: var(--teal);
-      letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 2.5rem;
+      font-size: 1.8rem; font-weight: 800; color: var(--teal);
+      letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.5rem;
+    }
+    .hero-reg-note {
+      margin-top: 1.2rem; font-size: 0.88rem; color: var(--text-dim);
+      font-style: italic;
     }
     .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
     .btn-primary {
@@ -120,21 +125,21 @@
     }
     .btn-secondary:hover { border-color: var(--accent); color: var(--accent); background: rgba(233,69,96,0.05); }
 
-    /* COUNTDOWN */
-    .countdown-bar {
-      background: var(--bg-section); border-bottom: 1px solid var(--border);
-      padding: 1.5rem 2rem; text-align: center;
+    /* COUNTDOWN (inline in hero) */
+    .hero-countdown-wrap { margin-top: 2rem; }
+    .hero-countdown-label {
+      font-size: 0.68rem; color: rgba(255,255,255,0.4); text-transform: uppercase;
+      letter-spacing: 0.15em; margin-bottom: 0.6rem;
     }
     .countdown-inner {
-      max-width: 600px; margin: 0 auto;
       display: flex; justify-content: center; gap: 2rem;
     }
     .countdown-item { text-align: center; }
     .countdown-num {
-      font-size: 2.2rem; font-weight: 800; color: var(--accent);
+      font-size: 2.2rem; font-weight: 800; color: #fff;
       font-family: 'Playfair Display', serif; line-height: 1;
     }
-    .countdown-label { font-size: 0.7rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.15em; margin-top: 0.2rem; }
+    .countdown-label { font-size: 0.65rem; color: rgba(255,255,255,0.35); text-transform: uppercase; letter-spacing: 0.15em; margin-top: 0.25rem; }
 
     /* SECTIONS */
     section { padding: 5rem 2rem; }
@@ -150,6 +155,37 @@
 
     /* ABOUT */
     #about { background: var(--bg-section); }
+    .about-body { max-width: 700px; margin: 0 auto; text-align: left; }
+    .about-desc { color: var(--text-muted); line-height: 1.9; margin-bottom: 2rem; font-size: 1rem; }
+    .about-credits { font-size: 0.88rem; color: var(--text-dim); margin-bottom: 2rem; line-height: 2; }
+    .about-credits strong { color: var(--text-muted); }
+    .about-divider {
+      border: none; border-top: 1px solid var(--border); margin: 2.5rem 0;
+    }
+    .about-quote-block {
+      display: flex; gap: 1.5rem; align-items: flex-start;
+    }
+    .about-headshot-wrap {
+      width: 72px; height: 72px; border-radius: 50%;
+      border: 2px solid var(--accent); flex-shrink: 0;
+      overflow: hidden;
+    }
+    .about-headshot {
+      width: 100%; height: 100%; object-fit: cover; object-position: center top;
+      transform: scale(3.2); transform-origin: 40% 40%;
+      display: block;
+    }
+    .about-quote-text {
+      color: var(--text-muted); font-size: 0.95rem; line-height: 1.85;
+      font-style: italic; margin-bottom: 0.75rem;
+    }
+    .about-quote-attr {
+      font-size: 0.85rem; font-weight: 700; color: var(--text);
+    }
+    .about-thanks {
+      margin-top: 2rem; font-size: 0.85rem; color: var(--text-dim); line-height: 1.8;
+    }
+    .about-thanks strong { color: var(--text-muted); }
     .about-grid {
       display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem;
     }
@@ -260,6 +296,29 @@
       color: var(--text-dim);
       font-style: italic;
     }
+    /* Teacher bio accordion */
+    .teacher-bio-toggle {
+      width: 100%; background: none; border: none; border-top: 1px solid var(--border);
+      padding: 0.75rem 1.25rem; display: flex; justify-content: space-between;
+      align-items: center; cursor: pointer; color: var(--text-muted);
+      font-size: 0.8rem; font-weight: 600; font-family: 'Poppins', sans-serif;
+      text-transform: uppercase; letter-spacing: 0.06em; transition: color 0.2s;
+      margin-top: 0.5rem;
+    }
+    .teacher-bio-toggle:hover { color: var(--accent); }
+    .teacher-bio-arrow { font-size: 1rem; color: var(--accent); transition: transform 0.3s; }
+    .teacher-card.bio-open .teacher-bio-arrow { transform: rotate(45deg); }
+    .teacher-bio-body {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s;
+      padding: 0 1.25rem;
+    }
+    .teacher-card.bio-open .teacher-bio-body { max-height: 300px; padding: 0 1.25rem 1.25rem; }
+    .teacher-bio-body p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.8; }
+    .teacher-photo {
+      width: 100%; aspect-ratio: 1; object-fit: cover;
+      border-bottom: 1px solid #2a2a3a; display: block;
+    }
 
     /* SCHEDULE */
     #schedule { background: var(--bg-dark); }
@@ -280,9 +339,14 @@
     .tab-word { display: block; font-size: 0.6rem; color: rgba(255,255,255,0.5); margin-top: 1px; letter-spacing: 0.05em; }
     .schedule-tab.active .tab-word { color: rgba(255,255,255,0.8); }
 
-    /* Filter pills */
+    /* Filter groups */
+    .schedule-filter-groups { margin-bottom: 2.5rem; display: flex; flex-direction: column; gap: 1rem; }
+    .filter-group-label {
+      font-size: 0.68rem; color: var(--text-dim); text-transform: uppercase;
+      letter-spacing: 0.12em; margin-bottom: 0.5rem; text-align: center;
+    }
     .schedule-filters {
-      display: flex; justify-content: center; gap: 0.4rem; margin-bottom: 2.5rem; flex-wrap: wrap;
+      display: flex; justify-content: center; gap: 0.4rem; flex-wrap: wrap;
     }
     .filter-pill {
       background: transparent; border: 1px solid var(--border);
@@ -296,6 +360,7 @@
 
     .schedule-day { display: none; animation: fadeSlideIn 0.4s ease; }
     .schedule-day.active { display: block; }
+    .schedule-day + .schedule-day.active { margin-top: 3.5rem; }
     @keyframes fadeSlideIn {
       from { opacity: 0; transform: translateY(12px); }
       to { opacity: 1; transform: translateY(0); }
@@ -513,7 +578,7 @@
     .faq-answer {
       max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s;
     }
-    .faq-item.open .faq-answer { max-height: 300px; padding-bottom: 1.3rem; }
+    .faq-item.open .faq-answer { max-height: 1000px; padding-bottom: 1.3rem; }
     .faq-answer p { color: var(--text-muted); font-size: 0.92rem; line-height: 1.8; }
 
     /* CODE OF CONDUCT */
@@ -650,7 +715,7 @@
 
 /* MAP */
 #map { background: var(--bg-section); }
-.venues-list { display: flex; flex-wrap: wrap; gap: 1rem; margin: 2rem 0; justify-content: center; }
+.venues-list { max-width: 560px; margin: 2rem auto; display: flex; flex-direction: column; gap: 0.6rem; }
 .venue-item {
   display: flex;
   align-items: center;
@@ -813,6 +878,58 @@
 }
 .cs-instagram:hover { text-decoration: underline; }
 
+/* BATTLE */
+#battle { background: var(--bg-dark); }
+.battle-intro {
+  max-width: 700px; margin: 0 auto 3rem; text-align: center;
+  color: var(--text-muted); line-height: 1.9;
+}
+.battle-qual-note {
+  display: inline-block; margin-bottom: 1.5rem;
+  background: rgba(245,166,35,0.1); border: 1px solid rgba(245,166,35,0.25);
+  color: var(--gold); padding: 0.5rem 1.2rem; border-radius: 50px;
+  font-size: 0.82rem; font-weight: 600; letter-spacing: 0.04em;
+}
+.battle-schedule-row {
+  display: flex; align-items: center; gap: 0.75rem;
+  padding: 0.5rem 0; border-bottom: 1px solid var(--border); font-size: 0.9rem;
+}
+.battle-schedule-row:last-child { border-bottom: none; }
+.battle-time { color: var(--gold); font-weight: 700; min-width: 80px; }
+.battle-event { color: var(--text-muted); }
+.battle-dj-card {
+  max-width: 600px; margin: 3rem auto 0;
+  background: var(--bg-card); border: 1px solid #2a2a3a;
+  border-radius: 16px; padding: 2rem; display: flex; gap: 1.5rem; align-items: flex-start;
+}
+.battle-dj-photo {
+  width: 100px; height: 100px; border-radius: 50%; object-fit: cover;
+  border: 2px solid var(--accent); flex-shrink: 0;
+}
+.battle-dj-info h3 {
+  font-family: 'Playfair Display', serif; font-size: 1.2rem; margin-bottom: 0.2rem;
+}
+.battle-dj-info .dj-role {
+  font-size: 0.78rem; color: var(--accent); font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 0.75rem;
+}
+.battle-dj-info p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.8; }
+.battle-ig-link {
+  display: inline-block; margin-top: 2rem; color: var(--accent);
+  text-decoration: none; font-weight: 600; font-size: 0.9rem;
+}
+.battle-ig-link:hover { text-decoration: underline; }
+.battle-rules-note { margin-top: 2rem; text-align: center; font-size: 0.82rem; color: var(--text-dim); }
+@media (max-width: 600px) {
+  .battle-dj-card { flex-direction: column; align-items: center; text-align: center; }
+}
+
+/* LOCATIONS */
+#locations { background: var(--bg-section); }
+
+/* FAQS */
+#faqs { background: var(--bg-dark); }
+
 /* PLAN */
 #plan { background: var(--bg-section); }
 .plan-accordion { margin-top: 2rem; display: flex; flex-direction: column; gap: 0.75rem; }
@@ -871,7 +988,7 @@
 <!-- ========== COMING SOON OVERLAY ========== -->
 <div id="coming-soon-overlay">
   <div class="cs-inner">
-    <img src="assets/to-the-music-logo.jpg" alt="To The Music" class="cs-logo">
+    <img src="assets/to-the-music-official-assets/To%20the%20Music%20Logo%20Assets%20%5BSHARED%5D/Circle%20%5BMAIN%20LOGO%2C%20Preferred%5D.png" alt="To The Music" class="cs-logo">
     <h1 class="cs-title">To The Music</h1>
     <p class="cs-subtitle">Coming Soon</p>
     <div class="cs-details">
@@ -887,14 +1004,15 @@
 <!-- NAV -->
 <nav id="navbar">
   <div class="nav-inner">
-    <a href="#hero"><img src="assets/to-the-music-logo.jpg" alt="To The Music" class="nav-logo" /></a>
+    <a href="#hero"><img src="assets/to-the-music-official-assets/To%20the%20Music%20Logo%20Assets%20%5BSHARED%5D/Circle%20%5BMAIN%20LOGO%2C%20Preferred%5D.png" alt="To The Music" class="nav-logo" /></a>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#teachers">Teachers</a></li>
       <li><a href="#schedule">Schedule</a></li>
+      <li><a href="#battle">Battle</a></li>
       <li><a href="#tickets">Tickets</a></li>
-      <li><a href="#merch">Merch</a></li>
-      <li><a href="#plan">Plan</a></li>
+      <li><a href="#locations">Locations</a></li>
+      <li><a href="#faqs">FAQs</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <a href="#tickets" class="nav-cta">Get Passes</a>
@@ -907,119 +1025,107 @@
 <!-- HERO -->
 <section class="hero" id="hero">
   <div class="hero-content">
-    <img src="assets/to-the-music-logo.jpg" alt="To The Music Festival Logo" class="hero-logo" />
-    <p class="hero-subtitle">A NewStyle Hustle Experience</p>
+    <img src="assets/to-the-music-official-assets/To%20the%20Music%20Logo%20Assets%20%5BSHARED%5D/Circle%20%5BMAIN%20LOGO%2C%20Preferred%5D.png" alt="To The Music Festival Logo" class="hero-logo" />
+    <p class="hero-subtitle">5-Day NewStyle Hustle Festival</p>
     <h1>To The Music</h1>
     <p class="hero-date">May 13 &ndash; 17, 2026</p>
     <div class="hero-buttons">
       <a href="#schedule" class="btn-secondary">View Schedule</a>
       <a href="#tickets" class="btn-primary">Get Your Pass</a>
     </div>
+    <p class="hero-reg-note">Festival passes and registration open until Friday, May 8.</p>
+    <div class="hero-countdown-wrap">
+      <p class="hero-countdown-label">Time until the festival</p>
+      <div class="countdown-inner" id="countdown"></div>
+    </div>
   </div>
 </section>
-
-<!-- COUNTDOWN -->
-<div class="countdown-bar">
-  <div class="countdown-inner" id="countdown"></div>
-</div>
 
 <!-- ABOUT -->
 <section id="about">
   <div class="section-inner">
-    <h2 class="section-title">Five Days of Dance</h2>
-    <p class="section-subtitle">Workshops, battles, socials, and community &mdash; all under one roof.</p>
-    <div class="about-grid">
-      <div class="about-card">
-        <div class="about-icon">&#127918;</div>
-        <h3>7 Workshops</h3>
-        <p>Two-hour and 90-minute intensives covering NewStyle Hustle technique, follower styling, and more &mdash; taught by world-class instructors.</p>
+    <h2 class="section-title">About To The Music</h2>
+    <div class="about-body">
+      <p class="about-desc">To The Music is a 5-day NewStyle Hustle festival based in NYC, being hosted for the first time in May 2026 by Valerie Anysia and the NSH NYC community. Like many other street and partner dance styles, hustle is danced and shared differently around the world based on who your teachers are, your approach to art and musicality, the local music and party culture, and your personal expression as a dancer.</p>
+      <p class="about-desc">This festival is intended to show you how it feels to dance NewStyle Hustle in New York, what it looks like in the club culture, highlight community leaders who have built and contributed to this movement for more than a decade, and share perspectives of what makes NewStyle Hustle different from other approaches.</p>
+      <hr class="about-divider" />
+      <div class="about-quote-block">
+        <div class="about-headshot-wrap">
+          <img src="assets/headshots/Val%20Headshot.jpg" alt="Valerie Anysia" class="about-headshot" />
+        </div>
+        <div>
+          <p class="about-quote-text">While there is more I can say about my passion for NewStyle Hustle, my intention for the festival, and my love for the community &ndash; I simply encourage you to come see it for yourself. It takes a big leap of faith to organize an event at this scale, and we are extremely grateful to everyone who is finding the space in their journey to support it.</p>
+          <p class="about-quote-attr">&ndash; Val</p>
+        </div>
       </div>
-      <div class="about-card">
-        <div class="about-icon">&#128293;</div>
-        <h3>HNT Battle</h3>
-        <p>The NewStyle Hustle N' Tussle &mdash; featuring 7-to-Smoke and Jack & Jill formats. Compete or cheer from the crowd on the final night.</p>
-      </div>
-      <div class="about-card">
-        <div class="about-icon">&#127908;</div>
-        <h3>Q&A with Jeff Selby</h3>
-        <p>An intimate evening session with NewStyle Hustle pioneer Jeff Selby. Ask questions, gain insight, and connect with the movement's roots.</p>
-      </div>
-      <div class="about-card">
-        <div class="about-icon">&#129309;</div>
-        <h3>Community First</h3>
-        <p>A dedicated organizers workshop, outdoor potluck, and happy hours built to strengthen the bonds that make the hustle community special.</p>
-      </div>
-    </div>
-    <div class="about-parties">
-      <h3>The Parties</h3>
-      <p>Every night at To The Music ends on the dance floor. We're collaborating with local NYC club organizers, party promoters, and tastemakers to curate nights that feel at home in the city's dance music scene — not just a festival afterthought. Each party is designed to blend the hustle community with the energy of NYC nightlife.</p>
-      <p class="about-parties-note">Party lineups and venues are announced closer to the month of the festival. Follow <a href="https://instagram.com/tothemusicnyc" target="_blank">@tothemusicnyc</a> for updates.</p>
+      <p class="about-thanks">Thank you to the organizing team and NSH community leaders who have helped make this festival possible:<br><strong>Reina H., Omari M., Jeff S., Melina R., Kenji T., Rob L.</strong></p>
     </div>
   </div>
 </section>
 
 <!-- ========== TEACHERS ========== -->
 <section id="teachers">
-  <div class="container">
-    <div class="section-header">
-      <h2>Meet the Teachers</h2>
-      <p class="section-sub">World-class instructors bringing their expertise to New York City</p>
-    </div>
+  <div class="section-inner">
+    <h2 class="section-title">Meet the Teachers</h2>
     <div class="teachers-grid">
 
       <div class="teacher-card">
-        <div class="teacher-photo-placeholder">
-          <span>Kenji</span>
-        </div>
+        <img src="assets/headshots/Kenji.png" alt="Kenji" class="teacher-photo" loading="lazy" />
         <div class="teacher-info">
           <h3 class="teacher-name">Kenji</h3>
           <div class="teacher-days">
             <button class="teacher-day" data-day="fri">Fri May 15</button>
             <button class="teacher-day" data-day="sun">Sun May 17</button>
           </div>
-          <p class="teacher-bio-placeholder">Bio coming soon</p>
+        </div>
+        <button class="teacher-bio-toggle">Bio <span class="teacher-bio-arrow">+</span></button>
+        <div class="teacher-bio-body">
+          <p>NYC-trained under the founders, Jeff &amp; Robyn, Kenji is teacher, leader, community builder bridging NYC and Tokyo. His teaching focuses on musicality and syncopation to elevate both freestyle and partner connection in NewStyle Hustle.</p>
         </div>
       </div>
 
       <div class="teacher-card">
-        <div class="teacher-photo-placeholder">
-          <span>Jeff Selby</span>
-        </div>
+        <img src="assets/headshots/Jeff.png" alt="Jeff Selby" class="teacher-photo" loading="lazy" />
         <div class="teacher-info">
           <h3 class="teacher-name">Jeff Selby</h3>
           <div class="teacher-days">
             <button class="teacher-day" data-day="thu">Thu May 14</button>
             <button class="teacher-day" data-day="fri">Fri May 15</button>
           </div>
-          <p class="teacher-bio-placeholder">Bio coming soon</p>
+        </div>
+        <button class="teacher-bio-toggle">Bio <span class="teacher-bio-arrow">+</span></button>
+        <div class="teacher-bio-body">
+          <p>Founder of NewStyle Hustle, Jeff Selby shaped a global dance movement rooted in musicality, connection, and freestyle expression. His artistic contributions continue to influence the global Hustle scene directly and indirectly around the world.</p>
         </div>
       </div>
 
       <div class="teacher-card">
-        <div class="teacher-photo-placeholder">
-          <span>Melina</span>
-        </div>
+        <img src="assets/headshots/Melina.png" alt="Melina" class="teacher-photo" loading="lazy" />
         <div class="teacher-info">
           <h3 class="teacher-name">Melina</h3>
           <div class="teacher-days">
             <button class="teacher-day" data-day="fri">Fri May 15</button>
             <button class="teacher-day" data-day="sun">Sun May 17</button>
           </div>
-          <p class="teacher-bio-placeholder">Bio coming soon</p>
+        </div>
+        <button class="teacher-bio-toggle">Bio <span class="teacher-bio-arrow">+</span></button>
+        <div class="teacher-bio-body">
+          <p>Global teacher, competitor, and community builder, Melina is known for redefining roles and embracing both lead and follow. She teaches creativity, role-switching, and freedom of expression through connection and play.</p>
         </div>
       </div>
 
       <div class="teacher-card">
-        <div class="teacher-photo-placeholder">
-          <span>Miss Bibi</span>
-        </div>
+        <img src="assets/headshots/Miss%20Bibi.png" alt="Miss Bibi" class="teacher-photo" loading="lazy" />
         <div class="teacher-info">
           <h3 class="teacher-name">Miss Bibi</h3>
           <div class="teacher-days">
             <button class="teacher-day" data-day="fri">Fri May 15</button>
             <button class="teacher-day" data-day="sun">Sun May 17</button>
           </div>
-          <p class="teacher-bio-placeholder">Bio coming soon</p>
+        </div>
+        <button class="teacher-bio-toggle">Bio <span class="teacher-bio-arrow">+</span></button>
+        <div class="teacher-bio-body">
+          <p>All-style dancer with 35+ years across 16 styles, Miss Bibi was part of the very first NewStyle Hustle classes in NYC and helped bring the movement to Europe. She teaches from a place of joy, connection, and deep musical feeling, where dance is therapy for the soul.</p>
         </div>
       </div>
 
@@ -1031,22 +1137,28 @@
 <section id="schedule">
   <div class="section-inner">
     <h2 class="section-title">Festival Schedule</h2>
-    <p class="section-subtitle">Five packed days &mdash; tap a day to explore, click any event for details.</p>
 
-    <div class="schedule-tabs">
-      <button class="schedule-tab active" data-day="wed">Wed <span class="tab-day">May 13</span><span class="tab-word">Arrive</span></button>
-      <button class="schedule-tab" data-day="thu">Thu <span class="tab-day">May 14</span><span class="tab-word">Community</span></button>
-      <button class="schedule-tab" data-day="fri">Fri <span class="tab-day">May 15</span><span class="tab-word">Train</span></button>
-      <button class="schedule-tab" data-day="sat">Sat <span class="tab-day">May 16</span><span class="tab-word">Parade</span></button>
-      <button class="schedule-tab" data-day="sun">Sun <span class="tab-day">May 17</span><span class="tab-word">Battle</span></button>
-    </div>
-
-    <div class="schedule-filters">
-      <button class="filter-pill active" data-filter="all">All Events</button>
-      <button class="filter-pill" data-filter="workshop">Workshops</button>
-      <button class="filter-pill" data-filter="party">Parties</button>
-      <button class="filter-pill" data-filter="social">Social</button>
-      <button class="filter-pill" data-filter="battle">Battle</button>
+    <div class="schedule-filter-groups">
+      <div>
+        <p class="filter-group-label">By Day</p>
+        <div class="schedule-filters">
+          <button class="filter-pill day-filter active" data-day="wed">Wed · May 13</button>
+          <button class="filter-pill day-filter" data-day="thu">Thu · May 14</button>
+          <button class="filter-pill day-filter" data-day="fri">Fri · May 15</button>
+          <button class="filter-pill day-filter" data-day="sat">Sat · May 16</button>
+          <button class="filter-pill day-filter" data-day="sun">Sun · May 17</button>
+        </div>
+      </div>
+      <div>
+        <p class="filter-group-label">By Event Type</p>
+        <div class="schedule-filters">
+          <button class="filter-pill type-filter" data-type="workshop">Workshops</button>
+          <button class="filter-pill type-filter" data-type="party">Parties</button>
+          <button class="filter-pill type-filter" data-type="social">Social</button>
+          <button class="filter-pill type-filter" data-type="battle">Battle</button>
+          <button class="filter-pill type-filter" data-type="community">Q&amp;A</button>
+        </div>
+      </div>
     </div>
 
     <div class="schedule-days-wrap">
@@ -1054,7 +1166,6 @@
     <div class="schedule-day active" id="day-wed">
   <div class="schedule-day-header">
     <h3>Wednesday, May 13</h3>
-    <span class="day-badge">Welcome Events</span>
   </div>
   <div class="schedule-timeline">
 
@@ -1071,10 +1182,10 @@
         </div>
         <div class="evt-bottom">
           <span class="evt-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 5:30 &ndash; 8:30 PM</span>
-          <span class="evt-location"><svg class="location-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><a href="https://maps.google.com/?q=Em+Vietnamese+Bistro+Brooklyn+NY" target="_blank" rel="noopener">Em Vietnamese Bistro</a></span>
+          <span class="evt-location"><svg class="location-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><a href="https://maps.app.goo.gl/sF1rTqe81NehAJzX8" target="_blank" rel="noopener">Superfine</a></span>
           <span class="evt-type social">Social</span>
         </div>
-        <div class="evt-desc">Pick up your festival badge over dinner. A relaxed welcome to the week — meet your fellow dancers at Em Vietnamese Bistro before the night heats up.</div>
+        <div class="evt-desc">Pick up your festival badge over dinner. A relaxed welcome to the week — meet your fellow dancers at Superfine before the night heats up.</div>
         <div class="evt-expand-hint" data-hint="for details"></div>
       </div>
     </div>
@@ -1088,7 +1199,7 @@
       <div class="evt-card" data-type="party">
         <div class="evt-top">
           <div class="evt-name">Soul Records Laboratory</div>
-          <div class="evt-price special">Dancers List</div>
+          <div class="evt-price free">FREE</div>
         </div>
         <div class="evt-bottom">
           <span class="evt-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 8:00 PM &ndash; 12:00 AM</span>
@@ -1107,7 +1218,6 @@
     <div class="schedule-day" id="day-thu">
   <div class="schedule-day-header">
     <h3>Thursday, May 14</h3>
-    <span class="day-badge">Community Day</span>
   </div>
   <div class="schedule-timeline">
 
@@ -1120,7 +1230,7 @@
       <div class="evt-card" data-type="social">
         <div class="evt-top">
           <div class="evt-name">Picnic + Outdoor Session</div>
-          <div class="evt-price paid">Free / $10</div>
+          <div class="evt-price paid">BYOB or $10</div>
         </div>
         <div class="evt-bottom">
           <span class="evt-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 12:30 &ndash; 4:00 PM</span>
@@ -1141,7 +1251,7 @@
       <div class="evt-card" data-type="community">
         <div class="evt-top">
           <div class="evt-name">Q&amp;A with Jeff Selby + Afterparty</div>
-          <div class="evt-price paid">$20</div>
+          <div class="evt-price paid">$20 · free w/ Q&amp;A</div>
         </div>
         <div class="evt-bottom">
           <span class="evt-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 7:00 PM &ndash; Late</span>
@@ -1160,7 +1270,6 @@
     <div class="schedule-day" id="day-fri">
   <div class="schedule-day-header">
     <h3>Friday, May 15</h3>
-    <span class="day-badge">Training Begins</span>
   </div>
   <div class="schedule-timeline">
 
@@ -1173,7 +1282,7 @@
       <div class="evt-card" data-type="workshop">
         <div class="evt-top">
           <div class="evt-name">Workshop with Kenji</div>
-          <div class="evt-price paid">$40</div>
+          <div class="evt-price paid">$35</div>
         </div>
         <div class="evt-bottom">
           <span class="evt-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 12:00 &ndash; 1:30 PM</span>
@@ -1220,7 +1329,7 @@
       <div class="evt-card" data-type="workshop">
         <div class="evt-top">
           <div class="evt-name">&ldquo;Flower&rdquo; Styling Workshop with Miss Bibi</div>
-          <div class="evt-price paid">$35</div>
+          <div class="evt-price paid">$40</div>
         </div>
         <div class="evt-bottom">
           <span class="evt-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 7:00 &ndash; 9:00 PM</span>
@@ -1241,7 +1350,7 @@
       <div class="evt-card" data-type="party">
         <div class="evt-top">
           <div class="evt-name">House of Vibes with Jihad Muhammad</div>
-          <div class="evt-price special">Dancers List</div>
+          <div class="evt-price paid">$15 Cash</div>
         </div>
         <div class="evt-bottom">
           <span class="evt-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 10:00 PM &ndash; Late</span>
@@ -1260,7 +1369,6 @@
     <div class="schedule-day" id="day-sat">
   <div class="schedule-day-header">
     <h3>Saturday, May 16</h3>
-    <span class="day-badge">12 Hrs to Party</span>
   </div>
   <div class="schedule-timeline">
 
@@ -1294,7 +1402,7 @@
       <div class="evt-card" data-type="party">
         <div class="evt-top">
           <div class="evt-name">Love City NYC &mdash; Official Afterparty</div>
-          <div class="evt-price special">Dancers List</div>
+          <div class="evt-price paid">$10 Cash</div>
         </div>
         <div class="evt-bottom">
           <span class="evt-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 2:00 &ndash; 10:00 PM</span>
@@ -1313,7 +1421,6 @@
     <div class="schedule-day" id="day-sun">
   <div class="schedule-day-header">
     <h3>Sunday, May 17</h3>
-    <span class="day-badge">Train to Battle</span>
   </div>
   <div class="schedule-timeline">
 
@@ -1392,7 +1499,7 @@
           </div>
           <div class="evt-sub-item">
             <span class="evt-sub-time">9:00 PM</span>
-            <span class="evt-sub-name">HNT Battle Finals</span>
+            <span class="evt-sub-name">Hustle n' Tussle Finals</span>
           </div>
           <div class="evt-sub-item">
             <span class="evt-sub-time">10:30 PM</span>
@@ -1410,308 +1517,258 @@
   </div>
 </section>
 
+<!-- ========== BATTLE ========== -->
+<section id="battle">
+  <div class="section-inner">
+    <h2 class="section-title">Hustle n' Tussle Battle</h2>
+    <div class="battle-intro">
+      <span class="battle-qual-note">All competitors must take at least 1 festival workshop to qualify</span>
+      <p>The grand finale of To The Music. Battle prelims start at 8:00 PM &mdash; but the night kicks off earlier with an opening party.</p>
+      <div style="max-width:420px;margin:2rem auto 0;">
+        <div class="battle-schedule-row"><span class="battle-time">6:45 PM</span><span class="battle-event">Opening Party with Waterparkjones</span></div>
+        <div class="battle-schedule-row"><span class="battle-time">8:00 PM</span><span class="battle-event">Battle Prelims</span></div>
+        <div class="battle-schedule-row"><span class="battle-time">9:00 PM</span><span class="battle-event">Hustle n' Tussle Finals</span></div>
+        <div class="battle-schedule-row"><span class="battle-time">10:30 PM</span><span class="battle-event">Closing Party</span></div>
+      </div>
+    </div>
+
+    <div class="battle-dj-card">
+      <img src="assets/headshots/Waterparkjones.jpg" alt="Waterparkjones" class="battle-dj-photo" loading="lazy" />
+      <div class="battle-dj-info">
+        <h3>Waterparkjones</h3>
+        <div class="dj-role">Opening Party DJ &mdash; 6:45&ndash;8:00 PM &bull; NSH San Diego</div>
+        <p>Waterparkjones is an open format DJ hailing from San Diego, California. With a passion for diverse genres, WPJ started his musical journey back in 2004, spinning hip hop and breaks. In 2016, he discovered his love for soulful, deep, and afro house music, showcasing his skills on CDJs. WPJ's background as a dancer influences his track selection, ensuring the dancefloor stays in motion.</p>
+        <p style="margin-top:0.75rem;">He is a resident DJ at Souleil, a renowned soulful house day party, and a co-creator of the dancer-focused iLL Function parties in San Diego. Sharing stages with notable artists, including King Britt, Mr. V, and Coflo, Waterparkjones embodies the spirit of a bboy, lofter, houser, rocker, and hustler.</p>
+        <p style="margin-top:0.75rem;">Experience his dynamic sets at San Diego house music shows, dance cyphers, and hustle socials.</p>
+      </div>
+    </div>
+
+    <div style="text-align:center;">
+      <a href="https://instagram.com/hustlentusslenyc" target="_blank" rel="noopener" class="battle-ig-link">&#64;hustlentusslenyc on Instagram</a>
+    </div>
+    <!-- TODO: Add specific rules and judges closer to event (from Kenji conversation TBD) -->
+    <p class="battle-rules-note">Specific rules and judges to be announced closer to the event.</p>
+  </div>
+</section>
+
 <!-- TICKETS -->
 <section id="tickets">
   <div class="section-inner">
     <h2 class="section-title">Get Your Pass</h2>
-    <p class="section-subtitle">Registration details and discounted festival packages open in March.</p>
     <div class="ticket-grid">
       <div class="ticket-card">
-        <div class="ticket-type">Day Pass</div>
-        <div class="ticket-name">Single Day</div>
-        <div class="ticket-price">$65</div>
-        <div class="ticket-price-sub">per day (Thu&ndash;Sun)</div>
+        <div class="ticket-type">Workshop Pass</div>
+        <div class="ticket-name">Workshop Pass</div>
+        <div class="ticket-price">$196</div>
+        <div class="ticket-price-sub">Save $35 &bull; 15% off (raw cost $230)</div>
         <ul class="ticket-features">
-          <li>All events for one day</li>
-          <li>Workshops on that day</li>
-          <li>Evening party access</li>
+          <li>6 Workshops</li>
         </ul>
-        <a href="#" class="ticket-btn ticket-btn-outline">Get Tickets</a>
-      </div>
-      <div class="ticket-card featured">
-        <div class="ticket-type">Full Pass</div>
-        <div class="ticket-name">All Access</div>
-        <div class="ticket-price">$199</div>
-        <div class="ticket-price-sub">all 5 days</div>
-        <ul class="ticket-features">
-          <li>All workshops included</li>
-          <li>All parties &amp; socials</li>
-          <li>Jeff Selby Q&A access</li>
-          <li>HNT Battle entry/spectator</li>
-          <li>Priority check-in</li>
-        </ul>
-        <a href="#" class="ticket-btn ticket-btn-primary">Get Tickets</a>
       </div>
       <div class="ticket-card">
-        <div class="ticket-type">Party Pass</div>
-        <div class="ticket-name">Socials Only</div>
-        <div class="ticket-price">$85</div>
-        <div class="ticket-price-sub">all parties</div>
+        <div class="ticket-type">Workshop Pass+</div>
+        <div class="ticket-name">Workshop Pass+</div>
+        <div class="ticket-price">$216</div>
+        <div class="ticket-price-sub">Save $54 &bull; 20% off (raw cost $270)</div>
         <ul class="ticket-features">
-          <li>All evening parties</li>
-          <li>Welcome events included</li>
-          <li>HNT Battle spectator</li>
+          <li>6 Workshops</li>
+          <li>1 Follower Styling Workshop</li>
         </ul>
-        <a href="#" class="ticket-btn ticket-btn-outline">Get Tickets</a>
+      </div>
+      <div class="ticket-card featured">
+        <div class="ticket-type">All Access Pass</div>
+        <div class="ticket-name">All Access Pass</div>
+        <div class="ticket-price">$236</div>
+        <div class="ticket-price-sub">Save $79 &bull; 25% off (raw cost $315)</div>
+        <ul class="ticket-features">
+          <li>All 7 Workshops</li>
+          <li>Hustle n' Tussle Battle entry</li>
+          <li>Jeff Selby Q&amp;A</li>
+          <li>Party access</li>
+        </ul>
       </div>
     </div>
-    <p class="tickets-note">Tickets and individual workshop registration available via <strong>Ticket Tailor</strong>.</p>
-  </div>
-</section>
-
-
-
-<!-- ========== PLAN ========== -->
-<section id="plan">
-  <div class="container">
-    <div class="section-header">
-      <h2>Plan Your Festival Experience</h2>
-      <p class="section-sub">Everything you need to know before you arrive</p>
+    <div style="text-align:center;margin-top:2.5rem;">
+      <a href="https://www.tickettailor.com/events/tothemusic/2129537" target="_blank" rel="noopener" class="btn-primary" style="display:inline-block;font-size:1rem;padding:1rem 2.8rem;">Register &amp; Buy Passes</a>
+      <p style="margin-top:1rem;font-size:0.85rem;color:var(--text-dim);">Individual workshops and events are also available &agrave; la carte &mdash; no pass required.</p>
     </div>
-    <div class="plan-accordion">
-
-      <div class="plan-item" id="plan-venues">
-        <button class="plan-item-header">
-          <span class="plan-item-icon">&#128205;</span>
-          <div class="plan-item-title">
-            <h3>Venues</h3>
-            <p>All festival locations across Brooklyn and Long Island City</p>
-          </div>
-          <span class="plan-item-arrow">+</span>
-        </button>
-        <div class="plan-item-body">
-          <div class="venues-list">
-            <div class="venue-item">
-              <span class="venue-dot" style="background:var(--accent)"></span>
-              <div>
-                <a href="https://maps.google.com/?q=Time+Out+Market+Brooklyn+NY" target="_blank" rel="noopener"><strong>Time Out Market BK</strong></a>
-                <span>May 13 &mdash; Soul Records Laboratory</span>
-              </div>
-            </div>
-            <div class="venue-item">
-              <span class="venue-dot" style="background:var(--secondary)"></span>
-              <div>
-                <a href="https://maps.google.com/?q=El+Santo+Bushwick+Brooklyn+NY" target="_blank" rel="noopener"><strong>El Santo, Bushwick</strong></a>
-                <span>May 15 &mdash; All Workshops</span>
-              </div>
-            </div>
-            <div class="venue-item">
-              <span class="venue-dot" style="background:var(--gold)"></span>
-              <div>
-                <a href="https://maps.google.com/?q=Crossroads+Cafe+Bushwick+Brooklyn+NY" target="_blank" rel="noopener"><strong>Crossroads Cafe, Bushwick</strong></a>
-                <span>May 16 &mdash; Love City NYC Afterparty</span>
-              </div>
-            </div>
-            <div class="venue-item">
-              <span class="venue-dot" style="background:#a78bfa"></span>
-              <div>
-                <a href="https://maps.google.com/?q=Modega+Long+Island+City+NY" target="_blank" rel="noopener"><strong>Modega, Long Island City</strong></a>
-                <span>May 17 &mdash; All Workshops + Battle</span>
-              </div>
-            </div>
-          </div>
-          <div class="map-embed" style="margin-top:1.5rem;">
-            <iframe
-              src="https://www.google.com/maps/d/embed?mid=1qcN8Wg6fLk81OmWGx8F-QeE_LjnkfE4"
-              width="100%"
-              height="400"
-              style="border:0;"
-              allowfullscreen=""
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              title="Festival Venues Map">
-            </iframe>
-          </div>
-          <p class="map-note" style="margin-top:0.75rem;">Click any venue name to open in Google Maps.</p>
-        </div>
-      </div>
-
-      <div class="plan-item" id="plan-housing">
-        <button class="plan-item-header">
-          <span class="plan-item-icon">&#127968;</span>
-          <div class="plan-item-title">
-            <h3>Housing</h3>
-            <p>Reina coordinates accommodations for festival attendees</p>
-          </div>
-          <span class="plan-item-arrow">+</span>
-        </button>
-        <div class="plan-item-body">
-          <div class="housing-card" style="max-width:100%;padding:2rem;">
-            <div class="housing-icon">&#127968;</div>
-            <h3>Coordinated by Reina</h3>
-            <p>To The Music has a dedicated housing coordinator — Reina — who works with attendees to help find accommodations for the festival week. Whether you're looking to connect with other dancers for shared housing or just need recommendations, Reina can help.</p>
-            <p class="housing-sub">Submit the form below and Reina will follow up with you directly.</p>
-            <a href="#" class="btn-primary housing-btn" target="_blank" rel="noopener">Request Housing Coordination</a>
-            <p class="housing-note">This opens a Google Form in a new tab. Reina will reach out via email.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="plan-item" id="plan-faq">
-        <button class="plan-item-header">
-          <span class="plan-item-icon">&#10067;</span>
-          <div class="plan-item-title">
-            <h3>FAQ</h3>
-            <p>Answers to common questions about the festival</p>
-          </div>
-          <span class="plan-item-arrow">+</span>
-        </button>
-        <div class="plan-item-body">
-          <div class="faq-list">
-            <div class="faq-item">
-              <button class="faq-question">What dance styles are featured at this festival?<span class="faq-arrow">+</span></button>
-              <div class="faq-answer"><p>To The Music is centered on NewStyle Hustle. Workshops, the battle, and social dances are all focused on this style. Whether you're a beginner or advanced, there's something for every level.</p></div>
-            </div>
-            <div class="faq-item">
-              <button class="faq-question">Do I need a partner to attend?<span class="faq-arrow">+</span></button>
-              <div class="faq-answer"><p>Not at all! Social dance festivals are built around rotating partners. You'll dance with many different people throughout the week. Solo attendees are the norm.</p></div>
-            </div>
-            <div class="faq-item">
-              <button class="faq-question">What shoes should I bring?<span class="faq-arrow">+</span></button>
-              <div class="faq-answer"><p>Smooth-soled shoes work best for hustle. Dance sneakers, character shoes, or jazz shoes are all great options. Avoid rubber soles as they grip the floor too much. Bring a separate pair for outdoor events.</p></div>
-            </div>
-            <div class="faq-item">
-              <button class="faq-question">What is the Dancers List?<span class="faq-arrow">+</span></button>
-              <div class="faq-answer"><p>The Dancers List is a discounted entry option for parties. Details on how to get on the Dancers List will be shared when registration opens.</p></div>
-            </div>
-            <div class="faq-item">
-              <button class="faq-question">What is the refund policy?<span class="faq-arrow">+</span></button>
-              <div class="faq-answer"><p>Full refunds are available up to 30 days before the festival. Within 30 days, passes can be transferred to another dancer. No refunds within 7 days of the event. Details will be posted with ticket sales.</p></div>
-            </div>
-            <div class="faq-item">
-              <button class="faq-question">Are there hotels nearby?<span class="faq-arrow">+</span></button>
-              <div class="faq-answer"><p>Yes! We'll share a list of recommended hotels and Airbnb options near the venue when registration opens. Some attendees also coordinate shared housing &mdash; check our social media for roommate-matching threads.</p></div>
-            </div>
-            <div class="faq-item">
-              <button class="faq-question">Can I attend individual workshops without a full pass?<span class="faq-arrow">+</span></button>
-              <div class="faq-answer"><p>Yes! Individual workshop drop-in tickets will be available. Prices range from $35 for 90-minute sessions to $40 for 2-hour intensives. The full pass is the best value if you plan to take multiple classes.</p></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="plan-item" id="plan-conduct">
-        <button class="plan-item-header">
-          <span class="plan-item-icon">&#129309;</span>
-          <div class="plan-item-title">
-            <h3>Code of Conduct</h3>
-            <p>Our community guidelines and safety policies</p>
-          </div>
-          <span class="plan-item-arrow">+</span>
-        </button>
-        <div class="plan-item-body">
-          <div class="conduct-content">
-            <p>To The Music is committed to providing a welcoming, respectful, and harassment-free experience for all attendees, regardless of gender identity, sexual orientation, disability, body size, race, ethnicity, age, religion, or dance level.</p>
-            <div class="conduct-highlight">
-              <p>Consent is essential in partner dancing. Always ask before dancing with someone, and always respect a "no" gracefully. On the dance floor, be mindful of your partner's comfort and physical boundaries.</p>
-            </div>
-            <p>We do not tolerate harassment, intimidation, or disrespectful behavior in any form &mdash; on the dance floor, in workshops, at social events, or online. This includes unwelcome physical contact, inappropriate comments, and taking photos or videos without consent.</p>
-            <p>If you experience or witness behavior that violates this code, please speak to any member of the organizing team immediately. We take all reports seriously and will respond promptly to ensure everyone feels safe.</p>
-            <p>Let's make this festival about what brings us together: the music, the movement, and each other.</p>
-          </div>
-        </div>
-      </div>
-
+    <div class="tickets-note" style="margin-top:1.5rem;">
+      <strong>Not included in any pass (pay at door):</strong><br>
+      House of Vibes: $15 USD Cash &bull; Love City: $10 USD Cash &bull; Picnic: bring a snack/drink or $10 cash
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
 
-<!-- ========== MERCH ========== -->
-<section id="merch">
-  <div class="container">
-    <div class="section-header">
-      <h2>Festival Merch</h2>
-      <p class="section-sub">Represent To The Music on and off the dance floor</p>
-    </div>
-    <div class="merch-grid">
-      <div class="merch-card">
-        <div class="merch-img-wrap">
-          <img src="assets/merch/tshirts.PNG" alt="To The Music T-Shirts in 3 colors" loading="lazy">
-        </div>
-        <div class="merch-info">
-          <h3>Festival T-Shirt</h3>
-          <p class="merch-desc">Comfort Colors heavyweight cotton. Available in 3 colorways. Sizes S&ndash;XL.</p>
-          <div class="merch-price">$20</div>
+
+<!-- ========== LOCATIONS ========== -->
+<section id="locations">
+  <div class="section-inner">
+    <h2 class="section-title">Locations</h2>
+    <p class="section-subtitle">Festival venues across Brooklyn and Long Island City</p>
+    <div class="venues-list">
+      <div class="venue-item">
+        <span class="venue-dot" style="background:var(--accent)"></span>
+        <div>
+          <a href="https://maps.google.com/?q=Time+Out+Market+Brooklyn+NY" target="_blank" rel="noopener"><strong>Time Out Market BK</strong></a>
+          <span>May 13 &mdash; Soul Records Laboratory</span>
         </div>
       </div>
-      <div class="merch-card">
-        <div class="merch-img-wrap">
-          <img src="assets/merch/sweat_towels.PNG" alt="To The Music Sweat Towels in 3 colors" loading="lazy">
+      <div class="venue-item">
+        <span class="venue-dot" style="background:var(--teal)"></span>
+        <div>
+          <a href="https://maps.google.com/?q=El+Santo+Bushwick+Brooklyn+NY" target="_blank" rel="noopener"><strong>El Santo, Bushwick</strong></a>
+          <span>May 15 &mdash; All Workshops</span>
         </div>
-        <div class="merch-info">
-          <h3>Sweat Towel</h3>
-          <p class="merch-desc">100% cotton terry cloth. Available in 3 colorways. The perfect dance floor companion.</p>
-          <div class="merch-price">$5 <span class="merch-price-note">with t-shirt purchase</span></div>
+      </div>
+      <div class="venue-item">
+        <span class="venue-dot" style="background:var(--gold)"></span>
+        <div>
+          <a href="https://maps.google.com/?q=Crossroads+Cafe+Bushwick+Brooklyn+NY" target="_blank" rel="noopener"><strong>Crossroads Cafe, Bushwick</strong></a>
+          <span>May 16 &mdash; Love City NYC Afterparty</span>
+        </div>
+      </div>
+      <div class="venue-item">
+        <span class="venue-dot" style="background:#a78bfa"></span>
+        <div>
+          <a href="https://maps.google.com/?q=Modega+Long+Island+City+NY" target="_blank" rel="noopener"><strong>Modega, Long Island City</strong></a>
+          <span>May 17 &mdash; All Workshops + Battle</span>
+        </div>
+      </div>
+      <div class="venue-item">
+        <span class="venue-dot" style="background:#38bdf8"></span>
+        <div>
+          <a href="https://maps.app.goo.gl/sF1rTqe81NehAJzX8" target="_blank" rel="noopener"><strong>Superfine</strong></a>
+          <span>May 13 &mdash; Dinner + Festival Check-In</span>
         </div>
       </div>
     </div>
-    <div class="merch-cta">
-      <a href="#" class="btn-primary" target="_blank" rel="noopener">Order Merch</a>
-      <p class="merch-note">Orders fulfilled via Ticket Tailor at checkout.</p>
+    <div class="map-embed" style="margin-top:1.5rem;">
+      <iframe
+        src="https://www.google.com/maps/d/embed?mid=1qcN8Wg6fLk81OmWGx8F-QeE_LjnkfE4"
+        width="100%"
+        height="420"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Festival Venues Map">
+      </iframe>
     </div>
+    <p class="map-note">Click any venue name to open in Google Maps.</p>
   </div>
 </section>
 
-<!-- ========== INSTAGRAM ========== -->
-<section id="instagram">
-  <div class="container">
-    <div class="section-header">
-      <h2>Follow Along</h2>
-      <p class="section-sub"><a href="https://instagram.com/tothemusicnyc" target="_blank" rel="noopener" class="ig-handle">@tothemusicnyc</a></p>
-    </div>
-    <div class="ig-embed-wrap">
-      <!-- Behold.so Instagram feed widget -->
-      <!-- To set up: create a free account at behold.so, connect @tothemusicnyc, copy the embed snippet and replace the placeholder div below -->
-      <div class="ig-placeholder">
-        <p>Instagram feed coming soon</p>
-        <a href="https://instagram.com/tothemusicnyc" target="_blank" rel="noopener" class="btn-secondary">View on Instagram</a>
+<!-- ========== FAQS ========== -->
+<section id="faqs">
+  <div class="section-inner">
+    <h2 class="section-title">FAQs</h2>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-question">Do I have to buy a festival pass, or can I register for individual events?<span class="faq-arrow">+</span></button>
+        <div class="faq-answer">
+          <p>Festival passes offer up to a 25% discount on all of the events bundled in that package. If you intend to participate in all (or even most) of the events in the bundle, purchase a package to save money and have an easier check-in process at our workshops.</p>
+          <p>Tickets for single workshops and events are available, but please avoid duplicate payment at checkout. You do not need to buy individual tickets for events that are included in your selected festival pass.</p>
+        </div>
       </div>
+
+      <div class="faq-item">
+        <button class="faq-question">Do any of the workshops or events have a maximum capacity?<span class="faq-arrow">+</span></button>
+        <div class="faq-answer">
+          <p>All of our workshops have a maximum capacity of 40 students based on the size of our workshop locations.</p>
+          <p>El Santo is a restaurant located at 1053 Flushing Ave, Brooklyn with a large party room where all workshops on May 15 will take place. Please note that this space has no mirrors.</p>
+          <p>Modega is a dance studio located at 11-05 44th Ave, Long Island City where all workshops on May 17 will take place, as well as the NewStyle HNT battle.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">Can I sign up when I get there?<span class="faq-arrow">+</span></button>
+        <div class="faq-answer">
+          <p>Students may sign up for workshops at the drop-in rate pending available capacity with payment via cash or Venmo. For sold out workshops, we will begin to allow entry for unclaimed spots 10 minutes after the workshop begins.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">Since NewStyle Hustle is a partner dance, should I sign up with a partner?<span class="faq-arrow">+</span></button>
+        <div class="faq-answer">
+          <p>No. Teachers will rotate partners during the workshops, and all have experience supporting classes with uneven numbers of leaders and followers.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">Why does the All Access Pass not include access to some parties?<span class="faq-arrow">+</span></button>
+        <div class="faq-answer">
+          <p>The All Access Pass does not include entry to House of Vibes on Friday, May 15 or the official To The Music Afterparty by Love City NYC. While we are partnered with these events to offer discounted entry for festival participants, fees are being collected separately to simplify admin transactions.</p>
+          <p>For international visitors: Please pay in USD at the door.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">How do I get on the Dancer&rsquo;s List for parties?<span class="faq-arrow">+</span></button>
+        <div class="faq-answer">
+          <p>When purchasing your festival pass or single event tickets on Ticket Tailor, you will see an option to select Dancers Lists for $0. Add this to your cart, and we will share your name with the party organizers for guaranteed discounted entry.</p>
+          <p>If you do not sign up for the list in advance, mention To The Music at the door and the ticket staff may still offer you the discount at their discretion.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">Why do I have to attend at least 1 workshop to participate in the NewStyle HNT battle?<span class="faq-arrow">+</span></button>
+        <div class="faq-answer">
+          <p>Hustle N&rsquo; Tussle (<a href="https://instagram.com/hustlentusslenyc" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;">@hustlentusslenyc</a>) is a Jack &amp; Jill and 7 to Smoke style battle for NewStyle, Classic, and Latin Hustle dancers. Competitors are encouraged to represent their hustle style and step out of your comfort zone by dancing to various types of music. Their regular monthly battle for May will take place the week before To The Music, on Saturday, May 9.</p>
+          <p>NewStyle HNT is a collaboration between To The Music and Hustle N&rsquo; Tussle for festival participants to challenge themselves, test new skills they learned during the week, and show their expression of NewStyle Hustle specifically. Attending at least 1 workshop represents each competitor&rsquo;s commitment to their NSH training.</p>
+          <p>Sign up for the battle through Ticket Tailor. It is the same price to battle as it is to spectate.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">I need help with housing. Who should I talk to?<span class="faq-arrow">+</span></button>
+        <div class="faq-answer">
+          <p>To The Music has a dedicated housing coordinator, Reina, who can work with you to find spare rooms or couches being offered by our local community members. While we cannot guarantee finding a host for every request, we will do our best to find a match that suits your needs and travel itinerary &ndash; or at minimum, offer hotel or Airbnb recommendations that are affordable and centrally located.</p>
+          <p>To contact Reina, DM <a href="https://instagram.com/tothemusicnyc" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;">@tothemusicnyc</a> on Instagram and we will connect you via group chat.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">What should I wear?<span class="faq-arrow">+</span></button>
+        <div class="faq-answer">
+          <p>Wear anything you&rsquo;re ready to dance and sweat in. None of our events or parties have a dress code.</p>
+          <p>Studio dance shoes can be worn based on personal preference, but not recommended for the expected style of movement in the workshops and socials.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">What is the refund policy?<span class="faq-arrow">+</span></button>
+        <div class="faq-answer">
+          <p>Tickets purchased through Ticket Tailor can be cancelled and refunded up to 1 hour before the festival begins (4pm ET on May 13, 2026). Your refund will exclude any transaction fees and donations that may have been made with your order. All sales become final once the festival begins.</p>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
 
 <!-- ========== CONTACT ========== -->
 <section id="contact">
-  <div class="container">
-    <div class="section-header">
-      <h2>Get In Touch</h2>
-      <p class="section-sub">Questions? We&rsquo;re here to help.</p>
-    </div>
-    <div class="contact-grid">
-      <div class="contact-card">
-        <div class="contact-icon">&#9993;</div>
-        <h3>Email</h3>
-        <p>For general inquiries about the festival:</p>
-        <a href="mailto:hello@tothemusicnyc.com" class="contact-link">hello@tothemusicnyc.com</a>
-      </div>
-      <div class="contact-card">
-        <div class="contact-icon">&#127968;</div>
-        <h3>Housing</h3>
-        <p>Need help with accommodations for the festival week?</p>
-        <a href="#housing" class="contact-link">Request Housing Coordination &rarr;</a>
-      </div>
+  <div class="section-inner">
+    <h2 class="section-title">Contact</h2>
+    <p class="section-subtitle">Questions? DM us on Instagram.</p>
+    <div style="text-align:center;">
+      <a href="https://ig.me/m/tothemusicnyc" target="_blank" rel="noopener" class="btn-primary" style="display:inline-block;">DM us @tothemusicnyc</a>
     </div>
   </div>
 </section>
 
 <footer>
-  <img src="assets/to-the-music-logo.jpg" alt="To The Music" class="footer-logo" />
-  <p class="footer-tagline">A NewStyle Hustle Dance Festival &bull; May 13&ndash;17, 2026</p>
   <div class="footer-links">
     <a href="#about">About</a>
     <a href="#teachers">Teachers</a>
     <a href="#schedule">Schedule</a>
+    <a href="#battle">Battle</a>
     <a href="#tickets">Tickets</a>
-    <a href="#merch">Merch</a>
-    <a href="#plan">Plan</a>
+    <a href="#locations">Locations</a>
+    <a href="#faqs">FAQs</a>
     <a href="#contact">Contact</a>
-  </div>
-  <div class="social-links">
-    <a href="#" aria-label="Instagram" title="Instagram">&#9679;</a>
-    <a href="#" aria-label="Facebook" title="Facebook">&#9679;</a>
-    <a href="#" aria-label="YouTube" title="YouTube">&#9679;</a>
   </div>
   <p class="footer-copy">&copy; 2026 To The Music. All rights reserved.</p>
 </footer>
@@ -1744,20 +1801,6 @@
     document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
   });
 
-  // Schedule tabs with re-trigger animation
-  document.querySelectorAll('.schedule-tab').forEach(tab => {
-    tab.addEventListener('click', () => {
-      document.querySelectorAll('.schedule-tab').forEach(t => t.classList.remove('active'));
-      document.querySelectorAll('.schedule-day').forEach(d => { d.classList.remove('active'); d.style.animation = 'none'; });
-      tab.classList.add('active');
-      const dayEl = document.getElementById('day-' + tab.dataset.day);
-      dayEl.offsetHeight; // force reflow
-      dayEl.style.animation = '';
-      dayEl.classList.add('active');
-      applyFilter(); // re-apply current filter when switching days
-    });
-  });
-
   // Event card expand/collapse
   document.querySelectorAll('.evt-card').forEach(card => {
     card.addEventListener('click', () => {
@@ -1766,28 +1809,55 @@
     card.style.cursor = 'pointer';
   });
 
-  // Filter pills
-  let currentFilter = 'all';
-  function applyFilter() {
-    document.querySelectorAll('.evt-card').forEach(card => {
-      if (currentFilter === 'all' || card.dataset.type === currentFilter) {
-        card.classList.remove('filtered-out');
-      } else {
-        card.classList.add('filtered-out');
-      }
-    });
-    // Hide time-groups with all cards filtered out
-    document.querySelectorAll('.time-group').forEach(group => {
-      const visible = group.querySelectorAll('.evt-card:not(.filtered-out)');
-      group.style.display = visible.length ? '' : 'none';
-    });
+  // Schedule dual-filter system
+  let scheduleFilterMode = 'day';
+  let scheduleFilterValue = 'wed';
+
+  function applyScheduleFilter() {
+    if (scheduleFilterMode === 'day') {
+      document.querySelectorAll('.schedule-day').forEach(day => {
+        const isActive = day.id === 'day-' + scheduleFilterValue;
+        day.style.animation = 'none';
+        day.classList.toggle('active', isActive);
+      });
+      const activeDay = document.getElementById('day-' + scheduleFilterValue);
+      if (activeDay) { activeDay.offsetHeight; activeDay.style.animation = ''; }
+      document.querySelectorAll('.evt-card').forEach(card => card.classList.remove('filtered-out'));
+      document.querySelectorAll('.time-group').forEach(g => g.style.display = '');
+    } else {
+      document.querySelectorAll('.schedule-day').forEach(day => day.classList.add('active'));
+      document.querySelectorAll('.evt-card').forEach(card => {
+        card.classList.toggle('filtered-out', card.dataset.type !== scheduleFilterValue);
+      });
+      document.querySelectorAll('.time-group').forEach(group => {
+        const visible = group.querySelectorAll('.evt-card:not(.filtered-out)');
+        group.style.display = visible.length ? '' : 'none';
+      });
+      // Hide days with no matching events
+      document.querySelectorAll('.schedule-day').forEach(day => {
+        const hasVisible = day.querySelectorAll('.evt-card:not(.filtered-out)').length > 0;
+        day.classList.toggle('active', hasVisible);
+      });
+    }
   }
-  document.querySelectorAll('.filter-pill').forEach(pill => {
-    pill.addEventListener('click', () => {
-      document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
-      pill.classList.add('active');
-      currentFilter = pill.dataset.filter;
-      applyFilter();
+
+  document.querySelectorAll('.day-filter').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.day-filter, .type-filter').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      scheduleFilterMode = 'day';
+      scheduleFilterValue = btn.dataset.day;
+      applyScheduleFilter();
+    });
+  });
+
+  document.querySelectorAll('.type-filter').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.day-filter, .type-filter').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      scheduleFilterMode = 'type';
+      scheduleFilterValue = btn.dataset.type;
+      applyScheduleFilter();
     });
   });
 
@@ -1884,15 +1954,39 @@
     }
   })();
 
-  // Teacher day badges → scroll to schedule + activate correct tab
+  // Teacher bio accordion — force-initialize all bodies closed, then toggle per-card
+  document.querySelectorAll('.teacher-bio-body').forEach(b => {
+    b.style.maxHeight = '0px';
+    b.style.paddingBottom = '0';
+    b.style.overflow = 'hidden';
+  });
+  document.querySelectorAll('.teacher-bio-toggle').forEach(function(toggle) {
+    toggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var card = this.closest('.teacher-card');
+      if (!card) return;
+      var body = card.querySelector('.teacher-bio-body');
+      var arrow = card.querySelector('.teacher-bio-arrow');
+      if (!body) return;
+      var isOpen = body.style.maxHeight && body.style.maxHeight !== '0px';
+      body.style.maxHeight = isOpen ? '0px' : body.scrollHeight + 'px';
+      body.style.paddingBottom = isOpen ? '0' : '1.25rem';
+      if (arrow) arrow.style.transform = isOpen ? '' : 'rotate(45deg)';
+    });
+  });
+
+  // Teacher day badges → scroll to schedule + activate correct day filter
   document.querySelectorAll('.teacher-day[data-day]').forEach(btn => {
     btn.addEventListener('click', () => {
       const day = btn.dataset.day;
-      const tab = document.querySelector(`.schedule-tab[data-day="${day}"]`);
-      if (tab) {
-        tab.click();
-        document.getElementById('schedule').scrollIntoView({ behavior: 'smooth' });
-      }
+      document.querySelectorAll('.day-filter, .type-filter').forEach(b => b.classList.remove('active'));
+      const dayBtn = document.querySelector(`.day-filter[data-day="${day}"]`);
+      if (dayBtn) dayBtn.classList.add('active');
+      scheduleFilterMode = 'day';
+      scheduleFilterValue = day;
+      applyScheduleFilter();
+      document.getElementById('schedule').scrollIntoView({ behavior: 'smooth' });
     });
   });
 </script>
