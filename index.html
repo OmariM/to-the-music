@@ -324,11 +324,12 @@
 
     /* SCHEDULE */
     #schedule { background: var(--bg-dark); }
-    .schedule-nav-wrap { display: flex; align-items: flex-start; gap: 1rem; }
-    .schedule-days-wrap { flex: 1; min-width: 0; }
+    .schedule-title-row {
+      display: flex; align-items: center; justify-content: center;
+      gap: 1.5rem; margin-bottom: 2rem;
+    }
     .schedule-nav-btn {
       flex-shrink: 0; width: 44px; height: 44px;
-      position: sticky; top: 80px;
       background: var(--bg-card); border: 1px solid var(--border);
       color: var(--text-muted); border-radius: 50%; font-size: 1.6rem;
       cursor: pointer; transition: all 0.2s;
@@ -692,7 +693,6 @@
       /* Schedule — tabs visible on mobile, standard tab behaviour */
       .schedule-tabs { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; }
       .schedule-nav-btn { display: none; }
-      .schedule-nav-wrap { display: block; }
 
       /* Ticket grid overrides */
       .ticket-grid { max-width: none; margin: 0; padding-top: 1.5rem; }
@@ -1151,7 +1151,11 @@
 <!-- SCHEDULE -->
 <section id="schedule">
   <div class="section-inner">
-    <h2 class="section-title">Festival Schedule</h2>
+    <div class="schedule-title-row">
+      <button class="schedule-nav-btn schedule-prev" aria-label="Previous day" disabled>&#8249;</button>
+      <h2 class="section-title" style="margin-bottom:0;">Festival Schedule</h2>
+      <button class="schedule-nav-btn schedule-next" aria-label="Next day">&#8250;</button>
+    </div>
 
     <div class="schedule-filters" style="margin-bottom:2.5rem;">
       <button class="filter-pill day-filter active" data-day="wed">Wed · May 13</button>
@@ -1162,7 +1166,6 @@
     </div>
 
     <div class="schedule-nav-wrap">
-    <button class="schedule-nav-btn schedule-prev" aria-label="Previous day" disabled>&#8249;</button>
     <div class="schedule-days-wrap">
     <!-- ========== WEDNESDAY ========== -->
     <div class="schedule-day active" id="day-wed">
@@ -1511,7 +1514,6 @@
   </div>
 </div>
     </div><!-- end .schedule-days-wrap -->
-    <button class="schedule-nav-btn schedule-next" aria-label="Next day">&#8250;</button>
     </div><!-- end .schedule-nav-wrap -->
 
   </div>
