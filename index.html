@@ -324,10 +324,15 @@
 
     /* SCHEDULE */
     #schedule { background: var(--bg-dark); }
-    .schedule-title-row {
+    .schedule-date-nav {
       display: flex; align-items: center; justify-content: center;
       gap: 1.5rem; margin-bottom: 2rem;
     }
+    .schedule-date-label {
+      font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 800;
+      color: var(--text); text-align: center; min-width: 260px;
+    }
+    .schedule-day-header { display: none; }
     .schedule-nav-btn {
       flex-shrink: 0; width: 44px; height: 44px;
       background: var(--bg-card); border: 1px solid var(--border);
@@ -1151,11 +1156,7 @@
 <!-- SCHEDULE -->
 <section id="schedule">
   <div class="section-inner">
-    <div class="schedule-title-row">
-      <button class="schedule-nav-btn schedule-prev" aria-label="Previous day" disabled>&#8249;</button>
-      <h2 class="section-title" style="margin-bottom:0;">Festival Schedule</h2>
-      <button class="schedule-nav-btn schedule-next" aria-label="Next day">&#8250;</button>
-    </div>
+    <h2 class="section-title">Festival Schedule</h2>
 
     <div class="schedule-filters" style="margin-bottom:2.5rem;">
       <button class="filter-pill day-filter active" data-day="wed">Wed · May 13</button>
@@ -1163,6 +1164,12 @@
       <button class="filter-pill day-filter" data-day="fri">Fri · May 15</button>
       <button class="filter-pill day-filter" data-day="sat">Sat · May 16</button>
       <button class="filter-pill day-filter" data-day="sun">Sun · May 17</button>
+    </div>
+
+    <div class="schedule-date-nav">
+      <button class="schedule-nav-btn schedule-prev" aria-label="Previous day" disabled>&#8249;</button>
+      <h3 class="schedule-date-label"></h3>
+      <button class="schedule-nav-btn schedule-next" aria-label="Next day">&#8250;</button>
     </div>
 
     <div class="schedule-nav-wrap">
@@ -1821,6 +1828,13 @@
 
   // Schedule filter
   const scheduleDays = ['wed', 'thu', 'fri', 'sat', 'sun'];
+  const scheduleDayLabels = {
+    wed: 'Wednesday, May 13',
+    thu: 'Thursday, May 14',
+    fri: 'Friday, May 15',
+    sat: 'Saturday, May 16',
+    sun: 'Sunday, May 17'
+  };
   let scheduleFilterValue = 'wed';
 
   function applyScheduleFilter() {
@@ -1833,6 +1847,8 @@
     if (activeDay) { activeDay.offsetHeight; activeDay.style.animation = ''; }
     // Sync pill
     document.querySelectorAll('.day-filter').forEach(b => b.classList.toggle('active', b.dataset.day === scheduleFilterValue));
+    // Update date label
+    document.querySelector('.schedule-date-label').textContent = scheduleDayLabels[scheduleFilterValue];
     // Update arrow states
     const idx = scheduleDays.indexOf(scheduleFilterValue);
     document.querySelector('.schedule-prev').disabled = idx === 0;
@@ -1856,6 +1872,7 @@
 
   document.querySelector('.schedule-prev').addEventListener('click', () => navigateSchedule(-1));
   document.querySelector('.schedule-next').addEventListener('click', () => navigateSchedule(1));
+  applyScheduleFilter(); // init date label and arrow states
 
   // Mobile swipe
   let swipeStartX = 0;
