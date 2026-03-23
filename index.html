@@ -324,6 +324,18 @@
 
     /* SCHEDULE */
     #schedule { background: var(--bg-dark); }
+    .schedule-nav-wrap { display: flex; align-items: flex-start; gap: 1rem; }
+    .schedule-days-wrap { flex: 1; min-width: 0; }
+    .schedule-nav-btn {
+      flex-shrink: 0; width: 44px; height: 44px;
+      position: sticky; top: 80px;
+      background: var(--bg-card); border: 1px solid var(--border);
+      color: var(--text-muted); border-radius: 50%; font-size: 1.6rem;
+      cursor: pointer; transition: all 0.2s;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .schedule-nav-btn:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
+    .schedule-nav-btn:disabled { opacity: 0.2; cursor: default; }
     .schedule-tabs {
       display: flex; justify-content: center; gap: 0.4rem; margin-bottom: 1.5rem; flex-wrap: wrap;
     }
@@ -679,6 +691,8 @@
 
       /* Schedule — tabs visible on mobile, standard tab behaviour */
       .schedule-tabs { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; }
+      .schedule-nav-btn { display: none; }
+      .schedule-nav-wrap { display: block; }
 
       /* Ticket grid overrides */
       .ticket-grid { max-width: none; margin: 0; padding-top: 1.5rem; }
@@ -1147,6 +1161,8 @@
       <button class="filter-pill day-filter" data-day="sun">Sun · May 17</button>
     </div>
 
+    <div class="schedule-nav-wrap">
+    <button class="schedule-nav-btn schedule-prev" aria-label="Previous day" disabled>&#8249;</button>
     <div class="schedule-days-wrap">
     <!-- ========== WEDNESDAY ========== -->
     <div class="schedule-day active" id="day-wed">
@@ -1275,7 +1291,7 @@
           <span class="evt-location"><svg class="location-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><a href="https://maps.google.com/?q=El+Santo+Bushwick+Brooklyn+NY" target="_blank" rel="noopener">El Santo, Bushwick</a></span>
           <span class="evt-type workshop">Workshop</span>
         </div>
-        <div class="evt-desc">Opening workshop of the festival with Kenji. Details TBA.</div>
+        <div class="evt-desc">Opening workshop of the festival with Kenji.</div>
         <div class="evt-expand-hint" data-hint="for details"></div>
       </div>
     </div>
@@ -1296,7 +1312,7 @@
           <span class="evt-location"><svg class="location-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><a href="https://maps.google.com/?q=El+Santo+Bushwick+Brooklyn+NY" target="_blank" rel="noopener">El Santo, Bushwick</a></span>
           <span class="evt-type workshop">Workshop</span>
         </div>
-        <div class="evt-desc">Workshop with NewStyle Hustle pioneer Jeff Selby. Details TBA.</div>
+        <div class="evt-desc">Workshop with NewStyle Hustle pioneer Jeff Selby.</div>
         <div class="evt-expand-hint" data-hint="for details"></div>
       </div>
       <div class="evt-card" data-type="workshop">
@@ -1309,7 +1325,7 @@
           <span class="evt-location"><svg class="location-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><a href="https://maps.google.com/?q=El+Santo+Bushwick+Brooklyn+NY" target="_blank" rel="noopener">El Santo, Bushwick</a></span>
           <span class="evt-type workshop">Workshop</span>
         </div>
-        <div class="evt-desc">Workshop with Melina. Details TBA.</div>
+        <div class="evt-desc">Workshop with Melina.</div>
         <div class="evt-expand-hint" data-hint="for details"></div>
       </div>
       <div class="evt-card" data-type="workshop">
@@ -1322,7 +1338,7 @@
           <span class="evt-location"><svg class="location-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><a href="https://maps.google.com/?q=El+Santo+Bushwick+Brooklyn+NY" target="_blank" rel="noopener">El Santo, Bushwick</a></span>
           <span class="evt-type workshop">Workshop</span>
         </div>
-        <div class="evt-desc">Miss Bibi's signature "Flower" styling workshop. Details TBA.</div>
+        <div class="evt-desc">Miss Bibi's signature "Flower" styling workshop.</div>
         <div class="evt-expand-hint" data-hint="for details"></div>
       </div>
     </div>
@@ -1426,7 +1442,7 @@
           <span class="evt-location"><svg class="location-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><a href="https://maps.google.com/?q=Modega+Long+Island+City+NY" target="_blank" rel="noopener">Modega, Long Island City</a></span>
           <span class="evt-type workshop">Workshop</span>
         </div>
-        <div class="evt-desc">Final workshop with Kenji before the battle. Details TBA.</div>
+        <div class="evt-desc">Final workshop with Kenji before the battle.</div>
         <div class="evt-expand-hint" data-hint="for details"></div>
       </div>
       <div class="evt-card" data-type="workshop">
@@ -1439,7 +1455,7 @@
           <span class="evt-location"><svg class="location-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><a href="https://maps.google.com/?q=Modega+Long+Island+City+NY" target="_blank" rel="noopener">Modega, Long Island City</a></span>
           <span class="evt-type workshop">Workshop</span>
         </div>
-        <div class="evt-desc">Afternoon intensive with Melina. Details TBA.</div>
+        <div class="evt-desc">Afternoon intensive with Melina.</div>
         <div class="evt-expand-hint" data-hint="for details"></div>
       </div>
       <div class="evt-card" data-type="workshop">
@@ -1452,7 +1468,7 @@
           <span class="evt-location"><svg class="location-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><a href="https://maps.google.com/?q=Modega+Long+Island+City+NY" target="_blank" rel="noopener">Modega, Long Island City</a></span>
           <span class="evt-type workshop">Workshop</span>
         </div>
-        <div class="evt-desc">Final workshop of the festival with Miss Bibi before the battle begins. Details TBA.</div>
+        <div class="evt-desc">Final workshop of the festival with Miss Bibi before the battle begins.</div>
         <div class="evt-expand-hint" data-hint="for details"></div>
       </div>
     </div>
@@ -1495,6 +1511,8 @@
   </div>
 </div>
     </div><!-- end .schedule-days-wrap -->
+    <button class="schedule-nav-btn schedule-next" aria-label="Next day">&#8250;</button>
+    </div><!-- end .schedule-nav-wrap -->
 
   </div>
 </section>
@@ -1800,6 +1818,7 @@
   });
 
   // Schedule filter
+  const scheduleDays = ['wed', 'thu', 'fri', 'sat', 'sun'];
   let scheduleFilterValue = 'wed';
 
   function applyScheduleFilter() {
@@ -1810,15 +1829,39 @@
     });
     const activeDay = document.getElementById('day-' + scheduleFilterValue);
     if (activeDay) { activeDay.offsetHeight; activeDay.style.animation = ''; }
+    // Sync pill
+    document.querySelectorAll('.day-filter').forEach(b => b.classList.toggle('active', b.dataset.day === scheduleFilterValue));
+    // Update arrow states
+    const idx = scheduleDays.indexOf(scheduleFilterValue);
+    document.querySelector('.schedule-prev').disabled = idx === 0;
+    document.querySelector('.schedule-next').disabled = idx === scheduleDays.length - 1;
+  }
+
+  function navigateSchedule(delta) {
+    const idx = scheduleDays.indexOf(scheduleFilterValue);
+    const next = idx + delta;
+    if (next < 0 || next >= scheduleDays.length) return;
+    scheduleFilterValue = scheduleDays[next];
+    applyScheduleFilter();
   }
 
   document.querySelectorAll('.day-filter').forEach(btn => {
     btn.addEventListener('click', () => {
-      document.querySelectorAll('.day-filter').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
       scheduleFilterValue = btn.dataset.day;
       applyScheduleFilter();
     });
+  });
+
+  document.querySelector('.schedule-prev').addEventListener('click', () => navigateSchedule(-1));
+  document.querySelector('.schedule-next').addEventListener('click', () => navigateSchedule(1));
+
+  // Mobile swipe
+  let swipeStartX = 0;
+  const scheduleWrap = document.querySelector('.schedule-days-wrap');
+  scheduleWrap.addEventListener('touchstart', e => { swipeStartX = e.touches[0].clientX; }, { passive: true });
+  scheduleWrap.addEventListener('touchend', e => {
+    const delta = swipeStartX - e.changedTouches[0].clientX;
+    if (Math.abs(delta) > 50) navigateSchedule(delta > 0 ? 1 : -1);
   });
 
   // FAQ accordion
