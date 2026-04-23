@@ -443,6 +443,8 @@
     }
     .evt-card:hover { border-color: rgba(233,69,96,0.25); transform: translateX(4px); }
     .evt-card:hover::before { background: var(--accent); box-shadow: 0 0 8px var(--accent-glow); }
+    .evt-card:not(:has(.evt-desc)):hover { transform: none; border-color: var(--border); }
+    .evt-card:not(:has(.evt-desc)):hover::before { background: var(--accent-soft); box-shadow: none; }
     .evt-card.filtered-out { display: none; }
 
     .evt-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-bottom: 0.4rem; }
@@ -1217,8 +1219,6 @@
           <span class="evt-location"><svg class="location-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><a href="https://maps.google.com/?q=El+Santo+Bushwick+Brooklyn+NY" target="_blank" rel="noopener">El Santo, Bushwick</a></span>
           <span class="evt-type workshop">Workshop</span>
         </div>
-        <div class="evt-desc">Focuses on precision of timing, establishing counter balance, and understanding the music. Music is house music.</div>
-        <div class="evt-expand-hint" data-hint="for details"></div>
       </div>
     </div>
 
@@ -1238,8 +1238,6 @@
           <span class="evt-location"><svg class="location-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><a href="https://maps.google.com/?q=El+Santo+Bushwick+Brooklyn+NY" target="_blank" rel="noopener">El Santo, Bushwick</a></span>
           <span class="evt-type workshop">Workshop</span>
         </div>
-        <div class="evt-desc">Workshop with NewStyle Hustle pioneer Jeff Selby.</div>
-        <div class="evt-expand-hint" data-hint="for details"></div>
       </div>
       <div class="evt-card" data-type="workshop">
         <div class="evt-top">
@@ -1251,8 +1249,6 @@
           <span class="evt-location"><svg class="location-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><a href="https://maps.google.com/?q=El+Santo+Bushwick+Brooklyn+NY" target="_blank" rel="noopener">El Santo, Bushwick</a></span>
           <span class="evt-type workshop">Workshop</span>
         </div>
-        <div class="evt-desc">Workshop with Melina.</div>
-        <div class="evt-expand-hint" data-hint="for details"></div>
       </div>
       <div class="evt-card" data-type="workshop">
         <div class="evt-top">
@@ -1264,8 +1260,6 @@
           <span class="evt-location"><svg class="location-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><a href="https://maps.google.com/?q=El+Santo+Bushwick+Brooklyn+NY" target="_blank" rel="noopener">El Santo, Bushwick</a></span>
           <span class="evt-type workshop">Workshop</span>
         </div>
-        <div class="evt-desc">Follower styling workshop with Miss Bibi.</div>
-        <div class="evt-expand-hint" data-hint="for details"></div>
       </div>
     </div>
 
@@ -1368,34 +1362,28 @@
           <span class="evt-location"><svg class="location-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><a href="https://maps.google.com/?q=Modega+Long+Island+City+NY" target="_blank" rel="noopener">Modega, Long Island City</a></span>
           <span class="evt-type workshop">Workshop</span>
         </div>
-        <div class="evt-desc">Focuses on solo dance and building an amoeba-like relationship based on the music. Music is R&amp;B and contemporary.</div>
-        <div class="evt-expand-hint" data-hint="for details"></div>
       </div>
       <div class="evt-card" data-type="workshop">
         <div class="evt-top">
           <div class="evt-name">Creativity &amp; Personal Style with Melina</div>
-          <div class="evt-price paid">$35</div>
+          <div class="evt-price paid">$40</div>
         </div>
         <div class="evt-bottom">
           <span class="evt-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 2:15 &ndash; 4:15 PM</span>
           <span class="evt-location"><svg class="location-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><a href="https://maps.google.com/?q=Modega+Long+Island+City+NY" target="_blank" rel="noopener">Modega, Long Island City</a></span>
           <span class="evt-type workshop">Workshop</span>
         </div>
-        <div class="evt-desc">Afternoon intensive with Melina.</div>
-        <div class="evt-expand-hint" data-hint="for details"></div>
       </div>
       <div class="evt-card" data-type="workshop">
         <div class="evt-top">
           <div class="evt-name">Performance &amp; Expression with Miss Bibi</div>
-          <div class="evt-price paid">$35</div>
+          <div class="evt-price paid">$40</div>
         </div>
         <div class="evt-bottom">
           <span class="evt-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 4:30 &ndash; 6:30 PM</span>
           <span class="evt-location"><svg class="location-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><a href="https://maps.google.com/?q=Modega+Long+Island+City+NY" target="_blank" rel="noopener">Modega, Long Island City</a></span>
           <span class="evt-type workshop">Workshop</span>
         </div>
-        <div class="evt-desc">Final workshop of the festival with Miss Bibi before the battle begins.</div>
-        <div class="evt-expand-hint" data-hint="for details"></div>
       </div>
     </div>
 
@@ -1736,6 +1724,7 @@
 
   // Event card expand/collapse
   document.querySelectorAll('.evt-card').forEach(card => {
+    if (!card.querySelector('.evt-desc')) return;
     card.addEventListener('click', () => {
       card.classList.toggle('expanded');
     });
