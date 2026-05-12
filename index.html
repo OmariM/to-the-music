@@ -741,7 +741,13 @@
 
 /* MAP */
 #map { background: var(--bg-section); }
-.venues-list { max-width: 560px; margin: 2rem auto; display: flex; flex-direction: column; gap: 0.6rem; }
+.venues-scroll { display: flex; gap: 1rem; overflow-x: auto; padding-bottom: 1rem; margin: 2rem 0; scrollbar-width: thin; scrollbar-color: var(--accent) #1a1a25; }
+.venues-scroll::-webkit-scrollbar { height: 4px; }
+.venues-scroll::-webkit-scrollbar-track { background: #1a1a25; border-radius: 2px; }
+.venues-scroll::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+.venue-day-col { flex: 0 0 210px; background: var(--bg-card); border: 1px solid #2a2a3a; border-radius: 12px; padding: 1.25rem; }
+.venue-day-col h4 { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin: 0 0 0.9rem; padding-bottom: 0.6rem; border-bottom: 1px solid #2a2a3a; }
+.venues-list { display: flex; flex-direction: column; gap: 0.6rem; }
 .venue-item {
   display: flex;
   align-items: center;
@@ -1107,12 +1113,12 @@
       </div>
       <div class="evt-card" data-type="social">
         <div class="evt-top">
-          <div class="evt-name">Dinner + Festival Check-In</div>
+          <div class="evt-name">Happy Hour &amp; Festival Check-In</div>
           <div class="evt-price free">FREE</div>
         </div>
         <div class="evt-bottom">
-          <span class="evt-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 5:30 &ndash; 8:30 PM</span>
-          <span class="evt-location"><svg class="location-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><a href="https://maps.app.goo.gl/sF1rTqe81NehAJzX8" target="_blank" rel="noopener">Superfine</a></span>
+          <span class="evt-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 5:00 &ndash; 8:30 PM</span>
+          <span class="evt-location"><svg class="location-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><a href="https://maps.app.goo.gl/sF1rTqe81NehAJzX8" target="_blank" rel="noopener">Superfine, 126 Front St.</a></span>
           <span class="evt-type social">Social</span>
         </div>
         <div class="evt-desc">Pick up your festival badge over dinner. A relaxed welcome to the week — meet your fellow dancers at Superfine before the night heats up.</div>
@@ -1133,7 +1139,7 @@
         </div>
         <div class="evt-bottom">
           <span class="evt-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 8:00 PM &ndash; 12:00 AM</span>
-          <span class="evt-location"><svg class="location-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><a href="https://maps.google.com/?q=Time+Out+Market+Brooklyn+NY" target="_blank" rel="noopener">Time Out Market BK</a></span>
+          <span class="evt-location"><svg class="location-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><a href="https://maps.google.com/?q=Time+Out+Market+55+Water+St+Brooklyn+NY" target="_blank" rel="noopener">Time Out Market, 55 Water St.</a></span>
           <span class="evt-type party">Party</span>
         </div>
         <div class="evt-desc">Kick off the festival with a vinyl-driven night at Time Out Market BK. Discounted entry through the Dancers List.</div>
@@ -1159,15 +1165,15 @@
       </div>
       <div class="evt-card" data-type="social">
         <div class="evt-top">
-          <div class="evt-name">Picnic + Outdoor Session</div>
-          <div class="evt-price paid">BYOB or $10</div>
+          <div class="evt-name">Outdoor Session</div>
+          <div class="evt-price free">FREE</div>
         </div>
         <div class="evt-bottom">
           <span class="evt-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 12:30 &ndash; 4:00 PM</span>
-          <span class="evt-location">Location TBD</span>
+          <span class="evt-location"><svg class="location-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><a href="https://maps.google.com/?q=Christopher+Street+Pier+New+York+NY" target="_blank" rel="noopener">Christopher Street Pier</a></span>
           <span class="evt-type social">Social</span>
         </div>
-        <div class="evt-desc">Bring your own food and drinks for free entry, or drop in for $10. A relaxed outdoor afternoon to connect with the community over food and casual dancing.</div>
+        <div class="evt-desc">A relaxed outdoor afternoon session at Christopher Street Pier — end of the pier under the tent. Bring your own food and drinks.</div>
         <div class="evt-expand-hint" data-hint="for details"></div>
       </div>
     </div>
@@ -1180,15 +1186,28 @@
       </div>
       <div class="evt-card" data-type="community">
         <div class="evt-top">
-          <div class="evt-name">Q&amp;A with Jeff Selby + Afterparty</div>
-          <div class="evt-price paid">$20 · free w/ Q&amp;A</div>
+          <div class="evt-name">NSH Q&amp;A with Jeff Selby</div>
+          <div class="evt-price paid">$20</div>
         </div>
         <div class="evt-bottom">
-          <span class="evt-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 7:00 PM &ndash; Late</span>
-          <span class="evt-location">Location TBD</span>
+          <span class="evt-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 6:30 &ndash; 8:00 PM</span>
+          <span class="evt-location"><svg class="location-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><a href="https://maps.google.com/?q=The+Last+Call+588+Grand+St+Brooklyn+NY" target="_blank" rel="noopener">The Last Call, 588 Grand St.</a></span>
           <span class="evt-type community">Community</span>
         </div>
-        <div class="evt-desc">An intimate evening discussion with NewStyle Hustle pioneer Jeff Selby. Ask questions, gain insight, and connect with the movement's roots — then dance it out at the afterparty. Limited spots available.</div>
+        <div class="evt-desc">An intimate evening discussion with NewStyle Hustle pioneer Jeff Selby. Ask questions, gain insight, and connect with the movement's roots. Limited spots available.</div>
+        <div class="evt-expand-hint" data-hint="for details"></div>
+      </div>
+      <div class="evt-card" data-type="party">
+        <div class="evt-top">
+          <div class="evt-name">Forever Rare</div>
+          <div class="evt-price free">FREE</div>
+        </div>
+        <div class="evt-bottom">
+          <span class="evt-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 8:00 PM &ndash; 1:00 AM</span>
+          <span class="evt-location"><svg class="location-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><a href="https://maps.google.com/?q=The+Last+Call+588+Grand+St+Brooklyn+NY" target="_blank" rel="noopener">The Last Call, 588 Grand St.</a></span>
+          <span class="evt-type party">Party</span>
+        </div>
+        <div class="evt-desc">Dance the night away after the Q&amp;A. Free entry — just bring the vibes.</div>
         <div class="evt-expand-hint" data-hint="for details"></div>
       </div>
     </div>
@@ -1216,7 +1235,7 @@
         </div>
         <div class="evt-bottom">
           <span class="evt-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 12:00 &ndash; 1:30 PM</span>
-          <span class="evt-location"><svg class="location-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><a href="https://maps.google.com/?q=El+Santo+Bushwick+Brooklyn+NY" target="_blank" rel="noopener">El Santo, Bushwick</a></span>
+          <span class="evt-location"><svg class="location-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><a href="https://maps.google.com/?q=El+Santo+1053+Flushing+Ave+Brooklyn+NY" target="_blank" rel="noopener">El Santo, 1053 Flushing Ave</a></span>
           <span class="evt-type workshop">Workshop</span>
         </div>
       </div>
@@ -1235,7 +1254,7 @@
         </div>
         <div class="evt-bottom">
           <span class="evt-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 3:00 &ndash; 5:00 PM</span>
-          <span class="evt-location"><svg class="location-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><a href="https://maps.google.com/?q=El+Santo+Bushwick+Brooklyn+NY" target="_blank" rel="noopener">El Santo, Bushwick</a></span>
+          <span class="evt-location"><svg class="location-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><a href="https://maps.google.com/?q=El+Santo+1053+Flushing+Ave+Brooklyn+NY" target="_blank" rel="noopener">El Santo, 1053 Flushing Ave</a></span>
           <span class="evt-type workshop">Workshop</span>
         </div>
       </div>
@@ -1245,8 +1264,8 @@
           <div class="evt-price paid">$35</div>
         </div>
         <div class="evt-bottom">
-          <span class="evt-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 5:30 &ndash; 7:00 PM</span>
-          <span class="evt-location"><svg class="location-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><a href="https://maps.google.com/?q=El+Santo+Bushwick+Brooklyn+NY" target="_blank" rel="noopener">El Santo, Bushwick</a></span>
+          <span class="evt-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 5:15 &ndash; 6:45 PM</span>
+          <span class="evt-location"><svg class="location-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><a href="https://maps.google.com/?q=El+Santo+1053+Flushing+Ave+Brooklyn+NY" target="_blank" rel="noopener">El Santo, 1053 Flushing Ave</a></span>
           <span class="evt-type workshop">Workshop</span>
         </div>
       </div>
@@ -1257,7 +1276,7 @@
         </div>
         <div class="evt-bottom">
           <span class="evt-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 7:00 &ndash; 9:00 PM</span>
-          <span class="evt-location"><svg class="location-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><a href="https://maps.google.com/?q=El+Santo+Bushwick+Brooklyn+NY" target="_blank" rel="noopener">El Santo, Bushwick</a></span>
+          <span class="evt-location"><svg class="location-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><a href="https://maps.google.com/?q=El+Santo+1053+Flushing+Ave+Brooklyn+NY" target="_blank" rel="noopener">El Santo, 1053 Flushing Ave</a></span>
           <span class="evt-type workshop">Workshop</span>
         </div>
       </div>
@@ -1271,15 +1290,15 @@
       </div>
       <div class="evt-card" data-type="party">
         <div class="evt-top">
-          <div class="evt-name">House of Vibes with Jihad Muhammad</div>
+          <div class="evt-name">The House of Vibes</div>
           <div class="evt-price paid">$15 Cash</div>
         </div>
         <div class="evt-bottom">
-          <span class="evt-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 10:00 PM &ndash; Late</span>
-          <span class="evt-location">Location TBD</span>
+          <span class="evt-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 8:00 PM &ndash; 3:30 AM</span>
+          <span class="evt-location"><svg class="location-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><a href="https://maps.google.com/?q=Hana+House+345+Adams+St+Brooklyn+NY" target="_blank" rel="noopener">Hana House, 345 Adams St.</a></span>
           <span class="evt-type party">Party</span>
         </div>
-        <div class="evt-desc">Dance the night away after a full day of workshops. Jihad Muhammad on the decks. Discounted entry via Dancers List.</div>
+        <div class="evt-desc">Dance the night away after a full day of workshops. Discounted entry via Dancers List.</div>
         <div class="evt-expand-hint" data-hint="for details"></div>
       </div>
     </div>
@@ -1328,7 +1347,7 @@
         </div>
         <div class="evt-bottom">
           <span class="evt-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 2:00 &ndash; 10:00 PM</span>
-          <span class="evt-location"><svg class="location-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><a href="https://maps.google.com/?q=XRoads+Cafe+Bushwick+Brooklyn+NY" target="_blank" rel="noopener">XRoads Cafe, Bushwick</a></span>
+          <span class="evt-location"><svg class="location-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><a href="https://maps.google.com/?q=XRoads+Cafe+119+Knickerbocker+Ave+Brooklyn+NY" target="_blank" rel="noopener">XRoads Cafe, 119 Knickerbocker Ave.</a></span>
           <span class="evt-type party">Party</span>
         </div>
         <div class="evt-desc">The official Dance Parade afterparty. Afternoon into evening social dance vibes at XRoads Cafe in Bushwick. Discounted entry via Dancers List.</div>
@@ -1407,15 +1426,19 @@
         <div class="evt-sub-timeline">
           <div class="evt-sub-item">
             <span class="evt-sub-time">6:45 PM</span>
-            <span class="evt-sub-name">Opening Party &amp; Warm-Up</span>
+            <span class="evt-sub-name">Pre-party with Waterparkjones</span>
           </div>
           <div class="evt-sub-item">
             <span class="evt-sub-time">8:00 PM</span>
-            <span class="evt-sub-name">Preliminary Rounds</span>
+            <span class="evt-sub-name">Battle Prelim</span>
           </div>
           <div class="evt-sub-item">
             <span class="evt-sub-time">9:00 PM</span>
-            <span class="evt-sub-name">NewStyle Hustle N' Tussle Finals</span>
+            <span class="evt-sub-name">NewStyle HNT</span>
+          </div>
+          <div class="evt-sub-item">
+            <span class="evt-sub-time">10:30 PM</span>
+            <span class="evt-sub-name">Afterparty with Cindee Jay</span>
           </div>
         </div>
         <div class="evt-expand-hint" data-hint="for full battle schedule"></div>
@@ -1437,10 +1460,12 @@
     <div class="battle-intro">
       <span class="battle-qual-note">All competitors must take at least 1 festival workshop to qualify</span>
       <div style="max-width:420px;margin:2rem auto 0;">
-        <div class="battle-schedule-row"><span class="battle-time">6:45 PM</span><span class="battle-event">Opening Party with Waterparkjones</span></div>
-        <div class="battle-schedule-row"><span class="battle-time">8:00 PM</span><span class="battle-event">Battle Prelims</span></div>
-        <div class="battle-schedule-row"><span class="battle-time">9:00 PM</span><span class="battle-event">NewStyle Hustle N' Tussle Finals</span></div>
+        <div class="battle-schedule-row"><span class="battle-time">6:45 PM</span><span class="battle-event">Pre-party with Waterparkjones</span></div>
+        <div class="battle-schedule-row"><span class="battle-time">8:00 PM</span><span class="battle-event">Battle Prelim</span></div>
+        <div class="battle-schedule-row"><span class="battle-time">9:00 PM</span><span class="battle-event">NewStyle HNT</span></div>
+        <div class="battle-schedule-row"><span class="battle-time">10:30 PM</span><span class="battle-event">Afterparty with Cindee Jay</span></div>
       </div>
+      <p style="text-align:center;margin-top:1.25rem;font-size:0.9rem;color:var(--text-muted);">Battle Judges: <strong>Jeff Selby &amp; Miss Bibi</strong></p>
     </div>
 
     <div class="battle-dj-card">
@@ -1505,7 +1530,7 @@
     </div>
     <div class="tickets-note" style="margin-top:1.5rem;">
       <strong>Not included in any pass (pay at door):</strong><br>
-      House of Vibes: $15 USD Cash &bull; Love City: $10 USD Cash &bull; Picnic: bring a snack/drink or $10 cash
+      The House of Vibes: $15 USD Cash &bull; Love City NYC: see bio for ticket link
     </div>
   </div>
 </section>
@@ -1516,50 +1541,102 @@
 <section id="locations">
   <div class="section-inner">
     <h2 class="section-title">Locations</h2>
-    <p class="section-subtitle">Festival venues across Brooklyn, Long Island City, and Manhattan</p>
-    <div class="venues-list">
-      <div class="venue-item">
-        <span class="venue-dot" style="background:#38bdf8"></span>
-        <div>
-          <a href="https://maps.app.goo.gl/sF1rTqe81NehAJzX8" target="_blank" rel="noopener"><strong>Superfine</strong></a>
-          <span>May 13 &mdash; Dinner + Festival Check-In</span>
+    <p class="section-subtitle">Festival venues across Brooklyn, Manhattan, and Long Island City</p>
+    <div class="venues-scroll">
+
+      <div class="venue-day-col">
+        <h4>Wed, May 13</h4>
+        <div class="venues-list">
+          <div class="venue-item">
+            <span class="venue-dot" style="background:#38bdf8"></span>
+            <div>
+              <a href="https://maps.app.goo.gl/sF1rTqe81NehAJzX8" target="_blank" rel="noopener"><strong>Superfine, 126 Front St.</strong></a>
+              <span>Happy Hour &amp; Check-In</span>
+            </div>
+          </div>
+          <div class="venue-item">
+            <span class="venue-dot" style="background:var(--accent)"></span>
+            <div>
+              <a href="https://maps.google.com/?q=Time+Out+Market+55+Water+St+Brooklyn+NY" target="_blank" rel="noopener"><strong>Time Out Market, 55 Water St.</strong></a>
+              <span>Soul Records Laboratory</span>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="venue-item">
-        <span class="venue-dot" style="background:var(--accent)"></span>
-        <div>
-          <a href="https://maps.google.com/?q=Time+Out+Market+Brooklyn+NY" target="_blank" rel="noopener"><strong>Time Out Market BK</strong></a>
-          <span>May 13 &mdash; Soul Records Laboratory</span>
+
+      <div class="venue-day-col">
+        <h4>Thu, May 14</h4>
+        <div class="venues-list">
+          <div class="venue-item">
+            <span class="venue-dot" style="background:#22d3ee"></span>
+            <div>
+              <a href="https://maps.google.com/?q=Christopher+Street+Pier+New+York+NY" target="_blank" rel="noopener"><strong>Christopher Street Pier</strong></a>
+              <span>Outdoor Session</span>
+            </div>
+          </div>
+          <div class="venue-item">
+            <span class="venue-dot" style="background:#f472b6"></span>
+            <div>
+              <a href="https://maps.google.com/?q=The+Last+Call+588+Grand+St+Brooklyn+NY" target="_blank" rel="noopener"><strong>The Last Call, 588 Grand St.</strong></a>
+              <span>NSH Q&amp;A + Forever Rare</span>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="venue-item">
-        <span class="venue-dot" style="background:var(--teal)"></span>
-        <div>
-          <a href="https://maps.google.com/?q=El+Santo+Bushwick+Brooklyn+NY" target="_blank" rel="noopener"><strong>El Santo, Bushwick</strong></a>
-          <span>May 15 &mdash; All Workshops</span>
+
+      <div class="venue-day-col">
+        <h4>Fri, May 15</h4>
+        <div class="venues-list">
+          <div class="venue-item">
+            <span class="venue-dot" style="background:var(--teal)"></span>
+            <div>
+              <a href="https://maps.google.com/?q=El+Santo+1053+Flushing+Ave+Brooklyn+NY" target="_blank" rel="noopener"><strong>El Santo, 1053 Flushing Ave</strong></a>
+              <span>All Workshops</span>
+            </div>
+          </div>
+          <div class="venue-item">
+            <span class="venue-dot" style="background:#34d399"></span>
+            <div>
+              <a href="https://maps.google.com/?q=Hana+House+345+Adams+St+Brooklyn+NY" target="_blank" rel="noopener"><strong>Hana House, 345 Adams St.</strong></a>
+              <span>The House of Vibes</span>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="venue-item">
-        <span class="venue-dot" style="background:#fb923c"></span>
-        <div>
-          <a href="https://maps.app.goo.gl/7DXx61kgErqeewhj8" target="_blank" rel="noopener"><strong>Tompkins Square Park, Manhattan</strong></a>
-          <span>May 16 &mdash; NYC Dance Parade</span>
+
+      <div class="venue-day-col">
+        <h4>Sat, May 16</h4>
+        <div class="venues-list">
+          <div class="venue-item">
+            <span class="venue-dot" style="background:#fb923c"></span>
+            <div>
+              <a href="https://maps.app.goo.gl/7DXx61kgErqeewhj8" target="_blank" rel="noopener"><strong>Tompkins Square Park</strong></a>
+              <span>NYC Dance Parade</span>
+            </div>
+          </div>
+          <div class="venue-item">
+            <span class="venue-dot" style="background:var(--gold)"></span>
+            <div>
+              <a href="https://maps.google.com/?q=XRoads+Cafe+119+Knickerbocker+Ave+Brooklyn+NY" target="_blank" rel="noopener"><strong>XRoads Cafe, 119 Knickerbocker Ave.</strong></a>
+              <span>Love City NYC Afterparty</span>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="venue-item">
-        <span class="venue-dot" style="background:var(--gold)"></span>
-        <div>
-          <a href="https://maps.google.com/?q=XRoads+Cafe+Bushwick+Brooklyn+NY" target="_blank" rel="noopener"><strong>XRoads Cafe, Bushwick</strong></a>
-          <span>May 16 &mdash; Love City NYC Afterparty</span>
+
+      <div class="venue-day-col">
+        <h4>Sun, May 17</h4>
+        <div class="venues-list">
+          <div class="venue-item">
+            <span class="venue-dot" style="background:#a78bfa"></span>
+            <div>
+              <a href="https://maps.google.com/?q=Modega+11-05+44th+Ave+Long+Island+City+NY" target="_blank" rel="noopener"><strong>Modega, 11-05 44th Ave, LIC</strong></a>
+              <span>All Workshops + Battle</span>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="venue-item">
-        <span class="venue-dot" style="background:#a78bfa"></span>
-        <div>
-          <a href="https://maps.google.com/?q=Modega+Long+Island+City+NY" target="_blank" rel="noopener"><strong>Modega, Long Island City</strong></a>
-          <span>May 17 &mdash; All Workshops + Battle</span>
-        </div>
-      </div>
+
     </div>
     <div class="map-embed" style="margin-top:1.5rem;">
       <iframe
